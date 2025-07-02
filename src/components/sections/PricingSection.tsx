@@ -243,7 +243,7 @@ const PricingSection: React.FC = () => {
                 <ul className="space-y-3 text-text-secondary">
                   <li className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-desert-blue rounded-full"></div>
-                    <span>כל המחירים כוללים מע"מ</span>
+                    <span>כל המחירים כוללים מע&quot;מ</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-desert-blue rounded-full"></div>

@@ -186,26 +186,24 @@ const FAQSection: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 
                 {/* WhatsApp Button */}
-                <Button
-                  variant="primary"
-                  size="lg"
+                <a
                   href="https://wa.me/972123456789"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
+                    inline-flex items-center justify-center gap-3
                     bg-green-600 hover:bg-green-700 text-warm-white
                     px-8 py-4 rounded-xl font-semibold
-                    flex items-center gap-3
                     shadow-lg hover:shadow-xl
                     transform hover:scale-105
                     transition-all duration-300
-                    border-0
+                    border-0 focus:outline-none focus:ring-2 focus:ring-green-600
                   "
                   aria-label="שלח הודעה בווטסאפ"
                 >
                   <span className="text-xl">📱</span>
                   שלחי הודעה בווטסאפ
-                </Button>
+                </a>
 
                 {/* Contact Form Button */}
                 <Button
