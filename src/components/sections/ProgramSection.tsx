@@ -89,7 +89,7 @@ const ProgramSection: React.FC = () => {
 
           {/* Program Cards Grid */}
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-12">
-            {programActivities.map((activity, index) => (
+            {programActivities.map((activity) => (
               <div
                 key={activity.id}
                 className={`group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 ${activity.delay} animate-fade-in-up`}

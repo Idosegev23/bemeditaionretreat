@@ -1,4 +1,3 @@
-import { Container, Section, Button } from "@/components/ui";
 import {
   HeroSection,
   AboutSection,

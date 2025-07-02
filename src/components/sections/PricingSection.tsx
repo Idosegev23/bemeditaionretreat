@@ -4,7 +4,7 @@ import React from 'react';
 import { Container, Button } from '@/components/ui';
 
 /**
- * Pricing Section - "לבחור את הדרך שנכונה לך להתמסר" - סקשן מחירים ואפשרויות לינה
+ * Pricing Section - לבחור את הדרך שנכונה לך להתמסר - סקשן מחירים ואפשרויות לינה
  * 
  * תכונות:
  * - 3 כרטיסי לינה עם מחירים שונים

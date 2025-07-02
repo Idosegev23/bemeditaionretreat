@@ -80,7 +80,7 @@ const ContactSection: React.FC = () => {
       } else {
         throw new Error('שליחה נכשלה');
       }
-    } catch (error) {
+    } catch {
       alert('אירעה שגיאה בשליחת הטופס. אנא נסו שוב או צרו קשר ישירות.');
     } finally {
       setIsSubmitting(false);
@@ -337,7 +337,7 @@ const ContactSection: React.FC = () => {
                 <div className="bg-gradient-to-br from-desert-blue/5 to-sand/10 rounded-2xl p-8 border border-sand/20 text-center">
                   <div className="text-4xl mb-4">🌅</div>
                   <blockquote className="text-lg text-text-primary leading-relaxed italic mb-4">
-                    "המסע של אלף קילומטר מתחיל בצעד אחד"
+                    &ldquo;המסע של אלף קילומטר מתחיל בצעד אחד&rdquo;
                   </blockquote>
                   <p className="text-text-secondary">
                     המסע שלכם מתחיל כאן ועכשיו 💚
