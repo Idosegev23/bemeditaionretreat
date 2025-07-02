@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { Container, Button } from '@/components/ui';
 
 const Header: React.FC = () => {
@@ -26,6 +25,7 @@ const Header: React.FC = () => {
     { href: '#instructors', label: 'המנחים' },
     { href: '#location', label: 'המקום' },
     { href: '#pricing', label: 'מחירים' },
+    { href: '#faq', label: 'שאלות נפוצות' },
     { href: '#contact', label: 'יצירת קשר' },
   ];
 
@@ -57,15 +57,18 @@ const Header: React.FC = () => {
           aria-label="תפריט ראשי"
         >
           {/* Logo */}
-          <Link 
-            href="/"
-            className="flex items-center space-x-2 rtl:space-x-reverse"
-            aria-label="Be Meditation - חזרה לעמוד הבית"
+          <button
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setIsMenuOpen(false);
+            }}
+            className="flex items-center space-x-2 rtl:space-x-reverse focus:outline-none focus:ring-2 focus:ring-desert-blue rounded-md"
+            aria-label="Be Meditation - חזרה לתחילת הדף"
           >
-            <div className="text-xl lg:text-2xl font-heading text-desert-blue">
+            <div className="text-xl lg:text-2xl font-heading text-desert-blue hover:text-desert-blue/80 transition-colors">
               Be Meditation
             </div>
-          </Link>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
