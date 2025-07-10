@@ -7,11 +7,11 @@ import { Container, Button } from '@/components/ui';
  * Hero Section - סקשן הפתיחה הראשי של האתר
  * 
  * תכונות עיקריות:
- * - וידאו ברקע (hero.mp4) שמתנגן אוטומטית כלופ ללא קול
- * - שכבת overlay שקופה לקריאות טובה של הטקסט
+ * - תמונת רקע (במקום וידאו) לביצועים טובים יותר
+ * - שכבת overlay עדינה לקריאות טובה של הטקסט
  * - תוכן מרוכז במרכז המסך
  * - רספונסיבי למובייל וטאבלט
- * - כפתור קריאה לפעולה שגולל חלק לסקשן הרשמה
+ * - שני כפתורים - לפרטים ולרכישה ישירה
  */
 const HeroSection: React.FC = () => {
   return (
@@ -21,28 +21,20 @@ const HeroSection: React.FC = () => {
       role="banner"
       aria-label="סקשן הירו - ריטריט מדיטציה במדבר"
     >
-      {/* Video Background - וידאו ברקע */}
+      {/* Background Image - תמונת רקע */}
       <div className="absolute inset-0 w-full h-full">
-        {/* Fallback Background - רקע גיבוי אם הוידאו לא נטען */}
-        <div className="absolute inset-0 bg-gradient-to-br from-sand via-light-brown to-desert-blue opacity-90" />
-        
-        <video
-          autoPlay
-          muted
-          playsInline
-          loop
-          className="absolute inset-0 w-full h-full object-cover"
-          aria-hidden="true"
-          poster="/images/hero-poster.jpg"
-          onError={() => console.log('Video failed to load, using fallback background')}
-          style={{ filter: 'sepia(20%) brightness(0.8)' }}
-        >
-          <source src="/videos/hero.mp4" type="video/mp4" />
-        </video>
-        
-        {/* Overlay - שכבת רקע שקופה לקריאות הטקסט */}
+        {/* Background image with better brightness */}
         <div 
-          className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(/images/gallery/1.jpg)',
+            filter: 'brightness(0.75) sepia(10%)'
+          }}
+        />
+        
+        {/* Overlay - שכבת רקע עדינה יותר לקריאות הטקסט */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/40"
           aria-hidden="true"
         />
       </div>
@@ -52,7 +44,7 @@ const HeroSection: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Main Headline - כותרת ראשית */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading text-warm-white mb-6 leading-tight hero-text-shadow animate-fade-in-up">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading text-warm-white mb-6 leading-tight hero-text-shadow animate-fade-in-up" style={{ fontFamily: 'var(--font-decorative)' }}>
             סופ״ש של נוכחות,
             <br className="hidden sm:block" />
             <span className="text-sand"> תנועה ושקט </span>
@@ -77,38 +69,71 @@ const HeroSection: React.FC = () => {
             טבע עוצר נשימה ואנשים טובים, במקום קסום במדבר יהודה.
           </p>
 
-          {/* Call to Action Button - כפתור קריאה לפעולה יחיד */}
-          <div className="flex justify-center items-center animate-fade-in-up animate-delay-400">
-            <Button
-              variant="primary"
-              size="lg"
-              href="#contact"
+          {/* Call to Action Buttons - כפתורי קריאה לפעולה */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animate-delay-600">
+            
+            {/* Primary Button - כפתור ראשי לפרטים (עיצוב אפרוז) */}
+            <button
+              onClick={() => {
+                const element = document.querySelector('#contact');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="
-                bg-gradient-to-br from-desert-blue to-desert-blue/80 
-                hover:from-desert-blue/95 hover:to-desert-blue/85
-                text-warm-white font-semibold 
-                px-16 py-6 text-lg
-                rounded-full
-                shadow-2xl hover:shadow-[0_20px_40px_rgba(123,160,152,0.3)]
+                bg-gray-400/40 hover:bg-gray-500/50
+                text-white font-medium 
+                px-8 py-4 text-lg
+                rounded-2xl
+                border-3 border-white/70 hover:border-white/90
+                shadow-lg hover:shadow-xl
                 transform hover:scale-105 hover:-translate-y-1
-                transition-all duration-500 ease-out
-                min-w-[360px]
-                backdrop-blur-lg
-                border border-warm-white/20
-                hover:border-warm-white/40
+                transition-all duration-300 ease-out
+                min-w-[280px] sm:min-w-[320px]
+                backdrop-blur-sm
                 relative overflow-hidden
-                before:absolute before:inset-0 
-                before:bg-gradient-to-r before:from-transparent before:via-warm-white/10 before:to-transparent
-                before:translate-x-[-100%] hover:before:translate-x-[100%]
-                before:transition-transform before:duration-700
                 active:scale-100 active:translate-y-0
+                font-sans
               "
-              aria-label="עבור לטופס הרשמה לריטריט"
+              aria-label="עבור לטופס יצירת קשר לפרטים"
             >
               <span className="relative z-10">
                 אני רוצה להצטרף לריטריט
               </span>
-            </Button>
+            </button>
+
+            {/* Secondary Button - כפתור רכישה ישירה */}
+            <button
+              onClick={() => {
+                // TODO: Add direct purchase link
+                alert('כפתור רכישה ישירה - נחבר לדף התשלום');
+              }}
+              className="
+                bg-light-brown/80 hover:bg-light-brown/90
+                text-warm-white font-medium 
+                px-8 py-4 text-lg
+                rounded-2xl
+                border-2 border-light-brown/60 hover:border-light-brown/80
+                shadow-lg hover:shadow-xl
+                transform hover:scale-105 hover:-translate-y-1
+                transition-all duration-300 ease-out
+                min-w-[280px] sm:min-w-[320px]
+                backdrop-blur-sm
+                relative overflow-hidden
+                active:scale-100 active:translate-y-0
+                font-sans
+              "
+              aria-label="רכישה ישירה לריטריט"
+            >
+              <span className="relative z-10">
+                לרכישה ישירה לחצו כאן
+              </span>
+            </button>
+          </div>
+
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-fade-in-up animate-delay-1000">
+            <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce" />
+            </div>
           </div>
         </div>
 

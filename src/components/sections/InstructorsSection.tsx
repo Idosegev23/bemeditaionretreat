@@ -132,14 +132,11 @@ const InstructorsSection: React.FC = () => {
                     </p>
                   </div>
                   
-                  {/* Quote */}
-                  <div className="bg-warm-white/70 rounded-2xl p-6 border-r-4 border-desert-blue">
-                    <p className="text-lg text-text-primary italic leading-relaxed mb-2">
-                      &ldquo;{mainInstructor.quote}&rdquo;
+                  {/* Additional note - not as formal quote */}
+                  <div className="bg-cream/40 rounded-xl p-4">
+                    <p className="text-text-primary leading-relaxed">
+                      {mainInstructor.quote}
                     </p>
-                    <div className="text-desert-blue font-medium">
-                      – {mainInstructor.name}
-                    </div>
                   </div>
                 </div>
               </div>

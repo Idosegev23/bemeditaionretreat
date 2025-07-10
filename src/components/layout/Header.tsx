@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Container, Button } from '@/components/ui';
+import { Container } from '@/components/ui';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,16 +17,18 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Navigation items
+  // Updated navigation items according to requirements
   const navigationItems = [
-    { href: '#about', label: 'אודות הריטריט' },
-    { href: '#program', label: 'התוכנית' },
-    { href: '#schedule', label: 'לוח זמנים' },
-    { href: '#instructors', label: 'המנחים' },
-    { href: '#location', label: 'המקום' },
-    { href: '#pricing', label: 'מחירים' },
+    { href: '#hero', label: 'ראשי' },
+    { href: '#about', label: 'על הרטריט' },
+    { href: '#gallery', label: 'גלריה' },
+    { href: '#program', label: 'תוכנית' },
+    { href: '#location', label: 'על המקום' },
+    { href: '#instructors', label: 'על המנחים' },
+    { href: '#pricing', label: 'לינה וכרטיסים' },
+    { href: '#testimonials', label: 'המלצות' },
     { href: '#faq', label: 'שאלות נפוצות' },
-    { href: '#contact', label: 'יצירת קשר' },
+    { href: '#contact', label: 'יצירת קשר ורישום' },
   ];
 
   // Handle smooth scroll to section
@@ -62,38 +64,38 @@ const Header: React.FC = () => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
               setIsMenuOpen(false);
             }}
-            className="flex items-center space-x-2 rtl:space-x-reverse focus:outline-none focus:ring-2 focus:ring-desert-blue rounded-md"
+            className="flex items-center space-x-3 rtl:space-x-reverse focus:outline-none focus:ring-2 focus:ring-light-brown rounded-md p-1"
             aria-label="Be Meditation - חזרה לתחילת הדף"
           >
-            <div className="text-xl lg:text-2xl font-heading text-desert-blue hover:text-desert-blue/80 transition-colors">
+            {/* Logo from original site */}
+            <div className="w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center">
+              <img 
+                src="/images/logo.png" 
+                alt="לוגו Be Meditation" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="text-xl lg:text-2xl font-heading text-light-brown hover:text-orange-500 transition-colors">
               Be Meditation
             </div>
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
+          <div className="hidden lg:flex items-center space-x-6 rtl:space-x-reverse">
             {navigationItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => handleNavClick(item.href)}
-                className="text-text-primary hover:text-desert-blue transition-colors duration-200 font-medium"
+                className="text-text-primary hover:text-light-brown transition-colors duration-200 font-medium text-sm xl:text-base whitespace-nowrap"
               >
                 {item.label}
               </button>
             ))}
-            
-            <Button 
-              variant="primary" 
-              size="sm"
-              onClick={() => handleNavClick('#contact')}
-            >
-              להרשמה
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-md text-text-primary hover:text-desert-blue transition-colors"
+            className="lg:hidden p-2 rounded-md text-text-primary hover:text-light-brown transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
@@ -135,22 +137,11 @@ const Header: React.FC = () => {
               <button
                 key={item.href}
                 onClick={() => handleNavClick(item.href)}
-                className="text-right text-text-primary hover:text-desert-blue transition-colors duration-200 font-medium py-2"
+                className="text-right text-text-primary hover:text-light-brown transition-colors duration-200 font-medium py-2"
               >
                 {item.label}
               </button>
             ))}
-            
-            <div className="pt-4">
-              <Button 
-                variant="primary" 
-                size="md"
-                className="w-full"
-                onClick={() => handleNavClick('#contact')}
-              >
-                להרשמה לריטריט
-              </Button>
-            </div>
           </div>
         </div>
       </Container>

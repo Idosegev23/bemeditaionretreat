@@ -1,11 +1,13 @@
 import {
   HeroSection,
   AboutSection,
+  GallerySection,
   ProgramSection,
   ScheduleSection,
   InstructorsSection,
   LocationSection,
   PricingSection,
+  TestimonialsSection,
   FAQSection,
   ContactSection
 } from "@/components/sections";
@@ -13,13 +15,16 @@ import {
 export default function Home() {
   return (
     <>
-      {/* Hero Section - סקשן הפתיחה עם וידאו ברקע */}
+      {/* Hero Section - סקשן הפתיחה עם תמונה ברקע */}
       <HeroSection />
 
       {/* About Section - תיאור הריטריט עם תמונות */}
       <AboutSection />
 
-      {/* Program Section - מה מחכה לנו בסופ"ש */}
+      {/* Gallery Section - גלריית תמונות */}
+      <GallerySection />
+
+      {/* Program Section - תוכנית הסופ"ש */}
       <ProgramSection />
 
       {/* Schedule Section - לוח הזמנים המפורט */}
@@ -33,6 +38,9 @@ export default function Home() {
 
       {/* Pricing Section - מחירים ואפשרויות לינה */}
       <PricingSection />
+
+      {/* Testimonials Section - המלצות ממשתתפים */}
+      <TestimonialsSection />
 
       {/* FAQ Section - שאלות נפוצות */}
       <FAQSection />

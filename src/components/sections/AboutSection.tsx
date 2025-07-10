@@ -5,153 +5,208 @@ import Image from 'next/image';
 import { Container, Button } from '@/components/ui';
 
 /**
- * About Section - סקשן אודות הריטריט עם תמונות ופריסה מתקדמת
+ * About Section - סקשן אודות הריטריט עם מבנה דומה לאפרוז
  * 
  * תכונות:
- * - פריסה רספונסיבית: grid בדסקטופ, column במובייל
- * - שלוש תמונות: ראשית גדולה ושתיים תומכות
- * - אנימציות כניסה עדינות
- * - טקסט מפורט עם טיפוגרפיה איכותית
- * - כפתור קריאה לפעולה מרכזי
+ * - פתיח עם תמונה מצד
+ * - "הסדנא תעסוק הפעם.."
+ * - "מה מחכה לנו" עם משבצות
+ * - "האירוע מתאים לכולם"
  */
 const AboutSection: React.FC = () => {
   return (
     <section 
-      className="py-20 md:py-32 bg-warm-white relative overflow-hidden"
+      className="py-20 md:py-32 bg-warm-white"
       id="about"
     >
       <Container>
         <div className="max-w-7xl mx-auto">
           
-          {/* Desktop Layout: Content + Main Image Grid */}
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+          {/* פתיח ראשוני */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
             
-            {/* Text Content - מופיע ראשון במובייל, שני בדסקטופ */}
-            <div className="lg:order-2 space-y-8 animate-fade-in-up">
+            {/* תמונה ראשית */}
+            <div className="animate-fade-in-up">
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-sand/20 to-light-brown/20 rounded-2xl transform rotate-1 group-hover:rotate-2 transition-transform duration-300"></div>
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                  <Image
+                    src="/images/gallery/3.jpg"
+                    alt="ריטריט מדיטציה במדבר - נוכחות ושקט"
+                    width={600}
+                    height={500}
+                    className="w-full h-[400px] md:h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* תוכן פתיח */}
+            <div className="space-y-6 animate-fade-in-up animate-delay-200">
               
-              {/* Main Headline */}
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading text-text-primary leading-tight">
-                ריטריט של נוכחות,
+              {/* כותרת ראשית */}
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading text-text-primary leading-tight text-center">
+                סופ״ש של נוכחות,
                 <br />
                 <span className="text-desert-blue">תנועה ושקט</span>
                 <br />
                 במדבר
               </h2>
 
-              {/* First Paragraph */}
-              <p className="text-xl md:text-2xl text-text-secondary leading-relaxed">
-                בואו לנשום עמוק, לעצור רגע, ולהעניק לעצמנו מרחב אמיתי להתבוננות.
+              {/* פתיח כללי */}
+              <p className="text-lg md:text-xl text-text-primary leading-relaxed text-center">
+                סופ"ש של חיבור פנימי, מדיטציות אקטיביות, תנועה ושקט במקום קסום במדבר יהודה.
                 <br />
-                הסופ״ש הזה מזמין אותנו לצלול פנימה – לרוגע, לתחושת חופש, לחיבור עם עצמנו ועם אנשים שמבקשים תהליך דומה.
+                בקבוצה אינטימית של אנשים איכותיים, ניפגש במקום עוצר נשימה שמזמין להעמקה פנימית.
+                <br />
+                יחד נעמיק אל תוך עולם המדיטציות, נעבור תהליך של מודעות וחיבור עם תנועה, מוזיקה ושקט – ונחגוג את החיים עם הרבה שמחה, טבע מדברי מרהיב וקבוצה תומכת.
+                <br />
+                הזדמנות לחוות וליצור שינוי פנימי אמיתי ומרפא בחיים שלכם בדרך קלילה, עמוקה, ומהנה.
               </p>
-
-              {/* Second Paragraph */}
-              <p className="text-lg md:text-xl text-text-primary leading-relaxed">
-                הריטריט מתקיים במצוקי דרגות – מקום עוצר נשימה בלב המדבר.
-                <br />
-                יומיים של מדיטציות בתנועה, כתיבה אינטואיטיבית, מוסיקה, שיחות עומק וטבע אין־סופי.
-                <br />
-                נחווה יחד שקט פנימי, פתיחה של הלב וכלים פשוטים שאפשר לקחת איתנו לחיים.
-              </p>
-
-              {/* Call to Action Button */}
-              <div className="pt-6">
-                <Button
-                  variant="primary"
-                  size="lg"
-                  href="#contact"
-                  className="
-                    bg-gradient-to-r from-orange-500 to-orange-600
-                    hover:from-orange-600 hover:to-orange-700
-                    text-warm-white font-semibold 
-                    px-10 py-4 text-lg
-                    rounded-xl
-                    shadow-lg hover:shadow-xl
-                    transform hover:scale-105 hover:-translate-y-1
-                    transition-all duration-300
-                    border border-orange-400
-                    hover:border-orange-300
-                  "
-                  aria-label="הרשמה לריטריט"
-                >
-                  להצטרפות לסופ״ש
-                </Button>
-              </div>
-            </div>
-
-            {/* Main Image - מופיע שני במובייל, ראשון בדסקטופ */}
-            <div className="lg:order-1 animate-fade-in-up animate-delay-200">
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-sand/20 to-light-brown/20 rounded-2xl transform rotate-1 group-hover:rotate-2 transition-transform duration-300"></div>
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                  <Image
-                    src="/images/about1.jpg"
-                    alt="התבוננות פנימית ומרחב אינסופי - ריטריט מדיטציה במדבר"
-                    width={600}
-                    height={500}
-                    className="w-full h-[400px] md:h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-500"
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                  />
-                  
-                  {/* Overlay עדין */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-              </div>
             </div>
           </div>
 
-          {/* Supporting Images Row */}
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
+          {/* ציטוט באנר */}
+          <div className="text-center mb-20 animate-fade-in-up animate-delay-400">
+            <div className="bg-gradient-to-r from-sand/20 via-desert-blue/10 to-sand/20 rounded-2xl p-8 md:p-12">
+              <blockquote className="text-2xl md:text-3xl font-light text-text-primary italic">
+                "החיים הם מסע, וכל רגע בו הוא הזדמנות להתעורר ולצמוח"
+              </blockquote>
+            </div>
+          </div>
+
+          {/* הסדנא תעסוק הפעם */}
+          <div className="mb-20 text-center animate-fade-in-up animate-delay-600">
+            <h3 className="text-2xl md:text-3xl font-heading text-text-primary mb-6">
+              הסדנא תעסוק הפעם ב:
+            </h3>
+            <div className="max-w-4xl mx-auto">
+              <ul className="text-lg md:text-xl text-text-primary leading-relaxed space-y-3">
+                <li>• מדיטציות אקטיביות בטבע - שילוב של תנועה והתבוננות פנימה</li>
+                <li>• כתיבה אינטואיטיבית ותרגולי מודעות</li>
+                <li>• תנועה חופשית ומוזיקה מרפאת</li>
+                <li>• שיחות עומק ומעגלי שיתוף</li>
+                <li>• זמן אישי במרחב המדברי המרהיב</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* מה מחכה לנו */}
+          <div className="mb-20 animate-fade-in-up animate-delay-800">
+            <h3 className="text-3xl md:text-4xl font-heading text-text-primary mb-12 text-center">
+              <i className="fas fa-heart text-desert-blue mr-3"></i>
+              מה מחכה לנו?
+            </h3>
             
-            {/* About Image 2 */}
-            <div className="animate-fade-in-up animate-delay-400">
-              <div className="relative group overflow-hidden rounded-xl shadow-lg">
-                <Image
-                  src="/images/about2.jpg"
-                  alt="תקריב של תרגול - רגע אישי ואינטימי"
-                  width={400}
-                  height={300}
-                  className="w-full h-[250px] md:h-[300px] object-cover transform group-hover:scale-110 transition-transform duration-500"
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                />
-                
-                {/* Caption Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                  <p className="text-warm-white text-sm font-medium opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                    רגעי התבוננות עמוקה
-                  </p>
-                </div>
+            <div className="grid md:grid-cols-2 gap-8">
+              
+              {/* מדיטציות */}
+              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <h4 className="text-xl font-semibold text-text-primary mb-4 flex items-center">
+                  <i className="fas fa-om text-desert-blue mr-3"></i>
+                  מדיטציות
+                </h4>
+                <p className="text-text-secondary mb-4 leading-relaxed">
+                  תגלו שיטות מדיטציה חדשות ותרגולים לעבודה עם הגוף והתודעה שילוו אתכם הרבה אחרי שהריטריט ייגמר
+                </p>
+                <ul className="text-sm text-text-primary space-y-2">
+                  <li>• מגוון מדיטציות אקטיביות - שמשלבות תנועה והתבוננות פנימה</li>
+                  <li>• גילוי מה מביאה המדיטציה לחיינו - איך לשלב אותה בחיי היומיום</li>
+                  <li>• מרחב מדיטטיבי בטבע - שלווה ושקט פנימי</li>
+                  <li>• תובנות משמעותיות ואינטגרציה של החוויה</li>
+                </ul>
               </div>
-            </div>
 
-            {/* About Image 3 */}
-            <div className="animate-fade-in-up animate-delay-600">
-              <div className="relative group overflow-hidden rounded-xl shadow-lg">
-                <Image
-                  src="/images/about3.jpg"
-                  alt="תרגול עם רקע מדברי עמוק - חיבור למרחב ולשורש"
-                  width={400}
-                  height={300}
-                  className="w-full h-[250px] md:h-[300px] object-cover transform group-hover:scale-110 transition-transform duration-500"
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                />
-                
-                {/* Caption Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                  <p className="text-warm-white text-sm font-medium opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                    חיבור למרחב המדברי
-                  </p>
-                </div>
+              {/* תהליך מודעות */}
+              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <h4 className="text-xl font-semibold text-text-primary mb-4 flex items-center">
+                  <i className="fas fa-brain text-desert-blue mr-3"></i>
+                  תהליך מודעות
+                </h4>
+                <p className="text-text-secondary mb-4 leading-relaxed">
+                  תתנתקו מהיום־יום ותחזרו מלאים באנרגיה חדשה ותחושת התחדשות פנימית
+                </p>
+                <ul className="text-sm text-text-primary space-y-2">
+                  <li>• כלים לתהליך מודעות - להבין ולהכיר את החלקים בתוכנו</li>
+                  <li>• התחברות פנימה לעצמנו – גם יחד, גם לבד</li>
+                  <li>• חוויית חופש אמיתי - לקיחת אחריות על מה שקורה בתוכנו</li>
+                  <li>• אווירה רגועה - התמזגות בתדר האנרגטי של המקום</li>
+                </ul>
+              </div>
+
+              {/* חיבור קבוצתי */}
+              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <h4 className="text-xl font-semibold text-text-primary mb-4 flex items-center">
+                  <i className="fas fa-hands-helping text-desert-blue mr-3"></i>
+                  חיבור קבוצתי ותמיכה
+                </h4>
+                <p className="text-text-secondary mb-4 leading-relaxed">
+                  אתם באים לפגוש את עצמכם, אבל אתם לא לבד
+                </p>
+                <ul className="text-sm text-text-primary space-y-2">
+                  <li>• קבוצה אינטימית ואיכותית - תמיכה אנושית אמיתית</li>
+                  <li>• מעגלי שיתוף המאפשרים לחקור ביחד ולמצוא מענה לשאלות עמוקות</li>
+                  <li>• הילה תומכת של אנשים מדהימים שהופכים לחברים לדרך</li>
+                </ul>
+              </div>
+
+              {/* הנאות החיים */}
+              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <h4 className="text-xl font-semibold text-text-primary mb-4 flex items-center">
+                  <i className="fas fa-glass-cheers text-desert-blue mr-3"></i>
+                  הנאות החיים
+                </h4>
+                <p className="text-text-secondary mb-4 leading-relaxed">
+                  ויחד עם כל זה תהנו, תחגגו ותכייפו - חיבור של עומק ושמחה!
+                </p>
+                <ul className="text-sm text-text-primary space-y-2">
+                  <li>• פעילויות ערב מגוונות: מוזיקה, תנועה חופשית ומדיטציות מיוחדות</li>
+                  <li>• טיולים מדיטטיביים בטבע המדברי המרהיב</li>
+                  <li>• זמן להנות מהמקום הקסום ושקיעות עוצרות נשימה</li>
+                  <li>• ארוחות משותפות ואווירה חמה ותומכת</li>
+                </ul>
               </div>
             </div>
           </div>
 
-          {/* Decorative Elements */}
-          <div className="absolute top-10 right-10 w-20 h-20 bg-sand/20 rounded-full blur-xl animate-pulse"></div>
-          <div className="absolute bottom-20 left-10 w-32 h-32 bg-desert-blue/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
+          {/* האירוע מתאים לכולם */}
+          <div className="text-center mb-12 animate-fade-in-up animate-delay-1000">
+            <div className="bg-gradient-to-r from-desert-blue/10 via-sand/20 to-desert-blue/10 rounded-2xl p-8 md:p-12">
+              <h3 className="text-2xl md:text-3xl font-heading text-text-primary mb-6">
+                האירוע מתאים לכולם
+              </h3>
+              <p className="text-lg md:text-xl text-text-primary leading-relaxed max-w-4xl mx-auto">
+                לא נדרש ניסיון קודם במדיטציה. הריטריט מתאים לכל מי שמחפש להעמיק פנימה, 
+                לחוות רוגע ושלווה, ולהכיר אנשים עם ערכים דומים. 
+                בין אם אתם מתחילים או מנוסים - המקום והקבוצה יתמכו בכם בדיוק במקום שבו אתם נמצאים.
+              </p>
+            </div>
+          </div>
+
+          {/* כפתור קריאה לפעולה */}
+          <div className="text-center animate-fade-in-up animate-delay-1200">
+            <Button
+              variant="primary"
+              size="lg"
+              href="#contact"
+              className="
+                bg-gradient-to-r from-orange-500 to-orange-600
+                hover:from-orange-600 hover:to-orange-700
+                text-warm-white font-semibold 
+                px-12 py-5 text-lg
+                rounded-xl
+                shadow-lg hover:shadow-xl
+                transform hover:scale-105 hover:-translate-y-1
+                transition-all duration-300
+                border border-orange-400
+                hover:border-orange-300
+              "
+              aria-label="מעבר לפרטים והרשמה"
+            >
+              בואו להיות איתנו
+            </Button>
+          </div>
+
         </div>
       </Container>
     </section>

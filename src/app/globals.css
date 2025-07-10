@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&family=Secular+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&family=Varela+Round&family=Amatic+SC:wght@400;700&display=swap');
 
 :root {
   /* Desert Color Palette */
@@ -46,8 +46,9 @@
   --color-foreground: var(--foreground);
   
   /* Typography */
-  --font-sans: 'Assistant', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Secular One', 'Assistant', sans-serif;
+  --font-sans: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Varela Round', 'Rubik', sans-serif;
+  --font-decorative: 'Amatic SC', cursive;
   
   /* Spacing system */
   --section-spacing: var(--section-spacing);

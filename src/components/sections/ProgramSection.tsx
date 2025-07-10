@@ -1,173 +1,231 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { Container, Button } from '@/components/ui';
 
 /**
- * Program Section - "מה מחכה לנו?" - סקשן תוכנית עם קארדים עם תמונות רקע
+ * Program Section - תוכנית הסופ"ש
  * 
  * תכונות:
- * - 6 קארדים עם תמונות רקע מתאימות לתוכן
- * - overlay טקסט על התמונות
- * - פריסה grid רספונסיבית
- * - אנימציות כניסה מדורגות
- * - עיצוב מתקדם עם hover effects
+ * - יום שישי מעל יום שבת (לא לצד)
+ * - עיצוב ברור ומסודר
+ * - רספונסיבי למובייל
  */
 const ProgramSection: React.FC = () => {
-  // Program activities data with background images
-  const programActivities = [
+  // תוכנית יום שישי
+  const fridaySchedule = [
     {
-      id: 'breathe-move-connect',
-      title: 'ננשום. ננוע. נתחבר.',
-      description: 'נפתח את הסופ״ש בטיול מדיטטיבי בטבע – הליכה שקטה, הקשבה, ונוכחות פשוטה מול הנוף.',
-      image: '/images/program/walking-meditation.webp',
-      delay: 'animate-delay-200'
+      time: '16:00',
+      title: 'הגעה וקבלת פנים',
+      description: 'הגעה למצוקי דרגות, קבלת פנים חמה והתמקמות במקום הקסום'
     },
     {
-      id: 'practice',
-      title: 'ניכנס לתוך תרגול',
-      description: 'עם מדיטציות אקטיביות מבית אושו, שמניעות אותנו מתנועה אל שקט. נחווה גם רגעים של שקט ישיבה, נשימה, והתבוננות.',
-      image: '/images/program/active-meditation.webp',
-      delay: 'animate-delay-400'
+      time: '17:00',
+      title: 'פתיחת הסופ"ש',
+      description: 'מעגל פתיחה, היכרות, ושיתוף כוונות לסופ"ש'
     },
     {
-      id: 'music-dance',
-      title: 'נרקוד. נשיר. ננגן.',
-      description: 'המוזיקה החיה, התדר, השירה המקודשת – כל אלה ילוו אותנו לאורך כל הסופ״ש.',
-      image: '/images/program/music-dance.webp',
-      delay: 'animate-delay-600'
+      time: '18:00',
+      title: 'טיול מדיטטיבי בטבע',
+      description: 'הליכה שקטה במדבר, התחברות למקום ונוכחות פשוטה מול הנוף המרהיב'
     },
     {
-      id: 'meet-people',
-      title: 'נפגוש אנשים כמונו',
-      description: 'שמבקשים רגע של אמת, הקשבה, ודרך חדשה להתחבר לעצמם. נהיה לבד – ונהיה ביחד. ננוע בין פנים לחוץ.',
-      image: '/images/program/group-connection.webp',
-      delay: 'animate-delay-800'
+      time: '19:30',
+      title: 'ארוחת ערב משותפת',
+      description: 'ארוחה קהילתית באווירה חמה ותומכת'
     },
     {
-      id: 'write-share-rest',
-      title: 'נכתוב. נשתף. ננוח.',
-      description: 'יהיו רגעים של יצירה, כתיבה אינטואיטיבית, זמן של שקט מוחלט – וגם זמן של שמחה פשוטה.',
-      image: '/images/program/writing-silence.webp',
-      delay: 'animate-delay-1000'
+      time: '21:00',
+      title: 'מדיטציה אקטיבית ומוזיקה',
+      description: 'תרגול מדיטציה בתנועה, מוזיקה חיה ותנועה חופשית'
     },
     {
-      id: 'between-moments',
-      title: 'ובין לבין',
-      description: 'אוכל טוב, צחוק, נוף מרהיב, אוויר מדברי צלול – ומרחב שנועד בדיוק לזה.',
-      image: '/images/program/desert-life.webp',
-      delay: 'animate-delay-1200'
+      time: '22:30',
+      title: 'זמן חופשי ומנוחה',
+      description: 'זמן אישי, שיחות בקבוצות קטנות, מנוחה'
     }
   ];
 
+  // תוכנית יום שבת
+  const saturdaySchedule = [
+    {
+      time: '07:00',
+      title: 'מדיטציית שחרית',
+      description: 'מדיטציה שקטה לקראת הזריחה, התחברות ליום החדש'
+    },
+    {
+      time: '08:00',
+      title: 'ארוחת בוקר',
+      description: 'ארוחת בוקר קלה ומזינה'
+    },
+    {
+      time: '09:30',
+      title: 'כתיבה אינטואיטיבית',
+      description: 'תרגול כתיבה פנימית, חקירה עצמית והתבוננות'
+    },
+    {
+      time: '11:00',
+      title: 'מדיטציות בתנועה',
+      description: 'מגוון מדיטציות אקטיביות מבית אושו - תנועה והתבוננות פנימה'
+    },
+    {
+      time: '12:30',
+      title: 'ארוחת צהריים',
+      description: 'ארוחה משותפת וזמן מנוחה'
+    },
+    {
+      time: '14:00',
+      title: 'זמן אישי במדבר',
+      description: 'זמן להתבודדות, טיול אישי, מנוחה או צילום'
+    },
+    {
+      time: '16:00',
+      title: 'מעגל שיתוף',
+      description: 'שיתוף החוויות, תובנות ותמיכה קבוצתית'
+    },
+    {
+      time: '17:30',
+      title: 'מדיטציית סיום',
+      description: 'תרגול סיום, אינטגרציה של החוויה'
+    },
+    {
+      time: '18:30',
+      title: 'ארוחת סיום ופרידה',
+      description: 'ארוחה חגיגית ופרידה חמה עד הפעם הבאה'
+    }
+  ];
+
+  const TimeSlot = ({ time, title, description }: { time: string; title: string; description: string }) => (
+    <div className="flex items-start space-x-4 rtl:space-x-reverse p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+      <div className="flex-shrink-0">
+        <div className="bg-desert-blue text-warm-white px-3 py-2 rounded-lg font-semibold text-sm">
+          {time}
+        </div>
+      </div>
+      <div className="flex-1">
+        <h4 className="text-lg font-semibold text-text-primary mb-2">
+          {title}
+        </h4>
+        <p className="text-text-secondary leading-relaxed">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+
   return (
     <section 
-      className="py-24 md:py-32 bg-warm-white relative overflow-hidden"
+      className="py-20 md:py-32 bg-warm-white"
       id="program"
     >
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-sand/30 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-light-brown/20 rounded-full blur-3xl"></div>
-      </div>
-
       <Container>
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-6xl mx-auto">
           
-          {/* Main Title */}
-          <div className="text-center mb-20 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading text-text-primary mb-8 leading-tight">
-              מה מחכה לנו
-              <br />
-              <span className="text-desert-blue">בסופ״ש הקרוב?</span>
+          {/* כותרת ראשית */}
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading text-text-primary mb-6">
+              תוכנית הסופ"ש
             </h2>
-            <p className="text-xl md:text-2xl text-text-secondary max-w-2xl mx-auto">
-              שישה רגעים, שישה מרחבים, חוויה אחת שלמה במדבר
+            <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
+              שישה רגעים, שישה מרחבים, חוויה אחת שלמה במדבר - 
+              <br className="hidden sm:block" />
+              יומיים של נוכחות, תנועה ושקט פנימי
             </p>
           </div>
 
-          {/* Program Cards Grid */}
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-12">
-            {programActivities.map((activity) => (
-              <div
-                key={activity.id}
-                className={`group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 ${activity.delay} animate-fade-in-up`}
-                style={{ minHeight: '400px' }}
-              >
-                {/* Background Image */}
-                <div className="absolute inset-0">
-                  <Image
-                    src={activity.image}
-                    alt={activity.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                  />
+          {/* יום שישי */}
+          <div className="mb-16 animate-fade-in-up animate-delay-200">
+            <div className="bg-gradient-to-r from-sand/20 to-light-brown/20 rounded-2xl p-8 mb-8">
+              <h3 className="text-2xl md:text-3xl font-heading text-text-primary mb-4 text-center">
+                יום שישי, 26 בספטמבר
+              </h3>
+              <p className="text-lg text-text-secondary text-center">
+                יום פתיחה - התחברות למקום ולקבוצה
+              </p>
+            </div>
+            
+            <div className="space-y-4">
+              {fridaySchedule.map((item, index) => (
+                <div key={index} className={`animate-fade-in-up animate-delay-${300 + index * 100}`}>
+                  <TimeSlot {...item} />
                 </div>
-                
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                
-                {/* Content */}
-                <div className="relative h-full flex flex-col justify-end p-8">
-                  <div className="space-y-4">
-                    <h3 className="text-2xl md:text-3xl font-heading text-warm-white leading-tight">
-                      {activity.title}
-                    </h3>
-                    <p className="text-warm-white/90 text-lg leading-relaxed">
-                      {activity.description}
-                    </p>
-                  </div>
-                  
-                  {/* Decorative accent */}
-                  <div className="mt-6 flex space-x-2">
-                    <div className="w-2 h-2 bg-desert-blue rounded-full opacity-80"></div>
-                    <div className="w-2 h-2 bg-sand rounded-full opacity-60"></div>
-                    <div className="w-2 h-2 bg-light-brown rounded-full opacity-40"></div>
-                  </div>
-                </div>
-
-                {/* Hover border effect */}
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-desert-blue/50 rounded-2xl transition-colors duration-300"></div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          {/* Call to Action */}
-          <div className="text-center mt-20 animate-fade-in-up animate-delay-1400">
-            <div className="space-y-6">
-              {/* Decorative line */}
-              <div className="flex items-center justify-center space-x-4">
-                <div className="h-px bg-gradient-to-r from-transparent via-desert-blue/30 to-transparent w-32"></div>
-                <div className="w-3 h-3 bg-desert-blue/40 rounded-full"></div>
-                <div className="h-px bg-gradient-to-r from-transparent via-desert-blue/30 to-transparent w-32"></div>
+          {/* יום שבת */}
+          <div className="mb-16 animate-fade-in-up animate-delay-800">
+            <div className="bg-gradient-to-r from-desert-blue/10 to-sand/20 rounded-2xl p-8 mb-8">
+              <h3 className="text-2xl md:text-3xl font-heading text-text-primary mb-4 text-center">
+                יום שבת, 27 בספטמבר
+              </h3>
+              <p className="text-lg text-text-secondary text-center">
+                יום העמקה - מדיטציות, כתיבה ואינטגרציה
+              </p>
+            </div>
+            
+            <div className="space-y-4">
+              {saturdaySchedule.map((item, index) => (
+                <div key={index} className={`animate-fade-in-up animate-delay-${900 + index * 100}`}>
+                  <TimeSlot {...item} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* הערות חשובות */}
+          <div className="bg-cream rounded-2xl p-8 mb-12 animate-fade-in-up animate-delay-1600">
+            <h4 className="text-xl font-semibold text-text-primary mb-4 text-center">
+              הערות חשובות
+            </h4>
+            <div className="grid md:grid-cols-2 gap-6 text-text-secondary">
+              <div>
+                <h5 className="font-semibold text-text-primary mb-2">מה כלול</h5>
+                <ul className="space-y-1 text-sm">
+                  <li>• כל הפעילויות והמדיטציות</li>
+                  <li>• הנחיה מקצועית לאורך כל הסופ"ש</li>
+                  <li>• חומרי תרגול</li>
+                  <li>• מרחב תמיכה קבוצתי</li>
+                </ul>
               </div>
-              
-              <p className="text-text-secondary text-lg mb-8">
-                מוכנים לצלול פנימה?
+              <div>
+                <h5 className="font-semibold text-text-primary mb-2">מה לא כלול</h5>
+                <ul className="space-y-1 text-sm">
+                  <li>• לינה (נרשם בנפרד)</li>
+                  <li>• ארוחות (מתארגנים יחד)</li>
+                  <li>• הגעה למקום</li>
+                  <li>• ביטוח אישי</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* כפתור קריאה לפעולה */}
+          <div className="text-center animate-fade-in-up animate-delay-1800">
+            <div className="space-y-6">
+              <p className="text-text-secondary text-lg">
+                מוכנים להצטרף לחוויה?
               </p>
               
               <Button
                 variant="primary"
                 size="lg"
-                href="#schedule"
+                href="#pricing"
                 className="
-                  bg-gradient-to-r from-desert-blue to-desert-blue/80
-                  hover:from-desert-blue/90 hover:to-desert-blue
+                  bg-gradient-to-r from-orange-500 to-orange-600
+                  hover:from-orange-600 hover:to-orange-700
                   text-warm-white font-semibold 
-                  px-10 py-4 text-lg
+                  px-12 py-5 text-lg
                   rounded-xl
                   shadow-lg hover:shadow-xl
                   transform hover:scale-105 hover:-translate-y-1
                   transition-all duration-300
-                  border border-desert-blue/30
-                  hover:border-desert-blue/50
+                  border border-orange-400
+                  hover:border-orange-300
                 "
-                aria-label="צפייה בלוח הזמנים המפורט"
+                aria-label="מעבר למחירים ורישום"
               >
-                לצפייה בלוח הסופ״ש המלא
+                למחירים ולרישום
               </Button>
             </div>
           </div>
