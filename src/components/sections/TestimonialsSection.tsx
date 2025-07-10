@@ -16,13 +16,13 @@ const TestimonialsSection: React.FC = () => {
   const testimonials = [
     {
       id: 1,
-      quote: "תתאר/י לעצמך מה זה לקחת סופ\"ש ולהתחבר לעצמך, לאנשים שתומכים בך ולטבע המדברי הקסום במצוקי דרגות. קח/י זמן לעצמך - תן/י לעצמך מתנה בלתי נשכחת שיעלה אותך מדרגה!",
+      quote: "תתאר/י לעצמך מה זה לקחת סופ&quot;ש ולהתחבר לעצמך, לאנשים שתומכים בך ולטבע המדברי הקסום במצוקי דרגות. קח/י זמן לעצמך - תן/י לעצמך מתנה בלתי נשכחת שיעלה אותך מדרגה!",
       name: "צ'רלי",
       role: "משתתף בריטריט"
     },
     {
       id: 2,
-      quote: "לכל מי שמתעניין בסדנת מדיטציה במדבר עם יובל - סדנה מאד מומלצת במקום מקסים במצוקי דרגות עם אנשים מאד מיוחדים ויובל שאין עוד כמותו כמדריך, מלווה ותומך. יצאתי משם אחרי הסופ\"ש, נקי טהור ומלא מרץ.",
+      quote: "לכל מי שמתעניין בסדנת מדיטציה במדבר עם יובל - סדנה מאד מומלצת במקום מקסים במצוקי דרגות עם אנשים מאד מיוחדים ויובל שאין עוד כמותו כמדריך, מלווה ותומך. יצאתי משם אחרי הסופ&quot;ש, נקי טהור ומלא מרץ.",
       name: "רמי",
       role: "משתתף בריטריט"
     },
@@ -46,7 +46,7 @@ const TestimonialsSection: React.FC = () => {
     },
     {
       id: 6,
-      quote: "יש הרבה חוויות בחיים, אבל רק אחת שנשארה לי בלב במיוחד: ריטריט המדיטציה במדבר עם יובל. בסופ\"ש אחד פגשתי אנשים מהארץ – כאלה שמביאים שמחת חיים אמיתית, עומק וחיבור. המעגלים, המדיטציות, והאווירה הייחודית במצוקי דרגות יצרו תחושה של בית – מרחב שממלא בהשראה ונותן כוח להמשך הדרך. מאז, נוצרו חברויות אמיתיות שממשיכות איתי גם מחוץ לסדנה. וכל פעם שאני נזכר בסופ\"ש ההוא – אני מתמלא בטוב וחושב לעצמי: אולי השנה שוב?",
+      quote: "יש הרבה חוויות בחיים, אבל רק אחת שנשארה לי בלב במיוחד: ריטריט המדיטציה במדבר עם יובל. בסופ&quot;ש אחד פגשתי אנשים מהארץ – כאלה שמביאים שמחת חיים אמיתית, עומק וחיבור. המעגלים, המדיטציות, והאווירה הייחודית במצוקי דרגות יצרו תחושה של בית – מרחב שממלא בהשראה ונותן כוח להמשך הדרך. מאז, נוצרו חברויות אמיתיות שממשיכות איתי גם מחוץ לסדנה. וכל פעם שאני נזכר בסופ&quot;ש ההוא – אני מתמלא בטוב וחושב לעצמי: אולי השנה שוב?",
       name: "אייל",
       role: "משתתף בריטריט"
     }
@@ -69,7 +69,7 @@ const TestimonialsSection: React.FC = () => {
             {/* ציטוט מרכזי */}
             <div className="bg-gradient-to-r from-desert-blue/10 to-sand/20 rounded-2xl p-8 max-w-4xl mx-auto mb-8">
               <blockquote className="text-xl md:text-2xl text-text-primary font-light italic leading-relaxed">
-                "התחברות עמוקה לעצמי ולאחרים שינתה את החיים שלי"
+                &ldquo;התחברות עמוקה לעצמי ולאחרים שינתה את החיים שלי&rdquo;
               </blockquote>
             </div>
           </div>
@@ -89,11 +89,11 @@ const TestimonialsSection: React.FC = () => {
                 
                 {/* ציטוט */}
                 <div className="mb-6">
-                  <div className="text-4xl text-desert-blue/30 mb-4 leading-none">"</div>
+                  <div className="text-4xl text-desert-blue/30 mb-4 leading-none">&ldquo;</div>
                   <blockquote className="text-text-secondary leading-relaxed text-sm">
                     {testimonial.quote}
                   </blockquote>
-                  <div className="text-4xl text-desert-blue/30 text-left leading-none -mt-2">"</div>
+                  <div className="text-4xl text-desert-blue/30 text-left leading-none -mt-2">&rdquo;</div>
                 </div>
                 
                 {/* מידע על המלצה */}
@@ -121,7 +121,7 @@ const TestimonialsSection: React.FC = () => {
             <div className="bg-cream/60 rounded-2xl p-8 max-w-3xl mx-auto">
               <p className="text-lg text-text-primary leading-relaxed mb-6">
                 רוצים להיות חלק מהחוויה הבאה? <br />
-                הצטרפו אלינו לסופ"ש שישנה את חייכם
+                הצטרפו אלינו לסופ&quot;ש שישנה את חייכם
               </p>
               
               <Button

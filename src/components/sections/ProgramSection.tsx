@@ -124,7 +124,7 @@ const ProgramSection: React.FC = () => {
           {/* כותרת ראשית */}
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading text-text-primary mb-6">
-              תוכנית הסופ"ש
+              תוכנית הסופ&quot;ש
             </h2>
             <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
               שישה רגעים, שישה מרחבים, חוויה אחת שלמה במדבר - 
@@ -183,7 +183,7 @@ const ProgramSection: React.FC = () => {
                 <h5 className="font-semibold text-text-primary mb-2">מה כלול</h5>
                 <ul className="space-y-1 text-sm">
                   <li>• כל הפעילויות והמדיטציות</li>
-                  <li>• הנחיה מקצועית לאורך כל הסופ"ש</li>
+                  <li>• הנחיה מקצועית לאורך כל הסופ&quot;ש</li>
                   <li>• חומרי תרגול</li>
                   <li>• מרחב תמיכה קבוצתי</li>
                 </ul>

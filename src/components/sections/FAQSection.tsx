@@ -80,7 +80,7 @@ const FAQSection: React.FC = () => {
             {/* ציטוט מרכזי מהאתר המקורי */}
             <div className="bg-gradient-to-r from-desert-blue/10 to-sand/20 rounded-2xl p-8 max-w-4xl mx-auto mb-8">
               <blockquote className="text-xl md:text-2xl text-text-primary font-light italic leading-relaxed">
-                "הלא-ידוע הוא מרחב האפשרויות הגדול ביותר שלנו"
+                &ldquo;הלא-ידוע הוא מרחב האפשרויות הגדול ביותר שלנו&rdquo;
               </blockquote>
             </div>
           </div>

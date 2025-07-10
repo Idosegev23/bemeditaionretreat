@@ -55,7 +55,7 @@ const AboutSection: React.FC = () => {
 
               {/* פתיח כללי */}
               <p className="text-lg md:text-xl text-text-primary leading-relaxed text-center">
-                סופ"ש של חיבור פנימי, מדיטציות אקטיביות, תנועה ושקט במקום קסום במדבר יהודה.
+                סופ&quot;ש של חיבור פנימי, מדיטציות אקטיביות, תנועה ושקט במקום קסום במדבר יהודה.
                 <br />
                 בקבוצה אינטימית של אנשים איכותיים, ניפגש במקום עוצר נשימה שמזמין להעמקה פנימית.
                 <br />
@@ -70,7 +70,7 @@ const AboutSection: React.FC = () => {
           <div className="text-center mb-20 animate-fade-in-up animate-delay-400">
             <div className="bg-gradient-to-r from-sand/20 via-desert-blue/10 to-sand/20 rounded-2xl p-8 md:p-12">
               <blockquote className="text-2xl md:text-3xl font-light text-text-primary italic">
-                "החיים הם מסע, וכל רגע בו הוא הזדמנות להתעורר ולצמוח"
+                &ldquo;החיים הם מסע, וכל רגע בו הוא הזדמנות להתעורר ולצמוח&rdquo;
               </blockquote>
             </div>
           </div>

@@ -264,7 +264,7 @@ const PricingSection: React.FC = () => {
               </h4>
               <div className="max-w-3xl mx-auto text-center space-y-4">
                 <p className="text-text-primary leading-relaxed">
-                  הארוחות במהלך הסופ"ש הן חלק מהחוויה הקהילתית והמחברת.
+                  הארוחות במהלך הסופ&quot;ש הן חלק מהחוויה הקהילתית והמחברת.
                 </p>
                 <p className="text-text-secondary leading-relaxed">
                   <strong>כל משתתף יתבקש להביא משהו לארוחה המשותפת</strong> - 
@@ -272,7 +272,7 @@ const PricingSection: React.FC = () => {
                   זה יוצר אווירה של נתינה ושיתוף המעשירה את כולנו.
                 </p>
                 <div className="bg-white/60 rounded-xl p-4 text-sm text-text-secondary">
-                  נתאם יחד לפני הסופ"ש מי מביא מה, כדי שיהיה איזון ומגוון בארוחות
+                  נתאם יחד לפני הסופ&quot;ש מי מביא מה, כדי שיהיה איזון ומגוון בארוחות
                 </div>
               </div>
             </div>
@@ -294,7 +294,7 @@ const PricingSection: React.FC = () => {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-desert-blue mt-1">•</span>
-                  <span>הנחיה מקצועית לאורך כל הסופ"ש</span>
+                  <span>הנחיה מקצועית לאורך כל הסופ&quot;ש</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-desert-blue mt-1">•</span>

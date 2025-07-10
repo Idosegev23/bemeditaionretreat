@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Container } from '@/components/ui';
 
 const Header: React.FC = () => {
@@ -69,9 +70,11 @@ const Header: React.FC = () => {
           >
             {/* Logo from original site */}
             <div className="w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center">
-              <img 
+              <Image 
                 src="/images/logo.png" 
                 alt="לוגו Be Meditation" 
+                width={48}
+                height={48}
                 className="w-full h-full object-contain"
               />
             </div>

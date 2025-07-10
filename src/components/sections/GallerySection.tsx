@@ -126,7 +126,7 @@ const GallerySection: React.FC = () => {
             </h2>
             
             <p className="text-lg text-text-primary mb-4">
-              תמונות מהריטריט, החוויות, המדיטציות והטבע המדברי הקסום - הרגעים האמיתיים של הסופ"ש
+              תמונות מהריטריט, החוויות, המדיטציות והטבע המדברי הקסום - הרגעים האמיתיים של הסופ&quot;ש
             </p>
             
             <div className="text-text-secondary font-medium">

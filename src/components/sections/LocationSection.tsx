@@ -104,7 +104,7 @@ const LocationSection: React.FC = () => {
               {/* ציטוט */}
               <div className="bg-gradient-to-r from-desert-blue/10 to-sand/10 rounded-xl p-6 border-r-4 border-desert-blue">
                 <blockquote className="text-lg text-text-primary italic leading-relaxed">
-                  "זה מקום שמבקש מאיתנו רק דבר אחד – לעצור. לנשום. להיות."
+                  &ldquo;זה מקום שמבקש מאיתנו רק דבר אחד – לעצור. לנשום. להיות.&rdquo;
                 </blockquote>
               </div>
 

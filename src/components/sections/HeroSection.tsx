@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Container, Button } from '@/components/ui';
+import { Container } from '@/components/ui';
 
 /**
  * Hero Section - סקשן הפתיחה הראשי של האתר
