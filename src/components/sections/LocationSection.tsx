@@ -8,7 +8,7 @@ import { Container } from '@/components/ui';
  * Location Section - על המקום
  * 
  * תכונות:
- * - עיצוב ענייני וקצר
+ * - עיצוב ענייני וקצר כמו אפרוז
  * - תמונה אחת של המקום
  * - טקסט קצר על מצוקי דרגות
  * - נקודות עיקריות
@@ -16,15 +16,16 @@ import { Container } from '@/components/ui';
 const LocationSection: React.FC = () => {
   return (
     <section 
-      className="py-20 md:py-28 bg-warm-white"
+      className="py-20 md:py-28 bg-cream"
       id="location"
     >
       <Container>
-        <div className="max-w-5xl mx-auto">
+        {/* Main white container wrapping everything like in About */}
+        <div className="max-w-5xl mx-auto bg-white/90 rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg">
           
           {/* כותרת */}
-          <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-heading text-text-primary mb-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-heading text-desert-brown mb-6">
               על המקום
             </h2>
             <p className="text-xl text-text-secondary">
@@ -32,36 +33,49 @@ const LocationSection: React.FC = () => {
             </p>
           </div>
 
-          {/* תוכן ראשי */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            
-            {/* תמונת המקום */}
-            <div className="animate-fade-in-up animate-delay-200">
-              <div className="relative group overflow-hidden rounded-2xl shadow-xl">
-                <div className="relative h-[350px] md:h-[400px]">
-                  <Image
-                    src="/images/location/main-view.webp"
-                    alt="נוף מרהיב ממצוקי דרגות"
-                    fill
-                    className="object-cover transform group-hover:scale-105 transition-transform duration-500"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = '/images/gallery/8.jpg'; // fallback image
-                    }}
-                  />
-                </div>
-                
-                {/* כיתוב */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
-                  <p className="text-white font-medium">
-                    נוף עוצר נשימה על המדבר והים המלח
-                  </p>
+          {/* Quote banner with background image */}
+          <div className="mb-12">
+            <div 
+              className="relative rounded-3xl p-12 md:p-16 overflow-hidden"
+              style={{
+                backgroundImage: 'url(/images/location/main-view.webp)', // Using location image
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                minHeight: '300px'
+              }}
+            >
+              {/* Dark overlay for text readability */}
+              <div className="absolute inset-0 bg-black/40"></div>
+              
+              {/* Quote text */}
+              <div className="relative z-10 text-center">
+                <div className="text-2xl md:text-3xl lg:text-4xl font-light text-white italic leading-relaxed" style={{
+                  textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
+                }}>
+                  &ldquo;המדבר מדבר אל הנשמה בשפה ששקט וחכמה&rdquo;
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* תוכן טקסטואלי */}
-            <div className="space-y-6 animate-fade-in-up animate-delay-400">
+          {/* תוכן ראשי */}
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-8">
+            
+            {/* תמונה */}
+            <div className="flex-shrink-0 lg:w-1/2">
+              <div className="relative h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/images/location/main-view.webp"
+                  alt="נוף מצוקי דרגות"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+            </div>
+            
+            {/* תוכן */}
+            <div className="lg:w-1/2 space-y-6">
               
               {/* תיאור ראשי */}
               <div>
@@ -77,35 +91,28 @@ const LocationSection: React.FC = () => {
               </div>
 
               {/* מה מיוחד במקום */}
-              <div className="bg-cream/50 rounded-xl p-6">
-                <h4 className="text-lg font-semibold text-text-primary mb-4">
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <h4 className="text-lg font-semibold text-desert-brown mb-4">
                   מה מיוחד במקום:
                 </h4>
                 <ul className="space-y-2 text-text-secondary">
                   <li className="flex items-start">
-                    <span className="text-desert-blue mr-2">•</span>
+                    <span className="text-orange-500 ml-2">•</span>
                     נוף פנורמי עוצר נשימה למדבר ולים המלח
                   </li>
                   <li className="flex items-start">
-                    <span className="text-desert-blue mr-2">•</span>
+                    <span className="text-orange-500 ml-2">•</span>
                     מרחב שקט ואינטימי, רחוק מהרעש
                   </li>
                   <li className="flex items-start">
-                    <span className="text-desert-blue mr-2">•</span>
+                    <span className="text-orange-500 ml-2">•</span>
                     מרחבים פתוחים מושלמים לתרגול ומדיטציה
                   </li>
                   <li className="flex items-start">
-                    <span className="text-desert-blue mr-2">•</span>
+                    <span className="text-orange-500 ml-2">•</span>
                     שבילי טיול במדבר ונקודות תצפית מרהיבות
                   </li>
                 </ul>
-              </div>
-
-              {/* ציטוט */}
-              <div className="bg-gradient-to-r from-desert-blue/10 to-sand/10 rounded-xl p-6 border-r-4 border-desert-blue">
-                <blockquote className="text-lg text-text-primary italic leading-relaxed">
-                  &ldquo;זה מקום שמבקש מאיתנו רק דבר אחד – לעצור. לנשום. להיות.&rdquo;
-                </blockquote>
               </div>
 
             </div>

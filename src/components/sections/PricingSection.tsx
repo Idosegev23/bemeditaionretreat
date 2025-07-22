@@ -47,9 +47,9 @@ const PricingSection: React.FC = () => {
       price: '320',
       unit: 'ללילה למשתתף',
       highlighted: true,
-      gradient: 'from-desert-blue/5 to-desert-blue/10',
-      borderColor: 'border-desert-blue/30',
-      buttonColor: 'bg-desert-blue hover:bg-desert-blue/90',
+      gradient: 'from-orange-500/5 to-orange-500/10',
+      borderColor: 'border-orange-500/30',
+      buttonColor: 'bg-orange-500 hover:bg-orange-600',
       badge: 'פופולרי'
     },
     {
@@ -68,9 +68,9 @@ const PricingSection: React.FC = () => {
       price: '520',
       unit: 'ללילה לזוג',
       highlighted: false,
-      gradient: 'from-amber-50 to-orange-50',
-      borderColor: 'border-amber-200',
-      buttonColor: 'bg-amber-600 hover:bg-amber-700'
+      gradient: 'from-light-brown/20 to-sand/20',
+      borderColor: 'border-light-brown',
+      buttonColor: 'bg-light-brown hover:bg-orange-500'
     },
     {
       id: 'shared-tent',
@@ -88,166 +88,173 @@ const PricingSection: React.FC = () => {
       price: '180',
       unit: 'ללילה למשתתף',
       highlighted: false,
-      gradient: 'from-green-50 to-emerald-50',
-      borderColor: 'border-green-200',
-      buttonColor: 'bg-green-600 hover:bg-green-700'
+      gradient: 'from-green-500/10 to-desert-blue/10',
+      borderColor: 'border-green-500/30',
+      buttonColor: 'bg-green-500 hover:bg-green-600'
     }
   ];
 
   return (
     <section 
-      className="py-20 md:py-32 bg-warm-white"
+      className="py-20 md:py-32 bg-cream"
       id="pricing"
     >
       <Container>
-        <div className="max-w-6xl mx-auto">
+        {/* Main white container wrapping everything like in About */}
+        <div className="max-w-6xl mx-auto bg-white/90 rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg">
           
           {/* כותרת ראשית */}
           <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading text-text-primary mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading mb-6" style={{ color: '#56ACBF' }}>
               לינה וכרטיסים
             </h2>
             <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
-              בחרו את האפשרות שהכי מתאימה לכם - מחיר הסדנא ומחירי הלינה בנפרד
+              בחרו את האפשרות המתאימה לכם ליומיים של חוויה במדבר
             </p>
           </div>
 
-          {/* מחיר הסדנא */}
-          <div className="mb-20 animate-fade-in-up animate-delay-200">
-            <div className="bg-gradient-to-r from-cream/60 to-sand/40 rounded-2xl p-8 max-w-4xl mx-auto">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl md:text-3xl font-heading text-text-primary mb-4">
-                  {workshopPrice.title}
-                </h3>
-                <div className="flex items-baseline justify-center gap-2 mb-4">
-                  <span className="text-4xl md:text-5xl font-bold text-desert-blue">
-                    {workshopPrice.price}
-                  </span>
-                  <span className="text-2xl text-desert-blue">₪</span>
-                </div>
-                <p className="text-lg text-text-secondary">
-                  {workshopPrice.description}
-                </p>
-              </div>
+          {/* Quote banner with background image */}
+          <div className="mb-16">
+            <div 
+              className="relative rounded-3xl p-12 md:p-16 overflow-hidden"
+              style={{
+                backgroundImage: 'url(/images/accommodation/room.webp)', // Using accommodation image
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                minHeight: '300px'
+              }}
+            >
+              {/* Dark overlay for text readability */}
+              <div className="absolute inset-0 bg-black/40"></div>
               
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="text-lg font-semibold text-text-primary mb-4">
-                    מה כלול במחיר הסדנא:
-                  </h4>
-                  <ul className="space-y-2">
-                    {workshopPrice.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3 text-text-secondary">
-                        <span className="text-desert-blue mt-1">•</span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="bg-white/60 rounded-xl p-6">
-                  <p className="text-text-primary font-medium mb-2">
-                    💡 חשוב לדעת:
-                  </p>
-                  <p className="text-text-secondary text-sm leading-relaxed">
-                    מחיר הסדנא חל על כל המשתתפים ללא תלות באפשרות הלינה שתבחרו. 
-                    הלינה נרכשת בנפרד לפי הטבלה למטה.
-                  </p>
+              {/* Quote text */}
+              <div className="relative z-10 text-center">
+                <div className="text-2xl md:text-3xl lg:text-4xl font-light text-white italic leading-relaxed" style={{
+                  textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
+                }}>
+                  &ldquo;מקום לנוח הוא מקום להתחדש&rdquo;
                 </div>
               </div>
             </div>
           </div>
 
-          {/* אפשרויות לינה */}
+          {/* Workshop Price Section */}
           <div className="mb-16 animate-fade-in-up animate-delay-400">
-            <h3 className="text-2xl md:text-3xl font-heading text-text-primary text-center mb-12">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl md:text-3xl font-heading mb-4" style={{ color: '#56ACBF' }}>
+                מחיר השתתפות בריטריט
+              </h3>
+              <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+                כל הפעילויות, המדיטציות וההנחיה המקצועית
+              </p>
+              </div>
+              
+            <div className="max-w-md mx-auto">
+              <div className="bg-gradient-to-br from-orange-500/10 to-desert-blue/10 rounded-2xl p-8 text-center border-2 border-orange-500/30 shadow-lg">
+                <div className="text-4xl md:text-5xl font-bold text-orange-500 mb-2">
+                  ₪680
+                </div>
+                <div className="text-lg text-text-secondary mb-4">
+                  לאדם ליומיים
+                </div>
+                <div className="text-sm text-text-secondary">
+                  *לינה וארוחות נמכרות בנפרד
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Accommodation Options */}
+          <div className="mb-16 animate-fade-in-up animate-delay-600">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl md:text-3xl font-heading mb-4" style={{ color: '#56ACBF' }}>
               אפשרויות לינה
             </h3>
+              <p className="text-lg text-text-secondary">
+                בחרו את סוג הלינה המועדף עליכם במצוקי דרגות
+              </p>
+            </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8">
               {accommodationOptions.map((option, index) => (
                 <div
                   key={option.id}
                   className={`
-                    relative group animate-fade-in-up animate-delay-${600 + index * 200}
-                    ${option.highlighted ? 'lg:-mt-4 lg:mb-4' : ''}
+                    bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 
+                    hover:shadow-xl hover:-translate-y-2 border-2
+                    ${option.highlighted ? 'border-orange-500 ring-2 ring-orange-500/20' : 'border-light-brown/30'}
+                    group
                   `}
                 >
-                  
                   {/* Popular Badge */}
-                  {option.badge && (
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                      <div className="bg-desert-blue text-warm-white text-sm font-medium px-4 py-2 rounded-full shadow-lg">
-                        {option.badge}
-                      </div>
+                  {option.highlighted && (
+                    <div className="bg-orange-500 text-white text-center py-2 text-sm font-semibold">
+                      פופולרי
                     </div>
                   )}
 
-                  <div className={`
-                    relative bg-gradient-to-br ${option.gradient} 
-                    rounded-2xl overflow-hidden shadow-lg hover:shadow-xl 
-                    transition-all duration-300 border-2 ${option.borderColor}
-                    group-hover:scale-105 group-hover:-translate-y-2
-                    ${option.highlighted ? 'ring-2 ring-desert-blue/20' : ''}
-                  `}>
-                    
-                    {/* תמונה */}
+                  {/* Image */}
                     <div className="relative h-48 overflow-hidden">
                       <Image
                         src={option.image}
                         alt={option.alt}
                         fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = '/images/gallery/5.jpg'; // fallback
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <div className="absolute bottom-4 left-4 text-white">
+                      <h4 className="text-xl font-semibold">{option.name}</h4>
+                    </div>
                     </div>
                     
-                    {/* תוכן */}
+                  {/* Content */}
                     <div className="p-6">
-                      <div className="text-center mb-6">
-                        <h4 className="text-xl md:text-2xl font-heading text-text-primary mb-2">
-                          {option.name}
-                        </h4>
-                        {option.subtitle && (
-                          <p className="text-text-secondary font-medium text-sm">
-                            {option.subtitle}
-                          </p>
-                        )}
-                        <p className="text-text-secondary text-sm mt-2">
-                          {option.description}
-                        </p>
+                    <div className="text-center mb-4">
+                      <div className="text-3xl font-bold text-desert-brown mb-1">
+                        {option.price}
+                      </div>
+                      <div className="text-text-secondary text-sm">
+                        {option.unit}
+                      </div>
                       </div>
 
-                      {/* Features */}
-                      <div className="mb-6">
-                        <ul className="space-y-2 text-sm">
-                          {option.features.map((feature, featureIndex) => (
-                            <li 
-                              key={featureIndex}
-                              className="flex items-start gap-2 text-text-secondary"
-                            >
+                    <ul className="space-y-2 text-sm text-text-secondary mb-6">
+                      {option.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start">
                               <span className="text-desert-blue mt-1">•</span>
-                              <span>{feature}</span>
+                          {feature}
                             </li>
                           ))}
                         </ul>
-                      </div>
-
-                      {/* מחיר */}
-                      <div className="text-center mb-4">
-                        <div className="flex items-baseline justify-center gap-1 mb-1">
-                          <span className="text-2xl md:text-3xl font-bold text-text-primary">
-                            {option.price}
-                          </span>
-                          <span className="text-lg text-text-primary">₪</span>
-                        </div>
-                        <p className="text-text-secondary text-sm font-medium">
-                          {option.unit}
-                        </p>
-                      </div>
+                    
+                    <div className="text-center">
+                      <button
+                        onClick={() => {
+                          const element = document.querySelector('#contact');
+                          element?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="
+                          w-full text-white font-semibold 
+                          px-4 py-2 text-sm
+                          rounded-lg
+                          shadow-sm hover:shadow-md
+                          transform hover:scale-105
+                          transition-all duration-300
+                        "
+                        style={{
+                          backgroundColor: '#56ACBF',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#4A9AAB';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = '#56ACBF';
+                        }}
+                        aria-label={`בחירת ${option.name}`}
+                      >
+                        בחר אפשרות זו
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -255,156 +262,220 @@ const PricingSection: React.FC = () => {
             </div>
           </div>
 
-          {/* מזון וארוחות */}
-          <div className="mb-16 animate-fade-in-up animate-delay-1000">
-            <div className="bg-cream/60 rounded-2xl p-8">
-              <h4 className="text-xl font-heading text-text-primary mb-4 text-center flex items-center justify-center gap-3">
-                <span className="text-2xl">🍽️</span>
-                מזון וארוחות משותפות
+          {/* What's Included Section */}
+          <div className="mb-16 animate-fade-in-up animate-delay-800">
+            <div className="bg-cream/50 rounded-2xl p-8">
+              <h3 className="text-2xl font-heading text-center mb-8" style={{ color: '#56ACBF' }}>
+                מה כלול במחיר השתתפות
+              </h3>
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Workshop */}
+                <div key="workshop" className="text-center">
+                    <div className="w-16 h-16 bg-orange-500/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                      <i className="fas fa-chalkboard-teacher text-2xl" style={{ color: '#56ACBF' }}></i>
+                    </div>
+                    <h4 className="font-semibold text-text-primary mb-2">
+                      כל תכני הסדנא והמדיטציות
+                    </h4>
+                    <p className="text-text-secondary text-sm">
+                      כל הפעילויות, המדיטציות וההנחיה המקצועית
+                    </p>
+                  </div>
+                <div key="guidance" className="text-center">
+                    <div className="w-16 h-16 bg-orange-500/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                      <i className="fas fa-hand-sparkles text-2xl" style={{ color: '#56ACBF' }}></i>
+                    </div>
+                    <h4 className="font-semibold text-text-primary mb-2">
+                      הנחיה מקצועית לאורך כל הסופ&quot;ש
+                    </h4>
+                    <p className="text-text-secondary text-sm">
+                      צוות מנחים מנוסים ומקצועיים
+                    </p>
+                  </div>
+                <div key="accommodation" className="text-center">
+                    <div className="w-16 h-16 bg-orange-500/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                      <i className="fas fa-hotel text-2xl" style={{ color: '#56ACBF' }}></i>
+                    </div>
+                    <h4 className="font-semibold text-text-primary mb-2">
+                      לינה לפי האפשרות שבחרתם
+                    </h4>
+                    <p className="text-text-secondary text-sm">
+                      חדר משותף, בקתה פרטית או אוהל
+                    </p>
+                  </div>
+                <div key="materials" className="text-center">
+                    <div className="w-16 h-16 bg-orange-500/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                      <i className="fas fa-book text-2xl" style={{ color: '#56ACBF' }}></i>
+                    </div>
+                    <h4 className="font-semibold text-text-primary mb-2">
+                      חומרי תרגול וחוברות
               </h4>
-              <div className="max-w-3xl mx-auto text-center space-y-4">
-                <p className="text-text-primary leading-relaxed">
-                  הארוחות במהלך הסופ&quot;ש הן חלק מהחוויה הקהילתית והמחברת.
-                </p>
-                <p className="text-text-secondary leading-relaxed">
-                  <strong>כל משתתף יתבקש להביא משהו לארוחה המשותפת</strong> - 
-                  זה יכול להיות סלט, פירות, לחם, גבינות, חומוס, או כל דבר אחר שתרצו לחלוק עם הקבוצה. 
-                  זה יוצר אווירה של נתינה ושיתוף המעשירה את כולנו.
-                </p>
-                <div className="bg-white/60 rounded-xl p-4 text-sm text-text-secondary">
-                  נתאם יחד לפני הסופ&quot;ש מי מביא מה, כדי שיהיה איזון ומגוון בארוחות
-                </div>
+                    <p className="text-text-secondary text-sm">
+                      כל החומרים הנדרשים לתרגול
+                    </p>
+                  </div>
               </div>
             </div>
           </div>
 
-          {/* מה כלול ותהליך הרשמה */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16 animate-fade-in-up animate-delay-1200">
-            
-            {/* מה כלול במחיר */}
-            <div className="bg-warm-white rounded-2xl p-8 shadow-sm border border-sand/20">
-              <h4 className="text-xl font-heading text-text-primary mb-6 flex items-center gap-3">
-                <span className="text-2xl">✨</span>
-                מה כלול במחיר הכולל
+          {/* Food Contribution Section */}
+          <div className="mb-16 animate-fade-in-up animate-delay-1000">
+            <div className="bg-gradient-to-r from-green-500/10 to-desert-blue/10 rounded-2xl p-8 border border-green-500/20">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-heading text-green-600 mb-4">
+                  ארוחות משותפות
+                </h3>
+                <p className="text-lg text-text-secondary">
+                  נתארגן יחד לארוחות טעימות ומזינות במהלך הריטריט
+                </p>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h4 className="font-semibold text-text-primary mb-3">
+                    איך זה עובד:
               </h4>
-              <ul className="space-y-3 text-text-secondary">
-                <li className="flex items-start gap-3">
-                  <span className="text-desert-blue mt-1">•</span>
-                  <span>כל תכני הסדנא והמדיטציות</span>
+                  <ul className="space-y-2 text-text-secondary">
+                    <li className="flex items-start">
+                      <span className="text-green-500 ml-2">•</span>
+                      תרומה של 120₪ לאדם עבור כל הארוחות
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-desert-blue mt-1">•</span>
-                  <span>הנחיה מקצועית לאורך כל הסופ&quot;ש</span>
+                    <li className="flex items-start">
+                      <span className="text-green-500 ml-2">•</span>
+                      ארוחות טבעוניות/צמחוניות טריות ומזינות
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-desert-blue mt-1">•</span>
-                  <span>לינה לפי האפשרות שבחרתם</span>
+                    <li className="flex items-start">
+                      <span className="text-green-500 ml-2">•</span>
+                      בישול משותף כחלק מהחוויה
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-desert-blue mt-1">•</span>
-                  <span>ארוחות משותפות (מביאים יחד)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-desert-blue mt-1">•</span>
-                  <span>חומרי תרגול וחוברות</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-desert-blue mt-1">•</span>
-                  <span>ביטוח קבוצתי בסיסי</span>
+                    <li className="flex items-start">
+                      <span className="text-green-500 ml-2">•</span>
+                      אפשרות להביא מזון משלכם
                 </li>
               </ul>
-            </div>
-
-            {/* תהליך ההרשמה */}
-            <div className="bg-warm-white rounded-2xl p-8 shadow-sm border border-sand/20">
-              <h4 className="text-xl font-heading text-text-primary mb-6 flex items-center gap-3">
-                <span className="text-2xl">📝</span>
-                תהליך ההרשמה
-              </h4>
-              <div className="space-y-4">
-                <p className="text-text-secondary leading-relaxed">
-                  ההרשמה מתבצעת בשני שלבים:
-                </p>
-                
-                <div className="bg-cream/40 rounded-xl p-4">
-                  <h5 className="font-semibold text-text-primary mb-2">
-                    🟢 למשתתפים חדשים:
-                  </h5>
-                  <p className="text-text-secondary text-sm">
-                    שיחה קצרה עם יובל להכרות ותיאום פרטים, ואז רישום וחיב
-                  </p>
                 </div>
                 
-                <div className="bg-desert-blue/10 rounded-xl p-4">
-                  <h5 className="font-semibold text-text-primary mb-2">
-                    🟣 למשתתפים שכבר היו אצלנו:
-                  </h5>
-                  <p className="text-text-secondary text-sm">
-                    אפשר לנפות ישירות לחן או להרשם ישירות דרך הקישור למטה
-                  </p>
+                <div className="text-center">
+                  <div className="bg-white rounded-xl p-6 shadow-sm">
+                    <div className="text-3xl font-bold text-green-600 mb-2">
+                      ₪120
+                    </div>
+                    <div className="text-text-secondary">
+                      תרומה לארוחות משותפות
+                    </div>
                 </div>
-                
-                <div className="text-center mt-6 space-y-3">
-                  <Button
-                    variant="primary"
-                    size="md"
-                    href="#contact"
-                    className="w-full bg-desert-blue hover:bg-desert-blue/90 text-warm-white"
-                  >
-                    לפרטים ושיחה
-                  </Button>
-                  <Button
-                    variant="secondary"
-                    size="md"
-                    href="#contact"
-                    className="w-full border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white"
-                  >
-                    רישום ישיר (למכירים)
-                  </Button>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* דמי ביטול */}
-          <div className="mb-16 animate-fade-in-up animate-delay-1400">
-            <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-8 border border-orange-200">
-              <h4 className="text-xl font-heading text-text-primary mb-6 text-center flex items-center justify-center gap-3">
-                <span className="text-2xl">⚠️</span>
-                מדיניות ביטול ודמי ביטול
+          {/* Registration Process */}
+          <div className="mb-16 animate-fade-in-up animate-delay-1200">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-heading mb-4" style={{ color: '#56ACBF' }}>
+                תהליך ההרשמה
+              </h3>
+              <p className="text-lg text-text-secondary">
+                שלושה שלבים פשוטים להבטחת מקומכם בריטריט
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Placeholder for registrationSteps */}
+              {/* <div key={index} className="text-center">
+                  <div className="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                    {index + 1}
+                  </div>
+                  <h4 className="text-xl font-semibold text-text-primary mb-3">
+                    {step.title}
+                  </h4>
+                  <p className="text-text-secondary">
+                    {step.description}
+                  </p>
+                </div> */}
+                <div key="step1" className="text-center">
+                    <div 
+                      className="w-16 h-16 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4"
+                      style={{ backgroundColor: '#56ACBF' }}
+                    >
+                      1
+                    </div>
+                    <h4 className="text-xl font-semibold text-text-primary mb-3">
+                      שיחה קצרה עם יובל להכרות ותיאום פרטים
               </h4>
-              <div className="max-w-4xl mx-auto">
-                <div className="grid md:grid-cols-3 gap-6 text-center">
-                  <div className="bg-white/60 rounded-xl p-4">
-                    <h5 className="font-semibold text-green-700 mb-2">
-                      עד 14 יום לפני
-                    </h5>
-                    <p className="text-sm text-text-secondary">
-                      ביטול חינם - החזר מלא
+                    <p className="text-text-secondary">
+                      שיחה קצרה עם יובל להכרות ותיאום פרטים
                     </p>
                   </div>
-                  <div className="bg-white/60 rounded-xl p-4">
-                    <h5 className="font-semibold text-yellow-700 mb-2">
-                      7-14 יום לפני
-                    </h5>
-                    <p className="text-sm text-text-secondary">
-                      דמי ביטול 50% מהמחיר
+                <div key="step2" className="text-center">
+                    <div 
+                      className="w-16 h-16 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4"
+                      style={{ backgroundColor: '#56ACBF' }}
+                    >
+                      2
+                    </div>
+                    <h4 className="text-xl font-semibold text-text-primary mb-3">
+                      רישום וחיבור במערכת
+                    </h4>
+                    <p className="text-text-secondary">
+                      רישום וחיבור במערכת
                     </p>
                   </div>
-                  <div className="bg-white/60 rounded-xl p-4">
-                    <h5 className="font-semibold text-red-700 mb-2">
-                      פחות מ-7 ימים
-                    </h5>
-                    <p className="text-sm text-text-secondary">
-                      ללא החזר כספי
+                <div key="step3" className="text-center">
+                    <div 
+                      className="w-16 h-16 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4"
+                      style={{ backgroundColor: '#56ACBF' }}
+                    >
+                      3
+                    </div>
+                    <h4 className="text-xl font-semibold text-text-primary mb-3">
+                      הגעה לריטריט והתחלת החוויה
+                    </h4>
+                    <p className="text-text-secondary">
+                      הגעה לריטריט והתחלת החוויה
                     </p>
+                  </div>
+            </div>
+          </div>
+
+          {/* Cancellation Policy */}
+          <div className="mb-16 animate-fade-in-up animate-delay-1400">
+            <div className="bg-warm-white border border-light-brown/30 rounded-2xl p-8">
+              <h3 className="text-2xl font-heading text-center mb-6" style={{ color: '#56ACBF' }}>
+                מדיניות ביטול
+              </h3>
+              
+              <div className="grid md:grid-cols-3 gap-6 text-center">
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-green-500 mb-2">100%</div>
+                  <div className="font-semibold text-text-primary mb-2">החזר מלא</div>
+                  <div className="text-text-secondary text-sm">
+                    ביטול עד חודש לפני תחילת הריטריט
                   </div>
                 </div>
+                
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-orange-500 mb-2">80%</div>
+                  <div className="font-semibold text-text-primary mb-2">החזר חלקי</div>
+                  <div className="text-text-secondary text-sm">
+                    ביטול 2-4 שבועות לפני תחילת הריטריט
+                  </div>
+                </div>
+                
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-text-secondary mb-2">50%</div>
+                  <div className="font-semibold text-text-primary mb-2">החזר חלקי</div>
+                  <div className="text-text-secondary text-sm">
+                    ביטול בשבועיים האחרונים
+                  </div>
+                </div>
+              </div>
+              
                 <div className="text-center mt-6">
                   <p className="text-text-secondary text-sm">
                     במקרים מיוחדים (מחלה, אירועי משפחה) ניתן לתאם החזר או העברה לריטריט הבא
                   </p>
-                </div>
               </div>
             </div>
           </div>
@@ -418,26 +489,33 @@ const PricingSection: React.FC = () => {
                 נשמח לעזור ולמצוא את האפשרות המושלמת עבורכם
               </p>
               
-              <Button
-                variant="primary"
-                size="lg"
-                href="#contact"
+              <button
+                onClick={() => {
+                  const element = document.querySelector('#contact');
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="
-                  bg-gradient-to-r from-orange-500 to-orange-600
-                  hover:from-orange-600 hover:to-orange-700
-                  text-warm-white font-semibold 
-                  px-12 py-5 text-lg
-                  rounded-xl
+                  text-white font-bold 
+                  px-12 py-4 text-lg
+                  rounded-full
                   shadow-lg hover:shadow-xl
                   transform hover:scale-105 hover:-translate-y-1
-                  transition-all duration-300
-                  border border-orange-400
-                  hover:border-orange-300
+                  transition-all duration-300 ease-out
+                  font-semibold
                 "
+                style={{
+                  backgroundColor: '#56ACBF',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#4A9AAB';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#56ACBF';
+                }}
                 aria-label="יצירת קשר לשאלות"
               >
-                בואו נדבר 💚
-              </Button>
+                בואו נדבר
+              </button>
             </div>
           </div>
 

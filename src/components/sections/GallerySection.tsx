@@ -5,13 +5,13 @@ import Image from 'next/image';
 import { Container } from '@/components/ui';
 
 /**
- * Gallery Section - גלריית תמונות עם עיצוב דומה לאפרוז
+ * Gallery Section - גלריית תמונות בסגנון אפרוז
  * 
  * תכונות:
  * - תמונה גדולה אחת מוצגת
  * - תמונות ממוזערות בתחתית לניווט
  * - אנימציות חלקות בין תמונות
- * - רספונסיבי למובייל
+ * - עיצוב דומה לאפרוז
  */
 
 // תמונות הגלריה - תמונות אמיתיות מהריטריט
@@ -61,7 +61,7 @@ const galleryImages = [
   {
     id: 8,
     src: '/images/gallery/8.jpg',
-    alt: 'מחלת המדיטציה',
+    alt: 'מחולת המדיטציה',
     description: 'מקום קדוש לתרגול'
   },
   {
@@ -117,26 +117,48 @@ const GallerySection: React.FC = () => {
       id="gallery"
     >
       <Container>
-        <div className="max-w-4xl mx-auto">
+        {/* Main white container wrapping everything like in About */}
+        <div className="max-w-4xl mx-auto bg-white/90 rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg">
           
-          {/* כותרת וחיאור */}
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading text-text-primary mb-6">
+            <h2 className="text-3xl md:text-4xl font-heading text-desert-brown mb-6">
               גלריה
             </h2>
-            
-            <p className="text-lg text-text-primary mb-4">
-              תמונות מהריטריט, החוויות, המדיטציות והטבע המדברי הקסום - הרגעים האמיתיים של הסופ&quot;ש
+            <p className="text-lg text-text-secondary mb-4">
+              תמונות של מצוקי דרגות, החוויות, המדיטציות והטבע המדברי הקסום - הרגעים האמיתיים של הריטריט
             </p>
-            
-            <div className="text-text-secondary font-medium">
+            <div className="text-text-secondary font-medium text-sm">
               לחצו על התמונות המוקטנות לתצוגה מלאה
             </div>
           </div>
 
-          {/* תמונה ראשית */}
+          {/* Quote banner with background image */}
+          <div className="mb-12">
+            <div 
+              className="relative rounded-3xl p-12 md:p-16 overflow-hidden"
+              style={{
+                backgroundImage: 'url(/images/gallery/5.jpg)', // Using a gallery image
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                minHeight: '300px'
+              }}
+            >
+              {/* Dark overlay for text readability */}
+              <div className="absolute inset-0 bg-black/40"></div>
+              
+              {/* Quote text */}
+              <div className="relative z-10 text-center">
+                <div className="text-2xl md:text-3xl lg:text-4xl font-light text-white italic leading-relaxed" style={{
+                  textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
+                }}>
+                  &ldquo;כל רגע במדבר הוא תמונה חיה של יופי ושקט&rdquo;
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="mb-8">
-            <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl">
+            <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-xl">
               <Image
                 src={galleryImages[selectedImage].src}
                 alt={galleryImages[selectedImage].alt}
@@ -145,8 +167,6 @@ const GallerySection: React.FC = () => {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
                 priority={selectedImage === 0}
               />
-              
-              {/* כיתוב התמונה */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
                 <p className="text-white font-medium text-lg">
                   {galleryImages[selectedImage].description}
@@ -154,16 +174,15 @@ const GallerySection: React.FC = () => {
               </div>
             </div>
           </div>
-
-          {/* תמונות ממוזערות */}
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+          
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-6">
             {galleryImages.map((image, index) => (
               <button
                 key={image.id}
                 onClick={() => setSelectedImage(index)}
                 className={`
-                  relative overflow-hidden rounded-lg transition-all duration-300 
-                  focus:outline-none focus:ring-2 focus:ring-desert-blue focus:ring-offset-2
+                  relative overflow-hidden rounded-md transition-all duration-300 
+                  focus:outline-none 
                   ${selectedImage === index 
                     ? 'ring-3 ring-desert-blue shadow-lg transform scale-105' 
                     : 'hover:scale-105 hover:shadow-md'
@@ -179,8 +198,9 @@ const GallerySection: React.FC = () => {
                     className="object-cover"
                     sizes="100px"
                   />
-                  
-                  {/* Overlay לתמונה שלא נבחרה */}
+                  {selectedImage === index && (
+                    <div className="absolute inset-0 border-2 border-white" />
+                  )}
                   {selectedImage !== index && (
                     <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-colors duration-200" />
                   )}
@@ -188,49 +208,11 @@ const GallerySection: React.FC = () => {
               </button>
             ))}
           </div>
-
-          {/* אינדיקטור מספר תמונה */}
-          <div className="text-center mt-6">
+          
+          <div className="text-center">
             <span className="text-text-secondary text-sm">
               {selectedImage + 1} מתוך {galleryImages.length}
             </span>
-          </div>
-
-          {/* כפתורי ניווט */}
-          <div className="flex justify-center items-center gap-4 mt-8">
-            <button
-              onClick={() => setSelectedImage(selectedImage > 0 ? selectedImage - 1 : galleryImages.length - 1)}
-              className="
-                bg-white/80 hover:bg-white text-text-primary
-                p-3 rounded-full shadow-lg hover:shadow-xl
-                transition-all duration-300 transform hover:scale-105
-                focus:outline-none focus:ring-2 focus:ring-desert-blue focus:ring-offset-2
-              "
-              aria-label="תמונה קודמת"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            
-            <span className="text-text-secondary font-medium">
-              ניווט
-            </span>
-            
-            <button
-              onClick={() => setSelectedImage(selectedImage < galleryImages.length - 1 ? selectedImage + 1 : 0)}
-              className="
-                bg-white/80 hover:bg-white text-text-primary
-                p-3 rounded-full shadow-lg hover:shadow-xl
-                transition-all duration-300 transform hover:scale-105
-                focus:outline-none focus:ring-2 focus:ring-desert-blue focus:ring-offset-2
-              "
-              aria-label="תמונה הבאה"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
           </div>
 
         </div>

@@ -4,147 +4,147 @@ import React from 'react';
 import { Container, Button } from '@/components/ui';
 
 /**
- * Testimonials Section - המלצות ממשתתפים
+ * Testimonials Section - המלצות מהמשתתפים
  * 
  * תכונות:
- * - המלצות אמיתיות מהאתר המקורי מותאמות לריטריט במדבר
- * - עיצוב כרטיסי המלצות אלגנטי
+ * - תוכן זהה לאפרוז
+ * - עיצוב מותאם לצבעים החדשים
  * - ציטוט מרכזי בכותרת
  */
 const TestimonialsSection: React.FC = () => {
-  // המלצות מהאתר המקורי מותאמות לריטריט במדבר
+  // Testimonials data copied exactly from Afroz
   const testimonials = [
     {
       id: 1,
-      quote: "תתאר/י לעצמך מה זה לקחת סופ&quot;ש ולהתחבר לעצמך, לאנשים שתומכים בך ולטבע המדברי הקסום במצוקי דרגות. קח/י זמן לעצמך - תן/י לעצמך מתנה בלתי נשכחת שיעלה אותך מדרגה!",
+      quote: "תתאר/י לעצמך מה זה לקחת שבוע ולהתחבר לעצמך, לאנשים שתומכים בך ולטבע - באי יווני, חוף, ועם נשמות בדרך התפתחות כמוך מכל רחבי העולם. קח/י זמן לעצמך - תן/י לעצמך מתנה בלתי נשכחת שיעלה אותך מדרגה!",
       name: "צ'רלי",
-      role: "משתתף בריטריט"
+      title: "משתתף בריטריט"
     },
     {
       id: 2,
-      quote: "לכל מי שמתעניין בסדנת מדיטציה במדבר עם יובל - סדנה מאד מומלצת במקום מקסים במצוקי דרגות עם אנשים מאד מיוחדים ויובל שאין עוד כמותו כמדריך, מלווה ותומך. יצאתי משם אחרי הסופ&quot;ש, נקי טהור ומלא מרץ.",
+      quote: "לכל מי שמתעניין בסדנת אושו באפרוז (יוון)--סדנה מאד מומלצת במקום מקסים באי לסבוס עם אנשים מאד מיוחדים וז'וואני שאין עוד כמותו כמדריך, מלווה ותומך. יצאתי משם אחרי שבוע, נקי טהור ומלא מרץ.",
       name: "רמי",
-      role: "משתתף בריטריט"
+      title: "משתתף בריטריט"
     },
     {
       id: 3,
-      quote: "היה לי העונג להיות מקבוצת החלוצים במדבר... הדבר הכי טוב שהענקתי לעצמי אי פעם. טיפול אמיתי ללב ולרוח... הרגישות של יובל לאחר והאבחנות שלו לפרטים היא פשוט פנומנלית... קדימה, בואו למדבר 🏜️✨",
+      quote: "היה לי העונג להיות מקבוצת החלוצים, מחזור א׳ לאפרוז... הדבר הכי טוב שהענקתי לעצמי אי פעם. טיפול 10000 ללב ולרוח... הרגישות של ג׳בני לאחר והאבחנות שלו לפרטים היא פשוט פנומנלית... קדימה, תעופו לאפרוז 🕊️🇬🇷",
       name: "מיש",
-      role: "משתתף בריטריט"
+      title: "משתתף בריטריט"
     },
     {
       id: 4,
-      quote: "התפתחות אישית, תהליכים שפותרים שנים של אתגרים, כיף, חברה איכותית וחברים שהופכים למשפחה - זאת חוויה של ריטריט במדבר! אסור לפספס!",
-      name: "משתתף מדהים",
-      role: "ריטריט 2023"
+      quote: "התפתחות אישית, טיפולים שפוטרים שנות של אתגרים, כיף, חברה בין לאומית וחברים שהופכים למשפחה - זאת חוויה של אפרוז! אסור לפספס!",
+      name: "משתתף נוסף",
+      title: "ריטריט 2023"
     },
     {
       id: 5,
-      quote: "החוויה מומלצת בחום רב 🙂 השתתפתי במספר סדנאות של יובל, הגעתי במצבים שונים ותמיד תמיד נהניתי ורציתי עוד 🙂 יובל מאפשר מרחב רגוע, כייפי ומעשיר 🙂 תודה",
+      quote: "החוויה מומלצת בחום רב 🙂 השתתפתי במספר סדנאות, הגעתי במצבים שונים ועם פרטנרים שונים ותמיד תמיד נהניתי ורציתי עוד 🙂 איריס וז'יוואני מאפשרים מרחב רגוע, כייפי ומעשיר 🙂 תודה",
       name: "אסף רוזנברג",
-      role: "משתתף בסדנאות"
+      title: "משתתף בסדנאות"
     },
     {
       id: 6,
-      quote: "יש הרבה חוויות בחיים, אבל רק אחת שנשארה לי בלב במיוחד: ריטריט המדיטציה במדבר עם יובל. בסופ&quot;ש אחד פגשתי אנשים מהארץ – כאלה שמביאים שמחת חיים אמיתית, עומק וחיבור. המעגלים, המדיטציות, והאווירה הייחודית במצוקי דרגות יצרו תחושה של בית – מרחב שממלא בהשראה ונותן כוח להמשך הדרך. מאז, נוצרו חברויות אמיתיות שממשיכות איתי גם מחוץ לסדנה. וכל פעם שאני נזכר בסופ&quot;ש ההוא – אני מתמלא בטוב וחושב לעצמי: אולי השנה שוב?",
+      quote: "יש הרבה חוויות בחיים, אבל רק אחת שנשארה לי בלב במיוחד: סדנת המדיטציה באפרוז עם ז'יוואני. בשבוע אחד פגשתי אנשים מהארץ ומהעולם – כאלה שמביאים שמחת חיים אמיתית, עומק וחיבור. המעגלים, המדיטציות, המסיבות והאווירה הייחודית באפרוז יצרו תחושה של בית – מרחב שממלא בהשראה ונותן כוח להמשך הדרך. מאז, נוצרו חברויות אמיתיות שממשיכות איתי גם מחוץ לסדנה. וכל פעם שאני נזכר בשבוע ההוא – אני מתמלא בטוב וחושב לעצמי: אולי השנה שוב?",
       name: "אייל",
-      role: "משתתף בריטריט"
+      title: "משתתף בריטריט"
     }
   ];
 
   return (
     <section 
-      className="py-20 md:py-32 bg-gradient-to-b from-cream to-warm-white"
+      className="py-20 md:py-32 bg-cream"
       id="testimonials"
     >
       <Container>
-        <div className="max-w-6xl mx-auto">
+        {/* Main white container wrapping everything like in About */}
+        <div className="max-w-6xl mx-auto bg-white/90 rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg">
           
           {/* כותרת עם ציטוט */}
-          <div className="text-center mb-20 animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading text-text-primary mb-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading mb-8" style={{ color: '#56ACBF' }}>
               המלצות ממשתתפים
             </h2>
             
-            {/* ציטוט מרכזי */}
-            <div className="bg-gradient-to-r from-desert-blue/10 to-sand/20 rounded-2xl p-8 max-w-4xl mx-auto mb-8">
-              <blockquote className="text-xl md:text-2xl text-text-primary font-light italic leading-relaxed">
-                &ldquo;התחברות עמוקה לעצמי ולאחרים שינתה את החיים שלי&rdquo;
-              </blockquote>
+            {/* ציטוט מרכזי עם תמונת רקע */}
+            <div 
+              className="relative rounded-3xl p-12 md:p-16 overflow-hidden mb-12"
+              style={{
+                backgroundImage: 'url(/images/gallery/15.jpg)', // Using different gallery image
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                minHeight: '300px'
+              }}
+            >
+              {/* Dark overlay for text readability */}
+              <div className="absolute inset-0 bg-black/40"></div>
+              
+              {/* Quote text */}
+              <div className="relative z-10 text-center">
+                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-light text-white italic leading-relaxed" style={{
+                  textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
+                }}>
+                  &ldquo;התחברות עמוקה לעצמי ולאחרים שינתה את החיים שלי&rdquo;
+                </blockquote>
+              </div>
             </div>
           </div>
 
-          {/* רשת כרטיסי המלצות */}
+          {/* המלצות גריד */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {testimonials.map((testimonial, index) => (
+            {testimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className={`
-                  bg-warm-white rounded-2xl p-6 shadow-lg hover:shadow-xl
-                  transition-all duration-300 border border-sand/20
-                  hover:border-desert-blue/30 hover:-translate-y-2
-                  animate-fade-in-up animate-delay-${200 + index * 150}
-                `}
+                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-light-brown/20"
               >
-                
                 {/* ציטוט */}
-                <div className="mb-6">
-                  <div className="text-4xl text-desert-blue/30 mb-4 leading-none">&ldquo;</div>
-                  <blockquote className="text-text-secondary leading-relaxed text-sm">
-                    {testimonial.quote}
-                  </blockquote>
-                  <div className="text-4xl text-desert-blue/30 text-left leading-none -mt-2">&rdquo;</div>
-                </div>
+                <blockquote className="text-text-secondary leading-relaxed mb-6 italic">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </blockquote>
                 
-                {/* מידע על המלצה */}
+                {/* מידע על המליץ */}
                 <div className="border-t border-sand/30 pt-4">
-                  <h4 className="text-lg font-semibold text-text-primary mb-1">
+                  <h4 className="text-lg font-semibold mb-1" style={{ color: '#56ACBF' }}>
                     {testimonial.name}
                   </h4>
                   <p className="text-text-secondary text-sm">
-                    {testimonial.role}
+                    {testimonial.title}
                   </p>
-                </div>
-                
-                {/* אלמנט עיצובי */}
-                <div className="flex justify-center mt-4 space-x-1">
-                  <div className="w-1 h-1 bg-desert-blue/60 rounded-full"></div>
-                  <div className="w-1 h-1 bg-sand/60 rounded-full"></div>
-                  <div className="w-1 h-1 bg-desert-blue/60 rounded-full"></div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* קריאה לפעולה */}
-          <div className="text-center animate-fade-in-up animate-delay-1200">
-            <div className="bg-cream/60 rounded-2xl p-8 max-w-3xl mx-auto">
-              <p className="text-lg text-text-primary leading-relaxed mb-6">
-                רוצים להיות חלק מהחוויה הבאה? <br />
-                הצטרפו אלינו לסופ&quot;ש שישנה את חייכם
-              </p>
-              
-              <Button
-                variant="primary"
-                size="lg"
-                href="#pricing"
-                className="
-                  bg-gradient-to-r from-desert-blue to-desert-blue/90
-                  hover:from-desert-blue/90 hover:to-desert-blue
-                  text-warm-white font-semibold 
-                  px-12 py-5 text-lg
-                  rounded-xl
-                  shadow-lg hover:shadow-xl
-                  transform hover:scale-105 hover:-translate-y-1
-                  transition-all duration-300
-                  border border-desert-blue/30
-                  hover:border-desert-blue/50
-                "
-                aria-label="קחו חלק במסע"
-              >
-                קחו חלק במסע
-              </Button>
-            </div>
+          {/* כפתור קריאה לפעולה */}
+          <div className="text-center">
+            <button
+              onClick={() => {
+                const element = document.querySelector('#contact');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="
+                text-white font-bold 
+                px-12 py-4 text-lg
+                rounded-full
+                shadow-lg hover:shadow-xl
+                transform hover:scale-105 hover:-translate-y-1
+                transition-all duration-300 ease-out
+                font-semibold
+              "
+              style={{
+                backgroundColor: '#56ACBF',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#4A9AAB';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#56ACBF';
+              }}
+              aria-label="מעבר לפרטים והרשמה"
+            >
+              בואו להיות איתנו
+            </button>
           </div>
 
         </div>

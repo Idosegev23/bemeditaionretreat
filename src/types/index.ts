@@ -1,6 +1,6 @@
 export interface ButtonProps {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: 'primary' | 'secondary' | 'outline' | 'afroz';
   size?: 'sm' | 'md' | 'lg';
   className?: string;
   onClick?: () => void;

@@ -2,20 +2,22 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Container } from '@/components/ui';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Handle scroll effect
+  // Handle responsive state
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Initial check
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Updated navigation items according to requirements
@@ -44,110 +46,228 @@ const Header: React.FC = () => {
 
   return (
     <header 
-      className={`
-        fixed top-0 left-0 right-0 z-50 transition-all duration-300
-        ${isScrolled 
-          ? 'bg-warm-white/95 backdrop-blur-sm shadow-md' 
-          : 'bg-transparent'
-        }
-      `}
-      role="banner"
+      id="header"
+      style={{
+        position: 'sticky',
+        top: 0,
+        width: '100%',
+        // More desert/brown background - based on Afroz but more brownish
+        backgroundColor: 'rgba(237, 224, 196, 0.85)', 
+        zIndex: 1000,
+        boxShadow: '0 3px 8px rgba(237, 224, 196, 0.2)',
+        transition: 'background-color 0.3s ease',
+        padding: '0.2rem 0',
+        borderBottom: 'none'
+      }}
     >
-      <Container>
-        <nav 
-          className="flex items-center justify-between h-16 lg:h-20"
-          role="navigation"
-          aria-label="תפריט ראשי"
+      <nav 
+        id="navbar"
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '0.3rem 2rem',
+          maxWidth: '1300px',
+          margin: '0 auto',
+          position: 'relative'
+        }}
+      >
+        {/* Logo Container - Updated colors */}
+        <div 
+          className="logo-container"
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '10px'
+          }}
         >
-          {/* Logo */}
-          <button
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-              setIsMenuOpen(false);
+          <Image 
+            id="logo"
+            src="/images/logo.png" 
+            alt="לוגו Be Meditation" 
+            width={60}
+            height={60}
+            style={{
+              maxHeight: '60px',
+              maxWidth: '60px',
+              width: 'auto',
+              height: 'auto',
+              objectFit: 'contain',
+              margin: 0,
+              transition: 'max-height 0.3s ease',
+              padding: '2px',
+              background: 'transparent',
+              verticalAlign: 'middle'
             }}
-            className="flex items-center space-x-3 rtl:space-x-reverse focus:outline-none focus:ring-2 focus:ring-light-brown rounded-md p-1"
-            aria-label="Be Meditation - חזרה לתחילת הדף"
+          />
+          <span 
+            className="header-logo-text"
+            style={{
+              fontSize: '1.3rem',
+              fontWeight: 500,
+              color: '#D9A443', // Brown/gold color from Afroz
+              fontFamily: "'Heebo', sans-serif", // Changed to match Afroz
+              order: -1 // Place text before logo in LTR
+            }}
           >
-            {/* Logo from original site */}
-            <div className="w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center">
-              <Image 
-                src="/images/logo.png" 
-                alt="לוגו Be Meditation" 
-                width={48}
-                height={48}
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <div className="text-xl lg:text-2xl font-heading text-light-brown hover:text-orange-500 transition-colors">
-              Be Meditation
-            </div>
-          </button>
+            Be Meditation
+          </span>
+        </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-6 rtl:space-x-reverse">
-            {navigationItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => handleNavClick(item.href)}
-                className="text-text-primary hover:text-light-brown transition-colors duration-200 font-medium text-sm xl:text-base whitespace-nowrap"
+        {/* Desktop Navigation */}
+        <ul 
+          id="nav-links"
+          style={{
+            listStyle: 'none',
+            display: isMobile ? 'none' : 'flex',
+            padding: 0,
+            margin: 0
+          }}
+        >
+          {navigationItems.map((item) => (
+            <li 
+              key={item.href}
+              style={{ marginRight: '1.5rem' }}
+            >
+              <a
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(item.href);
+                }}
+                style={{
+                  color: '#2c3e50',
+                  fontWeight: 600,
+                  fontSize: '1.05rem',
+                  textShadow: '0 1px 2px rgba(255, 255, 255, 0.5)',
+                  padding: '0.5rem 0',
+                  transition: 'color 0.3s ease',
+                  textDecoration: 'none'
+                }}
+                onMouseEnter={(e) => {
+                  (e.target as HTMLElement).style.color = '#D9A443'; // Brown hover color
+                }}
+                onMouseLeave={(e) => {
+                  (e.target as HTMLElement).style.color = '#2c3e50';
+                }}
               >
                 {item.label}
-              </button>
-            ))}
-          </div>
+              </a>
+            </li>
+          ))}
+        </ul>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2 rounded-md text-text-primary hover:text-light-brown transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
-            aria-label={isMenuOpen ? 'סגור תפריט' : 'פתח תפריט'}
-          >
-            <div className="relative w-6 h-6">
-              <span 
-                className={`
-                  absolute h-0.5 w-6 bg-current transform transition-all duration-300
-                  ${isMenuOpen ? 'rotate-45 top-3' : 'top-1'}
-                `} 
-              />
-              <span 
-                className={`
-                  absolute h-0.5 w-6 bg-current transform transition-all duration-300 top-3
-                  ${isMenuOpen ? 'opacity-0' : 'opacity-100'}
-                `} 
-              />
-              <span 
-                className={`
-                  absolute h-0.5 w-6 bg-current transform transition-all duration-300
-                  ${isMenuOpen ? '-rotate-45 top-3' : 'top-5'}
-                `} 
-              />
-            </div>
-          </button>
-        </nav>
+        {/* Mobile Menu Button - Updated colors */}
+        <button
+          id="mobile-menu-toggle"
+          className={`hamburger-btn ${isMenuOpen ? 'active' : ''}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          style={{
+            display: isMobile ? 'flex' : 'none',
+            width: '45px',
+            height: '45px',
+            position: 'relative',
+            backgroundColor: '#C7A882', // Desert brown color
+            borderRadius: '50%',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '8px',
+            border: 'none',
+            cursor: 'pointer'
+          }}
+          aria-label="תפריט"
+        >
+          <span className="hamburger-bar" style={{
+            display: 'block',
+            width: '25px',
+            height: '3px',
+            margin: '3px 0',
+            backgroundColor: '#6B4E3D', // Darker brown
+            borderRadius: '3px',
+            transition: 'all 0.3s ease',
+            transform: isMenuOpen ? 'translateY(6px) rotate(45deg)' : 'none'
+          }}></span>
+          <span className="hamburger-bar" style={{
+            display: 'block',
+            width: '25px',
+            height: '3px',
+            margin: '3px 0',
+            backgroundColor: '#6B4E3D',
+            borderRadius: '3px',
+            transition: 'all 0.3s ease',
+            opacity: isMenuOpen ? 0 : 1
+          }}></span>
+          <span className="hamburger-bar" style={{
+            display: 'block',
+            width: '25px',
+            height: '3px',
+            margin: '3px 0',
+            backgroundColor: '#6B4E3D',
+            borderRadius: '3px',
+            transition: 'all 0.3s ease',
+            transform: isMenuOpen ? 'translateY(-6px) rotate(-45deg)' : 'none'
+          }}></span>
+        </button>
 
         {/* Mobile Menu */}
-        <div 
-          id="mobile-menu"
-          className={`
-            lg:hidden overflow-hidden transition-all duration-300 ease-in-out
-            ${isMenuOpen ? 'max-h-96 pb-6' : 'max-h-0'}
-          `}
-        >
-          <div className="flex flex-col space-y-4 pt-4 border-t border-sand">
+        {isMenuOpen && isMobile && (
+          <ul 
+            id="nav-links-mobile"
+            style={{
+              position: 'fixed',
+              top: 0,
+              right: 0,
+              width: '80%',
+              height: '100vh',
+              backgroundColor: 'rgba(255, 255, 255, 0.97)',
+              boxShadow: '-5px 0 15px rgba(0, 0, 0, 0.1)',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              padding: '70px 0 30px',
+              transition: 'right 0.4s ease',
+              zIndex: 5,
+              overflowY: 'auto',
+              listStyle: 'none',
+              margin: 0,
+              display: 'flex'
+            }}
+          >
             {navigationItems.map((item) => (
-              <button
+              <li 
                 key={item.href}
-                onClick={() => handleNavClick(item.href)}
-                className="text-right text-text-primary hover:text-light-brown transition-colors duration-200 font-medium py-2"
+                style={{
+                  margin: '8px 0',
+                  width: '100%',
+                  textAlign: 'center',
+                  padding: '0 20px'
+                }}
               >
-                {item.label}
-              </button>
+                <a
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(item.href);
+                  }}
+                  style={{
+                    fontSize: '1.1rem',
+                    fontWeight: 500,
+                    padding: '8px 0',
+                    display: 'block',
+                    color: '#2c3e50',
+                    borderBottom: '1px solid rgba(0, 95, 115, 0.1)',
+                    textDecoration: 'none'
+                  }}
+                >
+                  {item.label}
+                </a>
+              </li>
             ))}
-          </div>
-        </div>
-      </Container>
+          </ul>
+        )}
+      </nav>
     </header>
   );
 };

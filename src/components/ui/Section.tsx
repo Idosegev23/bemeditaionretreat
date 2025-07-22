@@ -14,7 +14,7 @@ const Section: React.FC<SectionProps> = ({
   // Background variants
   const backgroundStyles = {
     transparent: 'bg-transparent',
-    light: 'bg-sand/30',
+    light: 'bg-desert-blue-light/30',
     warm: 'bg-warm-white',
     image: 'bg-cover bg-center bg-no-repeat',
   };

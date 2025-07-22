@@ -3,50 +3,39 @@
 import React, { useState } from 'react';
 import { Container, Button } from '@/components/ui';
 
-/**
- * FAQ Section - "שאלות ששואלים אותנו הרבה" - סקשן שאלות נפוצות
- * 
- * תכונות:
- * - Accordion אינטראקטיבי עם אנימציות
- * - 5 שאלות נפוצות עם תשובות מפורטות
- * - עיצוב נגיש ויפה
- * - CTA בסוף לשאלות נוספות
- * - רספונסיבי מלא
- */
 const FAQSection: React.FC = () => {
   const [openItem, setOpenItem] = useState<number | null>(null);
 
-  // FAQ data מבוסס על השאלות מהאתר המקורי
   const faqData = [
     {
       id: 1,
-      question: 'מה היתרון בקבוצה מונחית?',
-      answer: 'קבוצה מאפשרת תמיכה רבה, והנחיה נותנת הכוונה בתהליך וכלים מעשיים. לתרגל מדיטציה ולהטמיע בדרך כלל לא קל לעשות לבד.',
-      icon: '👥'
+      question: 'מה כולל הרטריט?',
+      answer: 'הרטריט כולל מגוון פעילויות מדיטציה, הליכות במדבר, שותפות בבישול וארוחות משותפות, ולינה במקום. כל הפעילויות מתרחשות במקום אחד ואנחנו נהיה יחד במשך כל הסוף השבוע.'
     },
     {
       id: 2,
-      question: 'מה זה מדיטציות של אושו?',
-      answer: 'המדיטציות האקטיביות של אושו הן מדיטציות שנוצרו במיוחד לאדם המערבי בחברה המודרנית. הן מחולקות לשלבים, כוללות תנועה, ומאפשרות מעבר הדרגתי למדיטציה שקטה.',
-      icon: '🕉️'
+      question: 'האם צריך ניסיון קודם במדיטציה?',
+      answer: 'לא! הרטריט מתאים גם למתחילים וגם למתרגלים מנוסים. נתחיל מהבסיס ונתקדם יחד. כל אחד יוכל להשתתף ברמה שלו.'
     },
     {
       id: 3,
-      question: 'האם יש צורך בניסיון קודם?',
-      answer: 'לא בהכרח. חלק מהמשתתפים מגיעים ללא ניסיון מוקדם, עם רצון לתהליך אישי וחקירה פנימית ועם פתיחות להכרת עולם חדש.',
-      icon: '🌱'
+      question: 'מה כלול במחיר?',
+      answer: 'המחיר כולל את כל הפעילויות של הרטריט, ארוחות משותפות, חומרי עזר לתרגילים. הלינה נמכרת בנפרד ויש מספר אפשרויות.'
     },
     {
       id: 4,
-      question: 'האם כדאי לי לבוא לבד?',
-      answer: 'בהחלט! לבוא לבד מאפשר חופש מהרגלים ומחויבות חברתית, ויוצר הזדמנות למפגש עם אנשים חדשים במרחב נעים, בטוח ומזמין.',
-      icon: '🤗'
+      question: 'איך מגיעים למקום?',
+      answer: 'מצפה רמון נמצא בנגב הדרומי, כשעתיים נסיעה מתל אביב וירושלים. נשלח הוראות הגעה מפורטות לנרשמים.'
     },
     {
       id: 5,
-      question: 'כמה משתתפים יהיו?',
-      answer: 'בין 12 ל־15 משתתפים, כדי לשמור על אינטימיות ותשומת לב לכל משתתף.',
-      icon: '🏜️'
+      question: 'מה להביא איתי?',
+      answer: 'שק שינה או מצעים, בגדים נוחים לתרגול, נעליים נוחות להליכה, בקבוק מים ומה שאתם צריכים ללילה. נשלח רשימה מפורטת לנרשמים.'
+    },
+    {
+      id: 6,
+      question: 'איך מבטלים?',
+      answer: 'ביטול עד חודש לפני - החזר מלא. ביטול 2-4 שבועות לפני - 80% החזר. ביטול בשבועיים האחרונים - 50% החזר. אנחנו נעשה כל מאמץ למצוא פתרון המתאים לכולם.'
     }
   ];
 
@@ -56,186 +45,119 @@ const FAQSection: React.FC = () => {
 
   return (
     <section 
-      className="py-24 md:py-32 bg-gradient-to-b from-cream/30 to-warm-white relative overflow-hidden"
       id="faq"
+      className="py-20 md:py-28 bg-cream"
     >
-      
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-desert-blue/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-sand/30 rounded-full blur-3xl"></div>
-      </div>
-
       <Container>
-        <div className="max-w-4xl mx-auto relative z-10">
+        {/* Main white container wrapping everything like in About */}
+        <div className="max-w-4xl mx-auto bg-white/90 rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg">
           
           {/* Main Title */}
-          <div className="text-center mb-20 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading text-text-primary mb-8 leading-tight">
-              שאלות ששואלים
-              <br />
-              <span className="text-desert-blue">אותנו הרבה</span>
-            </h2>
+          <h2 className="text-3xl md:text-4xl font-heading text-center mb-6" style={{ color: '#56ACBF' }}>
+            שאלות ששואלים אותנו הרבה
+          </h2>
+          
+          {/* Central Quote עם תמונת רקע */}
+          <div 
+            className="relative rounded-3xl p-12 md:p-16 overflow-hidden mb-12"
+            style={{
+              backgroundImage: 'url(/images/gallery/12.jpg)', // Using different gallery image
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              minHeight: '300px'
+            }}
+          >
+            {/* Dark overlay for text readability */}
+            <div className="absolute inset-0 bg-black/40"></div>
             
-            {/* ציטוט מרכזי מהאתר המקורי */}
-            <div className="bg-gradient-to-r from-desert-blue/10 to-sand/20 rounded-2xl p-8 max-w-4xl mx-auto mb-8">
-              <blockquote className="text-xl md:text-2xl text-text-primary font-light italic leading-relaxed">
+            {/* Quote text */}
+            <div className="relative z-10 text-center">
+              <blockquote className="text-2xl md:text-3xl lg:text-4xl font-light text-white italic leading-relaxed" style={{
+                textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
+              }}>
                 &ldquo;הלא-ידוע הוא מרחב האפשרויות הגדול ביותר שלנו&rdquo;
               </blockquote>
             </div>
           </div>
 
           {/* FAQ Accordion */}
-          <div className="space-y-6 mb-20">
-            {faqData.map((item, index) => (
+          <div className="space-y-4 mb-12">
+            {faqData.map((item) => (
               <div
                 key={item.id}
                 className={`
-                  group animate-fade-in-up animate-delay-${200 + index * 150}
-                  bg-warm-white/80 backdrop-blur-sm
-                  rounded-2xl border-2 border-sand/20
-                  hover:border-desert-blue/30 hover:shadow-lg
-                  transition-all duration-300
-                  ${openItem === item.id ? 'border-desert-blue/40 shadow-xl' : ''}
+                  border border-light-brown/30 rounded-xl overflow-hidden 
+                  transition-all duration-300 bg-white shadow-sm
+                  ${openItem === item.id ? 'shadow-md' : 'hover:shadow-md'}
                 `}
               >
-                
-                {/* Question Header - Clickable */}
                 <button
                   onClick={() => toggleItem(item.id)}
-                  className="w-full text-right p-8 flex items-center justify-between gap-6 focus:outline-none focus:ring-2 focus:ring-desert-blue/50 rounded-2xl"
+                  className="w-full p-6 text-right hover:bg-sand/10 transition-colors duration-200"
                   aria-expanded={openItem === item.id}
                   aria-controls={`faq-answer-${item.id}`}
                 >
-                  
-                  {/* Question Text & Icon */}
-                  <div className="flex items-center gap-4 flex-1">
-                    <div className="text-3xl group-hover:scale-110 transition-transform duration-300">
-                      {item.icon}
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-heading text-text-primary leading-relaxed text-right">
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg font-semibold text-text-primary">
                       {item.question}
-                    </h3>
-                  </div>
-
-                  {/* Expand/Collapse Icon */}
-                  <div className={`
-                    flex-shrink-0 w-8 h-8 flex items-center justify-center
-                    transition-transform duration-300
-                    ${openItem === item.id ? 'rotate-180' : ''}
-                  `}>
-                    <svg 
-                      className="w-6 h-6 text-desert-blue" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={2} 
-                        d="M19 9l-7 7-7-7" 
-                      />
-                    </svg>
+                    </span>
+                    <span className={`
+                      text-2xl transform transition-transform duration-300
+                      ${openItem === item.id ? 'rotate-45' : 'rotate-0'}
+                    `} style={{ color: '#56ACBF' }}>
+                      +
+                    </span>
                   </div>
                 </button>
-
-                {/* Answer Content - Expandable */}
-                <div
-                  id={`faq-answer-${item.id}`}
-                  className={`
-                    overflow-hidden transition-all duration-500 ease-in-out
-                    ${openItem === item.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}
-                  `}
-                >
-                  <div className="px-8 pb-8">
-                    <div className="pt-4 border-t border-sand/20">
-                      <p className="text-lg md:text-xl text-text-secondary leading-relaxed text-right">
-                        {item.answer}
-                      </p>
-                    </div>
+                
+                {openItem === item.id && (
+                  <div
+                    id={`faq-answer-${item.id}`}
+                    className="px-6 pb-6 text-text-secondary leading-relaxed"
+                  >
+                    {item.answer}
                   </div>
-                </div>
+                )}
               </div>
             ))}
           </div>
 
-          {/* Bottom CTA Section */}
-          <div className="animate-fade-in-up animate-delay-1000">
+          {/* Bottom section without buttons */}
+          <div className="text-center bg-white rounded-xl p-8 shadow-sm">
+            <h3 className="text-xl font-semibold mb-4" style={{ color: '#56ACBF' }}>
+              לא מצאת את מה שחיפשת?
+            </h3>
+            <p className="text-text-secondary mb-6">
+              אנחנו כאן בשבילך ונשמח לענות על כל שאלה נוספת
+            </p>
             
-            {/* Separator */}
-            <div className="flex items-center justify-center mb-12">
-              <div className="h-px bg-gradient-to-r from-transparent via-desert-blue/30 to-transparent w-32"></div>
-              <div className="w-3 h-3 bg-desert-blue/40 rounded-full mx-4"></div>
-              <div className="h-px bg-gradient-to-r from-transparent via-desert-blue/30 to-transparent w-32"></div>
-            </div>
-
-            {/* Contact CTA */}
-            <div className="text-center bg-gradient-to-br from-desert-blue/5 to-sand/10 rounded-3xl p-12 border border-sand/20">
-              
-              <div className="text-5xl mb-6">🤔</div>
-              
-              <h3 className="text-2xl md:text-3xl font-heading text-text-primary mb-4">
-                לא מצאת את התשובה שחיפשת?
-              </h3>
-              
-              <p className="text-lg text-text-secondary leading-relaxed mb-8 max-w-2xl mx-auto">
-                אנחנו כאן בשבילך! שלחי לנו הודעה או תתקשרי – נשמח לענות על כל שאלה 
-                ולעזור לך להחליט אם הריטריט מתאים לך.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                
-                {/* WhatsApp Button */}
-                <a
-                  href="https://wa.me/972123456789"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="
-                    inline-flex items-center justify-center gap-3
-                    bg-green-600 hover:bg-green-700 text-warm-white
-                    px-8 py-4 rounded-xl font-semibold
-                    shadow-lg hover:shadow-xl
-                    transform hover:scale-105
-                    transition-all duration-300
-                    border-0 focus:outline-none focus:ring-2 focus:ring-green-600
-                  "
-                  aria-label="שלח הודעה בווטסאפ"
-                >
-                  <span className="text-xl">📱</span>
-                  שלחי הודעה בווטסאפ
-                </a>
-
-                {/* Contact Form Button */}
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  href="#contact"
-                  className="
-                    bg-transparent border-2 border-desert-blue text-desert-blue
-                    hover:bg-desert-blue hover:text-warm-white
-                    px-8 py-4 rounded-xl font-semibold
-                    flex items-center gap-3
-                    transition-all duration-300
-                  "
-                  aria-label="מלא טופס יצירת קשר"
-                >
-                  <span className="text-xl">✉️</span>
-                  מלאי טופס יצירת קשר
-                </Button>
-              </div>
-
-              {/* Additional Contact Info */}
-              <div className="mt-8 pt-8 border-t border-sand/20">
-                <p className="text-text-secondary leading-relaxed">
-                  <span className="font-medium text-text-primary">זמני מענה:</span>
-                  <br />
-                  ימים א׳-ה׳ 9:00-18:00 | שישי 9:00-14:00
-                  <br />
-                  <span className="text-sm opacity-75">נחזור אליך בהקדם האפשרי ♡</span>
-                </p>
-              </div>
-            </div>
+            <button
+              onClick={() => {
+                const element = document.querySelector('#contact');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="
+                text-white font-bold 
+                px-8 py-3 text-lg
+                rounded-full
+                shadow-lg hover:shadow-xl
+                transform hover:scale-105 hover:-translate-y-1
+                transition-all duration-300 ease-out
+                font-semibold
+              "
+              style={{
+                backgroundColor: '#56ACBF',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#4A9AAB';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#56ACBF';
+              }}
+              aria-label="מעבר לפרטים"
+            >
+              אנחנו כאן בשבילך
+            </button>
           </div>
 
         </div>

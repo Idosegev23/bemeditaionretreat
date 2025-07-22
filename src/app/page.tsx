@@ -3,7 +3,6 @@ import {
   AboutSection,
   GallerySection,
   ProgramSection,
-  ScheduleSection,
   InstructorsSection,
   LocationSection,
   PricingSection,
@@ -26,9 +25,6 @@ export default function Home() {
 
       {/* Program Section - תוכנית הסופ"ש */}
       <ProgramSection />
-
-      {/* Schedule Section - לוח הזמנים המפורט */}
-      <ScheduleSection />
 
       {/* Instructors Section - צוות המנחים */}
       <InstructorsSection />

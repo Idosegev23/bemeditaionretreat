@@ -52,7 +52,7 @@ const InstructorsSection: React.FC = () => {
 
   // Placeholder for missing images
   const getImageWithFallback = (src: string, alt: string) => (
-    <div className="relative w-full h-full bg-gradient-to-br from-sand/40 to-light-brown/30 rounded-2xl flex items-center justify-center overflow-hidden">
+              <div className="relative w-full h-full bg-gradient-to-br from-desert-blue-light/40 to-desert-brown/30 rounded-2xl flex items-center justify-center overflow-hidden">
       <Image
         src={src}
         alt={alt}
@@ -84,12 +84,13 @@ const InstructorsSection: React.FC = () => {
       
       {/* Subtle Background Elements */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 right-10 w-80 h-80 bg-sand/30 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-light-brown/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-10 w-80 h-80 bg-desert-blue-light/30 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-desert-brown/20 rounded-full blur-3xl"></div>
       </div>
 
       <Container>
-        <div className="max-w-6xl mx-auto relative z-10">
+        {/* Main white container wrapping everything like in About */}
+        <div className="max-w-6xl mx-auto bg-white/90 rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg relative z-10">
           
           {/* Main Title */}
           <div className="text-center mb-20 animate-fade-in-up">
@@ -103,9 +104,34 @@ const InstructorsSection: React.FC = () => {
             </p>
           </div>
 
+          {/* Quote banner with background image */}
+          <div className="mb-16">
+            <div 
+              className="relative rounded-3xl p-12 md:p-16 overflow-hidden"
+              style={{
+                backgroundImage: 'url(/images/gallery/18.jpg)', // Using a gallery image
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                minHeight: '300px'
+              }}
+            >
+              {/* Dark overlay for text readability */}
+              <div className="absolute inset-0 bg-black/40"></div>
+              
+              {/* Quote text */}
+              <div className="relative z-10 text-center">
+                <div className="text-2xl md:text-3xl lg:text-4xl font-light text-white italic leading-relaxed" style={{
+                  textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
+                }}>
+                  &ldquo;המורה האמיתי הוא זה שמעורר אותך להיות המורה של עצמך&rdquo;
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Main Instructor - Featured */}
           <div className="mb-24 animate-fade-in-up animate-delay-200">
-            <div className="bg-cream/60 rounded-3xl p-8 md:p-12 shadow-lg border border-sand/30">
+            <div className="bg-cream/60 rounded-3xl p-8 md:p-12 shadow-lg border border-desert-blue-light/30">
               <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                 
                 {/* Main Instructor Image */}
@@ -132,9 +158,9 @@ const InstructorsSection: React.FC = () => {
                     </p>
                   </div>
                   
-                  {/* Additional note - not as formal quote */}
-                  <div className="bg-cream/40 rounded-xl p-4">
-                    <p className="text-text-primary leading-relaxed">
+                  {/* Additional personal note - not as formal quote */}
+                  <div className="mt-4">
+                    <p className="text-text-secondary leading-relaxed italic">
                       {mainInstructor.quote}
                     </p>
                   </div>
@@ -144,48 +170,37 @@ const InstructorsSection: React.FC = () => {
           </div>
 
           {/* Supporting Instructors Grid */}
-          <div className="animate-fade-in-up animate-delay-400">
-            <h3 className="text-2xl md:text-3xl font-heading text-text-primary text-center mb-12">
-              צוות המנחים המלווה
-            </h3>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+          <div className="mb-20 animate-fade-in-up animate-delay-600">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {supportingInstructors.map((instructor, index) => (
                 <div
                   key={instructor.name}
-                  className={`group text-center animate-fade-in-up animate-delay-${600 + index * 200}`}
+                  className="group bg-warm-white/70 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 border border-desert-blue-light/20"
                 >
+                  {/* Instructor Image */}
+                  <div className="flex justify-center mb-6">
+                    <div className="relative w-24 h-24 md:w-32 md:h-32">
+                      {getImageWithFallback(instructor.image, instructor.name)}
+                    </div>
+                  </div>
                   
-                  {/* Instructor Card */}
-                  <div className="bg-warm-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-sand/20 hover:border-desert-blue/30">
-                    
-                    {/* Instructor Image */}
-                    <div className="mb-6">
-                      <div className="relative w-32 h-32 mx-auto">
-                        {getImageWithFallback(instructor.image, instructor.name)}
-                      </div>
+                  {/* Instructor Info */}
+                  <div className="text-center">
+                    <h4 className="text-xl font-heading text-text-primary mb-2">
+                      {instructor.name}
+                    </h4>
+                    <div className="text-desert-blue font-medium mb-4 text-sm">
+                      {instructor.specialty}
                     </div>
+                    <p className="text-text-secondary text-sm leading-relaxed">
+                      {instructor.description}
+                    </p>
                     
-                    {/* Instructor Info */}
-                    <div className="space-y-4">
-                      <h4 className="text-2xl font-heading text-text-primary">
-                        {instructor.name}
-                      </h4>
-                      
-                      <div className="text-desert-blue font-medium text-lg">
-                        {instructor.specialty}
-                      </div>
-                      
-                      <p className="text-text-secondary leading-relaxed">
-                        {instructor.description}
-                      </p>
-                    </div>
-                    
-                    {/* Decorative accent */}
+                    {/* Small decorative element */}
                     <div className="mt-6 flex justify-center space-x-2">
                       <div className="w-2 h-2 bg-desert-blue rounded-full opacity-60"></div>
-                      <div className="w-2 h-2 bg-sand rounded-full opacity-40"></div>
-                      <div className="w-2 h-2 bg-light-brown rounded-full opacity-30"></div>
+                      <div className="w-2 h-2 bg-desert-blue-light rounded-full opacity-40"></div>
+                      <div className="w-2 h-2 bg-desert-brown rounded-full opacity-30"></div>
                     </div>
                   </div>
                 </div>

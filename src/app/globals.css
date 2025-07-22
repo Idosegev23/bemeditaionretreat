@@ -1,20 +1,30 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&family=Varela+Round&family=Amatic+SC:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Sour+Gummy&display=swap');
 
 :root {
-  /* Desert Color Palette */
-  --cream: #FDF6E3;
-  --sand: #E5D4B1;
-  --light-brown: #C7A882;
-  --desert-blue: #7BA098;
+  /* Updated colors to match Afroz more closely - more brown/desert theme */
+  --cream: #f5eee6; /* Main background - keeping this as it works well */
+  --sand: #E5D4B1; /* Light brown/sand color */
+  --light-brown: #C7A882; /* Medium brown */
+  --desert-blue: #7BA098; /* Teal/green from desert palette - for accents */
+  --desert-brown: #D9A443; /* Golden brown - main brand color */
+  --desert-brown-dark: #BF8136; /* Darker brown for hover states */
   --warm-white: #FEFBF7;
-  --text-primary: #3E3E3E;
-  --text-secondary: #6B6B6B;
+  --text-primary: #3E3E3E; /* Warmer dark gray */
+  --text-secondary: #6B6B6B; /* Medium gray */
   
-  /* Orange accents for CTAs */
-  --orange-500: #F97316;
-  --orange-600: #EA580C;
-  --orange-400: #FB923C;
+  /* Header colors - more brownish */
+  --header-bg: rgba(237, 224, 196, 0.85); /* Brown background for header */
+  --header-shadow: rgba(237, 224, 196, 0.2);
+  
+  /* CTA and accent colors */
+  --orange-500: #D9A443; /* Golden brown for CTAs */
+  --orange-600: #BF8136; /* Darker for hover */
+  --orange-400: #E5C565; /* Lighter for subtle accents */
+  
+  /* Green accent (from desert palette) */
+  --green-500: #7BA098; /* Desert blue-green */
+  --green-600: #5A756F; /* Darker version */
   
   /* Background and foreground */
   --background: var(--cream);
@@ -32,23 +42,33 @@
   --color-sand: var(--sand);
   --color-light-brown: var(--light-brown);
   --color-desert-blue: var(--desert-blue);
+  --color-desert-brown: var(--desert-brown);
+  --color-desert-brown-dark: var(--desert-brown-dark);
   --color-warm-white: var(--warm-white);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   
-  /* Orange colors */
+  /* Header colors */
+  --color-header-bg: var(--header-bg);
+  --color-header-shadow: var(--header-shadow);
+  
+  /* Orange/Brown colors for CTAs */
   --color-orange-400: var(--orange-400);
   --color-orange-500: var(--orange-500);
   --color-orange-600: var(--orange-600);
+  
+  /* Green accent colors */
+  --color-green-500: var(--green-500);
+  --color-green-600: var(--green-600);
   
   /* Background and foreground */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   
-  /* Typography */
-  --font-sans: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Varela Round', 'Rubik', sans-serif;
-  --font-decorative: 'Amatic SC', cursive;
+  /* Typography - using Heebo like Afroz */
+  --font-sans: 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Heebo', sans-serif;
+  --font-decorative: 'Sour Gummy', cursive;
   
   /* Spacing system */
   --section-spacing: var(--section-spacing);
@@ -66,12 +86,63 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  line-height: 1.6;
+  line-height: 1.7;
+  font-size: 18px; /* Keeping larger font size like Afroz */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography Styles */
+/* Typography Styles - updated to use brown instead of blue */
+h1, h2, h3, h4 {
+  color: var(--desert-brown); /* Changed from blue to golden brown */
+  text-align: center;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2.2rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+p {
+  line-height: 1.7;
+  text-align: center;
+  color: var(--text-secondary);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 1.4rem;
+}
+
+a {
+  color: var(--desert-brown); /* Golden brown for links */
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--desert-brown-dark); /* Darker brown on hover */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 15px;
+}
+
 .heading {
   font-family: var(--font-heading);
   font-weight: 400;
@@ -105,7 +176,7 @@ body {
 
 /* Focus and accessibility */
 *:focus {
-  outline: 2px solid var(--desert-blue);
+  outline: 2px solid var(--desert-brown);
   outline-offset: 2px;
 }
 
@@ -121,7 +192,7 @@ button {
 
 /* Selection styling */
 ::selection {
-  background-color: var(--desert-blue);
+  background-color: var(--desert-brown);
   color: var(--warm-white);
 }
 
@@ -198,9 +269,8 @@ video {
   background: linear-gradient(45deg, var(--sand), var(--light-brown));
 }
 
-/* Image hover effects */
 .image-hover-scale {
-  transition: transform 0.5s ease;
+  transition: transform 0.3s ease;
 }
 
 .image-hover-scale:hover {

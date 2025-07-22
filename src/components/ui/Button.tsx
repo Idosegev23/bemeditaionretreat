@@ -15,32 +15,39 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   'aria-label': ariaLabel,
 }) => {
-  // Base styles for all buttons - עגלות בסיסית רק אם לא מועברת אחרת
+  // Base styles for all buttons
   const hasCustomRounding = className.includes('rounded');
   const baseStyles = `
     inline-flex items-center justify-center
     font-medium ${!hasCustomRounding ? 'rounded-md' : ''} border transition-all duration-200
-    focus:outline-none focus:ring-2 focus:ring-desert-blue focus:ring-offset-2
+    focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2
     disabled:opacity-50 disabled:cursor-not-allowed
     ${className}
   `;
 
-  // Variant styles
+  // Updated variant styles with new color scheme
   const variantStyles = {
     primary: `
-      bg-desert-blue text-warm-white border-desert-blue
-      hover:bg-opacity-90 hover:shadow-md
+      bg-orange-500 text-warm-white border-orange-500
+      hover:bg-orange-600 hover:shadow-md
       active:transform active:scale-95
     `,
     secondary: `
-      bg-sand text-text-primary border-sand
-      hover:bg-light-brown hover:shadow-md
+      bg-light-brown text-text-primary border-light-brown
+      hover:bg-orange-500 hover:text-warm-white hover:shadow-md
       active:transform active:scale-95
     `,
     outline: `
-      bg-transparent text-desert-blue border-desert-blue
-      hover:bg-desert-blue hover:text-warm-white hover:shadow-md
+      bg-transparent text-orange-500 border-orange-500
+      hover:bg-orange-500 hover:text-warm-white hover:shadow-md
       active:transform active:scale-95
+    `,
+    // New variant for Afroz-style buttons with transparency
+    afroz: `
+      bg-orange-500 bg-opacity-90 text-warm-white border-orange-500
+      hover:bg-opacity-100 hover:shadow-lg hover:transform hover:scale-105
+      active:transform active:scale-95
+      backdrop-blur-sm
     `,
   };
 
@@ -53,7 +60,7 @@ const Button: React.FC<ButtonProps> = ({
 
   const buttonClasses = `
     ${baseStyles}
-    ${variantStyles[variant]}
+    ${variantStyles[variant as keyof typeof variantStyles]}
     ${sizeStyles[size]}
   `.replace(/\s+/g, ' ').trim();
 

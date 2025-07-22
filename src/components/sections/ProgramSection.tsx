@@ -4,12 +4,12 @@ import React from 'react';
 import { Container, Button } from '@/components/ui';
 
 /**
- * Program Section - תוכנית הסופ"ש
+ * Program Section - תוכנית הסופ"ש בסגנון אפרוז
  * 
  * תכונות:
  * - יום שישי מעל יום שבת (לא לצד)
- * - עיצוב ברור ומסודר
- * - רספונסיבי למובייל
+ * - עיצוב ברור ומסודר כמו אפרוז
+ * - צבעים מתאימים למערכת החדשה
  */
 const ProgramSection: React.FC = () => {
   // תוכנית יום שישי
@@ -96,9 +96,12 @@ const ProgramSection: React.FC = () => {
   ];
 
   const TimeSlot = ({ time, title, description }: { time: string; title: string; description: string }) => (
-    <div className="flex items-start space-x-4 rtl:space-x-reverse p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div className="flex items-start space-x-4 rtl:space-x-reverse p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className="flex-shrink-0">
-        <div className="bg-desert-blue text-warm-white px-3 py-2 rounded-lg font-semibold text-sm">
+        <div 
+          className="text-white px-3 py-2 rounded-lg font-semibold text-sm"
+          style={{ backgroundColor: '#56ACBF' }}
+        >
           {time}
         </div>
       </div>
@@ -115,48 +118,70 @@ const ProgramSection: React.FC = () => {
 
   return (
     <section 
-      className="py-20 md:py-32 bg-warm-white"
+      className="py-20 md:py-32 bg-cream"
       id="program"
     >
       <Container>
-        <div className="max-w-6xl mx-auto">
+        {/* Main white container wrapping everything like in About */}
+        <div className="max-w-6xl mx-auto bg-white/90 rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg">
           
-          {/* כותרת ראשית */}
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading text-text-primary mb-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading text-desert-brown mb-6">
               תוכנית הסופ&quot;ש
             </h2>
             <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
-              שישה רגעים, שישה מרחבים, חוויה אחת שלמה במדבר - 
+              שני ימים, שני מרחבים, חוויה אחת שלמה במדבר - 
               <br className="hidden sm:block" />
               יומיים של נוכחות, תנועה ושקט פנימי
             </p>
           </div>
 
+          {/* Quote banner with background image */}
+          <div className="mb-16">
+            <div 
+              className="relative rounded-3xl p-12 md:p-16 overflow-hidden"
+              style={{
+                backgroundImage: 'url(/images/gallery/10.jpg)', // Using a gallery image
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                minHeight: '300px'
+              }}
+            >
+              {/* Dark overlay for text readability */}
+              <div className="absolute inset-0 bg-black/40"></div>
+              
+              {/* Quote text */}
+              <div className="relative z-10 text-center">
+                <div className="text-2xl md:text-3xl lg:text-4xl font-light text-white italic leading-relaxed" style={{
+                  textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
+                }}>
+                  &ldquo;הזמן הוא המתנה היקרה ביותר שאנחנו יכולים לתת לעצמנו&rdquo;
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* יום שישי */}
-          <div className="mb-16 animate-fade-in-up animate-delay-200">
-            <div className="bg-gradient-to-r from-sand/20 to-light-brown/20 rounded-2xl p-8 mb-8">
-              <h3 className="text-2xl md:text-3xl font-heading text-text-primary mb-4 text-center">
+          <div className="mb-16">
+            <div className="bg-gradient-to-r from-sand/30 via-light-brown/20 to-sand/30 rounded-xl p-8 mb-8">
+              <h3 className="text-2xl md:text-3xl font-heading text-desert-brown mb-4 text-center">
                 יום שישי, 26 בספטמבר
               </h3>
               <p className="text-lg text-text-secondary text-center">
                 יום פתיחה - התחברות למקום ולקבוצה
               </p>
             </div>
-            
             <div className="space-y-4">
               {fridaySchedule.map((item, index) => (
-                <div key={index} className={`animate-fade-in-up animate-delay-${300 + index * 100}`}>
-                  <TimeSlot {...item} />
-                </div>
+                <TimeSlot key={index} {...item} />
               ))}
             </div>
           </div>
 
           {/* יום שבת */}
-          <div className="mb-16 animate-fade-in-up animate-delay-800">
-            <div className="bg-gradient-to-r from-desert-blue/10 to-sand/20 rounded-2xl p-8 mb-8">
-              <h3 className="text-2xl md:text-3xl font-heading text-text-primary mb-4 text-center">
+          <div className="mb-16">
+            <div className="bg-gradient-to-r from-sand/30 via-light-brown/20 to-sand/30 rounded-xl p-8 mb-8">
+              <h3 className="text-2xl md:text-3xl font-heading text-desert-brown mb-4 text-center">
                 יום שבת, 27 בספטמבר
               </h3>
               <p className="text-lg text-text-secondary text-center">
@@ -166,16 +191,14 @@ const ProgramSection: React.FC = () => {
             
             <div className="space-y-4">
               {saturdaySchedule.map((item, index) => (
-                <div key={index} className={`animate-fade-in-up animate-delay-${900 + index * 100}`}>
-                  <TimeSlot {...item} />
-                </div>
+                <TimeSlot key={index} {...item} />
               ))}
             </div>
           </div>
 
           {/* הערות חשובות */}
-          <div className="bg-cream rounded-2xl p-8 mb-12 animate-fade-in-up animate-delay-1600">
-            <h4 className="text-xl font-semibold text-text-primary mb-4 text-center">
+          <div className="bg-white rounded-xl p-8 mb-12 shadow-sm">
+            <h4 className="text-xl font-semibold text-desert-brown mb-4 text-center">
               הערות חשובות
             </h4>
             <div className="grid md:grid-cols-2 gap-6 text-text-secondary">
@@ -200,34 +223,35 @@ const ProgramSection: React.FC = () => {
             </div>
           </div>
 
-          {/* כפתור קריאה לפעולה */}
-          <div className="text-center animate-fade-in-up animate-delay-1800">
-            <div className="space-y-6">
-              <p className="text-text-secondary text-lg">
-                מוכנים להצטרף לחוויה?
-              </p>
-              
-              <Button
-                variant="primary"
-                size="lg"
-                href="#pricing"
-                className="
-                  bg-gradient-to-r from-orange-500 to-orange-600
-                  hover:from-orange-600 hover:to-orange-700
-                  text-warm-white font-semibold 
-                  px-12 py-5 text-lg
-                  rounded-xl
-                  shadow-lg hover:shadow-xl
-                  transform hover:scale-105 hover:-translate-y-1
-                  transition-all duration-300
-                  border border-orange-400
-                  hover:border-orange-300
-                "
-                aria-label="מעבר למחירים ורישום"
-              >
-                למחירים ולרישום
-              </Button>
-            </div>
+          {/* קריאה לפעולה */}
+          <div className="text-center">
+            <button
+              onClick={() => {
+                const element = document.querySelector('#contact');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="
+                text-white font-bold 
+                px-12 py-4 text-lg
+                rounded-full
+                shadow-lg hover:shadow-xl
+                transform hover:scale-105 hover:-translate-y-1
+                transition-all duration-300 ease-out
+                font-semibold
+              "
+              style={{
+                backgroundColor: '#56ACBF',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#4A9AAB';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#56ACBF';
+              }}
+              aria-label="הרשמה לריטריט"
+            >
+              הרשמה לריטריט 
+            </button>
           </div>
 
         </div>
