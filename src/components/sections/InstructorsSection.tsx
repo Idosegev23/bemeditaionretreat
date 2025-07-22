@@ -172,10 +172,10 @@ const InstructorsSection: React.FC = () => {
           {/* Supporting Instructors Grid */}
           <div className="mb-20 animate-fade-in-up animate-delay-600">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {supportingInstructors.map((instructor, index) => (
-                <div
+              {supportingInstructors.map((instructor) => (
+                <div 
                   key={instructor.name}
-                  className="group bg-warm-white/70 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 border border-desert-blue-light/20"
+                  className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
                 >
                   {/* Instructor Image */}
                   <div className="flex justify-center mb-6">

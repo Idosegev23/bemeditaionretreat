@@ -2,95 +2,71 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Container, Button } from '@/components/ui';
+import { Container } from '@/components/ui';
 
 /**
- * Pricing Section - לינה וכרטיסים
+ * Pricing Section - מחירים והרשמה בסגנון אפרוז
  * 
  * תכונות:
- * - חלוקה למחיר הסדנא ומחירי החדרים (לא כעסקת חבילה)
- * - שלושת המשבצות עם תמונות כמו באפרוז
- * - חלק מזון וארוחה משותפת
- * - דמי ביטול
- * - תהליך הרשמה משופר
+ * - כרטיסיות מחיר עם אפשרויות שונות
+ * - עיצוב חום-תכלת
+ * - כפתורי רכישה
+ * - תוכן זהה לאפרוז
  */
 const PricingSection: React.FC = () => {
-  // מחיר הסדנא (בנפרד מהלינה)
-  const workshopPrice = {
-    price: '850',
-    title: 'מחיר הסדנא',
-    description: 'כולל את כל הפעילויות המקצועיות והרוחניות',
-    features: [
-      'כל המדיטציות והפעילויות',
-      'הנחיה מקצועית לאורך כל הסופ"ש',
-      'חומרי תרגול וחוברות',
-      'מרחב תמיכה קבוצתי',
-      'ביטוח קבוצתי'
-    ]
-  };
-
-  // אפשרויות לינה עם תמונות
+  // Removed unused workshopPrice variable
+  
   const accommodationOptions = [
     {
-      id: 'shared-room',
-      name: 'חדר משותף',
-      subtitle: '(2-3 משתתפים)',
+      id: 1,
+      title: 'חדר זוגי',
+      subtitle: '(לינה לאדם)',
+      price: '₪350',
+      originalPrice: '₪450',
+      features: [
+        'חדר זוגי נוח ומרווח',
+        'שירותים פרטיים',
+        'מרפסת עם נוף למדבר',
+        'מזרון איכותי',
+        'שטח אחסון אישי'
+      ],
+      isPopular: true,
       image: '/images/accommodation/room.webp',
-      alt: 'חדר משותף נוח עם מקלחת פרטית',
-      description: 'חדר משופץ עם מיטות נפרדות',
-      features: [
-        'מיטות נפרדות נוחות',
-        'שירותים ומקלחת צמודים',
-        'חוויה משותפת ותומכת',
-        'אווירה קהילתית חמה'
-      ],
-      price: '320',
-      unit: 'ללילה למשתתף',
-      highlighted: true,
-      gradient: 'from-orange-500/5 to-orange-500/10',
-      borderColor: 'border-orange-500/30',
-      buttonColor: 'bg-orange-500 hover:bg-orange-600',
-      badge: 'פופולרי'
+      bookingUrl: 'https://nataraj.co.il/mitzukei-retreat'
     },
     {
-      id: 'private-cabin',
-      name: 'בקתת מדבר פרטית',
-      subtitle: '(זוגית)',
+      id: 2,
+      title: 'בקתת עץ',
+      subtitle: '(לינה לאדם)',
+      price: '₪280',
+      originalPrice: '₪380',
+      features: [
+        'בקתת עץ ייחודית',
+        'חווית טבע מלאה',
+        'נוף פנורמי למדבר',
+        'אווירה רומנטית',
+        'קרוב לאזורי הפעילות'
+      ],
+      isPopular: false,
       image: '/images/accommodation/cabin.webp',
-      alt: 'בקתת עץ פרטית עם נוף למדבר',
-      description: 'בקתה זוגית עם נוף פתוח למדבר',
-      features: [
-        'מיטה זוגית',
-        'שירותים ומקלחת פרטיים',
-        'מרפסת אינטימית',
-        'נוף פנורמי למדבר'
-      ],
-      price: '520',
-      unit: 'ללילה לזוג',
-      highlighted: false,
-      gradient: 'from-light-brown/20 to-sand/20',
-      borderColor: 'border-light-brown',
-      buttonColor: 'bg-light-brown hover:bg-orange-500'
+      bookingUrl: 'https://nataraj.co.il/mitzukei-retreat'
     },
     {
-      id: 'shared-tent',
-      name: 'אוהל משותף',
-      subtitle: '(חאן)',
-      image: '/images/accommodation/tent.webp',
-      alt: 'אוהל משותף עם מזרנים באזור טבעי',
-      description: 'מרחב פתוח עם מזרנים',
+      id: 3,
+      title: 'אוהל',
+      subtitle: '(לינה לאדם)',
+      price: '₪200',
+      originalPrice: '₪280',
       features: [
-        'מזרנים איכותיים',
-        'שירותים ומקלחות סמוכים',
-        'קרבה לאדמה',
-        'חיבור פשוט ואותנטי'
+        'אוהל איכותי ומתקדם',
+        'חווית קמפינג אמיתית',
+        'התחברות מלאה לטבע',
+        'מחיר משתלם',
+        'אזור משותף נעים'
       ],
-      price: '180',
-      unit: 'ללילה למשתתף',
-      highlighted: false,
-      gradient: 'from-green-500/10 to-desert-blue/10',
-      borderColor: 'border-green-500/30',
-      buttonColor: 'bg-green-500 hover:bg-green-600'
+      isPopular: false,
+      image: '/images/accommodation/tent.webp',
+      bookingUrl: 'https://nataraj.co.il/mitzukei-retreat'
     }
   ];
 
@@ -176,18 +152,18 @@ const PricingSection: React.FC = () => {
             </div>
             
             <div className="grid md:grid-cols-3 gap-8">
-              {accommodationOptions.map((option, index) => (
+              {accommodationOptions.map((option) => (
                 <div
                   key={option.id}
                   className={`
                     bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 
                     hover:shadow-xl hover:-translate-y-2 border-2
-                    ${option.highlighted ? 'border-orange-500 ring-2 ring-orange-500/20' : 'border-light-brown/30'}
+                    ${option.isPopular ? 'border-orange-500 ring-2 ring-orange-500/20' : 'border-light-brown/30'}
                     group
                   `}
                 >
                   {/* Popular Badge */}
-                  {option.highlighted && (
+                  {option.isPopular && (
                     <div className="bg-orange-500 text-white text-center py-2 text-sm font-semibold">
                       פופולרי
                     </div>
@@ -197,14 +173,14 @@ const PricingSection: React.FC = () => {
                     <div className="relative h-48 overflow-hidden">
                       <Image
                         src={option.image}
-                        alt={option.alt}
+                        alt={option.title}
                         fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <div className="absolute bottom-4 left-4 text-white">
-                      <h4 className="text-xl font-semibold">{option.name}</h4>
+                      <h4 className="text-xl font-semibold">{option.title}</h4>
                     </div>
                     </div>
                     
@@ -215,7 +191,8 @@ const PricingSection: React.FC = () => {
                         {option.price}
                       </div>
                       <div className="text-text-secondary text-sm">
-                        {option.unit}
+                        {option.originalPrice && <span className="line-through text-gray-500 text-sm mr-2">{option.originalPrice}</span>}
+                        ללילה לאדם
                       </div>
                       </div>
 
@@ -229,11 +206,10 @@ const PricingSection: React.FC = () => {
                         </ul>
                     
                     <div className="text-center">
-                      <button
-                        onClick={() => {
-                          const element = document.querySelector('#contact');
-                          element?.scrollIntoView({ behavior: 'smooth' });
-                        }}
+                      <a
+                        href={option.bookingUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="
                           w-full text-white font-semibold 
                           px-4 py-2 text-sm
@@ -241,6 +217,7 @@ const PricingSection: React.FC = () => {
                           shadow-sm hover:shadow-md
                           transform hover:scale-105
                           transition-all duration-300
+                          bg-orange-500 hover:bg-orange-600
                         "
                         style={{
                           backgroundColor: '#56ACBF',
@@ -251,10 +228,10 @@ const PricingSection: React.FC = () => {
                         onMouseLeave={(e) => {
                           e.currentTarget.style.backgroundColor = '#56ACBF';
                         }}
-                        aria-label={`בחירת ${option.name}`}
+                        aria-label={`הזמנת ${option.title}`}
                       >
-                        בחר אפשרות זו
-                      </button>
+                        הזמן עכשיו
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -501,7 +478,6 @@ const PricingSection: React.FC = () => {
                   shadow-lg hover:shadow-xl
                   transform hover:scale-105 hover:-translate-y-1
                   transition-all duration-300 ease-out
-                  font-semibold
                 "
                 style={{
                   backgroundColor: '#56ACBF',

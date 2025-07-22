@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Container, Button } from '@/components/ui';
+import { Container } from '@/components/ui';
 
 /**
  * Contact Section - יצירת קשר והרשמה בסגנון אפרוז
@@ -320,7 +320,7 @@ const ContactSection: React.FC = () => {
                     type="submit"
                     disabled={isSubmitting || !isFormValid()}
                     className="
-                      w-full font-bold font-semibold
+                      w-full font-bold
                       py-3 px-6 text-lg
                       rounded-full
                       shadow-lg hover:shadow-xl
@@ -362,7 +362,7 @@ const ContactSection: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
-                      w-full font-bold font-semibold
+                      w-full font-bold
                       py-3 px-6 text-lg
                       rounded-full
                       shadow-lg hover:shadow-xl

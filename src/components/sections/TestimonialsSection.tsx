@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Container, Button } from '@/components/ui';
+import { Container } from '@/components/ui';
 
 /**
  * Testimonials Section - המלצות מהמשתתפים
@@ -130,7 +130,6 @@ const TestimonialsSection: React.FC = () => {
                 shadow-lg hover:shadow-xl
                 transform hover:scale-105 hover:-translate-y-1
                 transition-all duration-300 ease-out
-                font-semibold
               "
               style={{
                 backgroundColor: '#56ACBF',
