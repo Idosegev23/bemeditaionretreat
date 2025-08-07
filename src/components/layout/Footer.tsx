@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Container } from '@/components/ui';
 
 const Footer: React.FC = () => {
@@ -17,14 +18,12 @@ const Footer: React.FC = () => {
             {/* Logo & About */}
             <div className="text-center md:text-right">
               <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
-                <img 
+                <Image 
                   src="/images/logo.png" 
                   alt="לוגו Be Meditation" 
+                  width={40}
+                  height={40}
                   className="w-10 h-10"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                  }}
                 />
                 <div className="text-3xl font-heading">
                   Be Meditation
