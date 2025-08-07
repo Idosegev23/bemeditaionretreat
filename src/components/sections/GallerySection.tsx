@@ -109,8 +109,6 @@ const galleryImages = [
 ];
 
 const GallerySection: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState(0);
-
   return (
     <section 
       className="py-20 md:py-32 bg-cream"
@@ -118,101 +116,44 @@ const GallerySection: React.FC = () => {
     >
       <Container>
         {/* Main white container wrapping everything like in About */}
-        <div className="max-w-4xl mx-auto bg-white/90 rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg">
+        <div className="max-w-6xl mx-auto bg-white/90 rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg">
           
+          {/* כותרת ללא תיאור מורכב */}
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading text-desert-brown mb-6">
+            <h2 className="text-3xl md:text-4xl font-heading mb-6" style={{ color: '#4A9EB3' }}>
               גלריה
             </h2>
-            <p className="text-lg text-text-secondary mb-4">
-              תמונות של מצוקי דרגות, החוויות, המדיטציות והטבע המדברי הקסום - הרגעים האמיתיים של הריטריט
-            </p>
-            <div className="text-text-secondary font-medium text-sm">
-              לחצו על התמונות המוקטנות לתצוגה מלאה
-            </div>
           </div>
 
-          {/* Quote banner with background image */}
-          <div className="mb-12">
-            <div 
-              className="relative rounded-3xl p-12 md:p-16 overflow-hidden"
-              style={{
-                backgroundImage: 'url(/images/gallery/5.jpg)', // Using a gallery image
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                minHeight: '300px'
-              }}
-            >
-              {/* Dark overlay for text readability */}
-              <div className="absolute inset-0 bg-black/40"></div>
-              
-              {/* Quote text */}
-              <div className="relative z-10 text-center">
-                <div className="text-2xl md:text-3xl lg:text-4xl font-light text-white italic leading-relaxed" style={{
-                  textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
-                }}>
-                  &ldquo;כל רגע במדבר הוא תמונה חיה של יופי ושקט&rdquo;
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mb-8">
-            <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-xl">
-              <Image
-                src={galleryImages[selectedImage].src}
-                alt={galleryImages[selectedImage].alt}
-                fill
-                className="object-cover transition-opacity duration-300"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-                priority={selectedImage === 0}
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                <p className="text-white font-medium text-lg">
-                  {galleryImages[selectedImage].description}
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-6">
-            {galleryImages.map((image, index) => (
-              <button
+          {/* Grid תמונות מרובעות בסגנון אפרוז - ללא כותרות */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {galleryImages.map((image) => (
+              <div
                 key={image.id}
-                onClick={() => setSelectedImage(index)}
-                className={`
-                  relative overflow-hidden rounded-md transition-all duration-300 
-                  focus:outline-none 
-                  ${selectedImage === index 
-                    ? 'ring-3 ring-desert-blue shadow-lg transform scale-105' 
-                    : 'hover:scale-105 hover:shadow-md'
-                  }
-                `}
-                aria-label={`הצג תמונה: ${image.alt}`}
+                className="relative aspect-square overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 group cursor-pointer"
               >
-                <div className="relative w-20 h-16 md:w-24 md:h-18">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    className="object-cover"
-                    sizes="100px"
-                  />
-                  {selectedImage === index && (
-                    <div className="absolute inset-0 border-2 border-white" />
-                  )}
-                  {selectedImage !== index && (
-                    <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-colors duration-200" />
-                  )}
-                </div>
-              </button>
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-110"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                />
+                {/* Overlay עדין על hover */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+              </div>
             ))}
           </div>
-          
-          <div className="text-center">
-            <span className="text-text-secondary text-sm">
-              {selectedImage + 1} מתוך {galleryImages.length}
-            </span>
+
+          {/* 📝 הוראות עריכה - להוספת תמונות חדשות */}
+          <div className="mt-8 text-center">
+            <div className="text-text-secondary text-sm bg-gray-50 rounded-lg p-4 border-l-4 border-blue-400">
+              <strong>📝 הוראות עריכה:</strong> להוספת תמונות חדשות:
+              <br />1. העלו קבצים לתיקייה <code className="bg-gray-200 px-2 py-1 rounded mx-1">/public/images/gallery/</code>
+              <br />2. עדכנו את רשימת <code className="bg-gray-200 px-2 py-1 rounded mx-1">galleryImages</code> 
+              בשורות 18-109 בקובץ <code className="bg-gray-200 px-2 py-1 rounded mx-1">GallerySection.tsx</code>
+              <br />3. הוסיפו אלמנט חדש עם id, src, alt ו-description
+            </div>
           </div>
 
         </div>

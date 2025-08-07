@@ -56,7 +56,7 @@ const AboutSection: React.FC = () => {
   return (
     <section 
       className="py-20 md:py-32 bg-cream text-center"
-      id="what-awaits"
+      id="about"
     >
       <Container>
         {/* Main white container wrapping everything like in Afroz */}
@@ -107,7 +107,7 @@ const AboutSection: React.FC = () => {
 
           {/* What awaits us - with turquoise color and white containers */}
           <div className="mb-16">
-            <h3 className="text-2xl md:text-3xl font-heading mb-12 flex items-center justify-center gap-3" style={{ color: '#56a8bf' }}>
+            <h3 className="text-2xl md:text-3xl font-heading mb-12 flex items-center justify-center gap-3" style={{ color: '#4A9EB3' }}>
               <i className="fas fa-heart"></i>
               מה מחכה לנו?
             </h3>
@@ -122,11 +122,11 @@ const AboutSection: React.FC = () => {
                   {/* Icon at the top */}
                   <div className="text-center mb-4">
                     <div className="w-16 h-16 mx-auto bg-white rounded-full shadow-md flex items-center justify-center mb-4">
-                      <i className={`${item.icon} text-3xl`} style={{ color: '#56ACBF' }}></i>
+                      <i className={`${item.icon} text-3xl`} style={{ color: '#4A9EB3' }}></i>
                     </div>
                   </div>
                   
-                  <h4 className="text-xl font-semibold mb-4 pb-2 border-b-2 border-gray-100 text-center" style={{ color: '#56ACBF' }}>
+                  <h4 className="text-xl font-semibold mb-4 pb-2 border-b-2 border-gray-100 text-center" style={{ color: '#4A9EB3' }}>
                     {item.title}
                   </h4>
                   <p className="text-text-secondary leading-relaxed text-center">
@@ -153,13 +153,13 @@ const AboutSection: React.FC = () => {
                 transition-all duration-300 ease-out
               "
               style={{
-                backgroundColor: '#56ACBF',
+                backgroundColor: '#4A9EB3',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#4A9AAB';
+                e.currentTarget.style.backgroundColor = '#398EA0';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#56ACBF';
+                e.currentTarget.style.backgroundColor = '#4A9EB3';
               }}
               aria-label="מעבר לפרטים והרשמה"
             >

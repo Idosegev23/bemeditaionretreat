@@ -100,7 +100,7 @@ const ProgramSection: React.FC = () => {
       <div className="flex-shrink-0">
         <div 
           className="text-white px-3 py-2 rounded-lg font-semibold text-sm"
-          style={{ backgroundColor: '#56ACBF' }}
+          style={{ backgroundColor: '#4A9EB3' }}
         >
           {time}
         </div>
@@ -239,13 +239,13 @@ const ProgramSection: React.FC = () => {
                 transition-all duration-300 ease-out
               "
               style={{
-                backgroundColor: '#56ACBF',
+                backgroundColor: '#4A9EB3',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#4A9AAB';
+                e.currentTarget.style.backgroundColor = '#398EA0';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#56ACBF';
+                e.currentTarget.style.backgroundColor = '#4A9EB3';
               }}
               aria-label="הרשמה לריטריט"
             >

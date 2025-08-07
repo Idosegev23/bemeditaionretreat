@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Header, Footer } from "@/components/layout";
+import { Header } from "@/components/layout";
 
 export const metadata: Metadata = {
   title: "סופ\"ש של נוכחות ושקט | Be Meditation",
@@ -53,8 +53,6 @@ export default function RootLayout({
           <main className="flex-1" role="main">
             {children}
           </main>
-          
-          <Footer />
         </div>
       </body>
     </html>

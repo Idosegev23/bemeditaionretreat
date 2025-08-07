@@ -160,20 +160,24 @@ const ContactSection: React.FC = () => {
 
   return (
     <>
-      {/* Contact Section with gradient background */}
+      {/* Contact Section with Footer - רקע מדורג חום לתכלת */}
       <section 
         id="contact"
-        className="py-20 md:py-32 bg-gradient-to-b from-cream via-sand/30 to-green-500/20"
+        className="py-20 md:py-32"
+        style={{
+          background: 'linear-gradient(135deg, #E5D4B1 0%, #C7A882 30%, #4A9EB3 100%)'
+        }}
       >
         <Container>
           <div className="max-w-4xl mx-auto">
             
             {/* Header */}
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading mb-8" style={{ color: '#56ACBF' }}>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading mb-8" style={{ color: '#ffffff' }}>
                 רשמו לנו בוואטסאפ
               </h2>
               <div className="text-xl text-text-secondary">
+                {/* 📝 עריכה: לשינוי מספר טלפון ערכו כאן ובשורות 394, 419, 461 */}
                 <i className="fab fa-whatsapp text-green-500 ml-2"></i>
                 <a href="https://wa.me/972547882715" target="_blank" className="text-green-500 hover:text-green-600 font-semibold">
                   איריס: 054-7882715
@@ -186,10 +190,10 @@ const ContactSection: React.FC = () => {
               
               {/* Form Header */}
               <div className="text-center mb-8">
-                <div className="text-4xl mb-4" style={{ color: '#56ACBF' }}>
+                <div className="text-4xl mb-4" style={{ color: '#4A9EB3' }}>
                   <i className="fas fa-envelope"></i>
                 </div>
-                <h3 className="text-2xl font-heading mb-4" style={{ color: '#56ACBF' }}>
+                <h3 className="text-2xl font-heading mb-4" style={{ color: '#4A9EB3' }}>
                   השאירו פרטים ונחזור אליכם
                 </h3>
                 <p className="text-text-secondary">
@@ -238,10 +242,10 @@ const ContactSection: React.FC = () => {
                       required
                       className="w-full px-4 py-3 border border-sand rounded-lg focus:ring-2 focus:border-transparent transition-colors"
                       style={{
-                        '--tw-ring-color': '#56ACBF'
+                        '--tw-ring-color': '#4A9EB3'
                       } as React.CSSProperties}
                       onFocus={(e) => {
-                        e.target.style.borderColor = '#56ACBF';
+                        e.target.style.borderColor = '#4A9EB3';
                         e.target.style.boxShadow = '0 0 0 2px rgba(86, 172, 191, 0.2)';
                       }}
                       onBlur={(e) => {
@@ -267,10 +271,10 @@ const ContactSection: React.FC = () => {
                       required
                       className="w-full px-4 py-3 border border-sand rounded-lg focus:ring-2 focus:border-transparent transition-colors"
                       style={{
-                        '--tw-ring-color': '#56ACBF'
+                        '--tw-ring-color': '#4A9EB3'
                       } as React.CSSProperties}
                       onFocus={(e) => {
-                        e.target.style.borderColor = '#56ACBF';
+                        e.target.style.borderColor = '#4A9EB3';
                         e.target.style.boxShadow = '0 0 0 2px rgba(86, 172, 191, 0.2)';
                       }}
                       onBlur={(e) => {
@@ -298,10 +302,10 @@ const ContactSection: React.FC = () => {
                     placeholder="שאלות או בקשות מיוחדות..."
                     className="w-full px-4 py-3 border border-sand rounded-lg focus:ring-2 focus:border-transparent transition-colors resize-none"
                     style={{
-                      '--tw-ring-color': '#56ACBF'
+                      '--tw-ring-color': '#4A9EB3'
                     } as React.CSSProperties}
                     onFocus={(e) => {
-                      e.target.style.borderColor = '#56ACBF';
+                      e.target.style.borderColor = '#4A9EB3';
                       e.target.style.boxShadow = '0 0 0 2px rgba(86, 172, 191, 0.2)';
                     }}
                     onBlur={(e) => {
@@ -330,17 +334,17 @@ const ContactSection: React.FC = () => {
                       disabled:bg-gray-300 disabled:transform-none disabled:shadow-none
                     "
                     style={{
-                      backgroundColor: isSubmitting || !isFormValid() ? '#D1D5DB' : '#56ACBF',
+                      backgroundColor: isSubmitting || !isFormValid() ? '#D1D5DB' : '#4A9EB3',
                       color: 'white'
                     }}
                     onMouseEnter={(e) => {
                       if (!isSubmitting && isFormValid()) {
-                        e.currentTarget.style.backgroundColor = '#4A9AAB';
+                        e.currentTarget.style.backgroundColor = '#398EA0';
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (!isSubmitting && isFormValid()) {
-                        e.currentTarget.style.backgroundColor = '#56ACBF';
+                        e.currentTarget.style.backgroundColor = '#4A9EB3';
                       }
                     }}
                   >
@@ -357,6 +361,7 @@ const ContactSection: React.FC = () => {
                     )}
                   </button>
                   
+                  {/* 📝 עריכה: לשינוי קישור הרכישה ערכו את הURL בשורה הבאה */}
                   <a
                     href="https://nataraj.co.il/mitzukei-retreat"
                     target="_blank"
@@ -371,14 +376,14 @@ const ContactSection: React.FC = () => {
                       flex items-center justify-center gap-2 text-center
                     "
                     style={{
-                      backgroundColor: '#56ACBF',
+                      backgroundColor: '#4A9EB3',
                       color: 'white'
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#4A9AAB';
+                      e.currentTarget.style.backgroundColor = '#398EA0';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = '#56ACBF';
+                      e.currentTarget.style.backgroundColor = '#4A9EB3';
                     }}
                   >
                     <i className="fas fa-calendar-check"></i>
@@ -401,14 +406,14 @@ const ContactSection: React.FC = () => {
                       transition-all duration-300 ease-out
                     "
                     style={{
-                      backgroundColor: '#56ACBF',
+                      backgroundColor: '#4A9EB3',
                       color: 'white'
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#4A9AAB';
+                      e.currentTarget.style.backgroundColor = '#398EA0';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = '#56ACBF';
+                      e.currentTarget.style.backgroundColor = '#4A9EB3';
                     }}
                   >
                     <i className="fas fa-phone"></i>
@@ -429,31 +434,47 @@ const ContactSection: React.FC = () => {
 
             </div>
           </div>
-        </Container>
-      </section>
 
-      {/* Quote Section - Outside of Contact עם תמונת רקע */}
-      <section className="py-16 bg-gradient-to-b from-green-500/20 to-cream">
-        <Container>
-          <div 
-            className="max-w-4xl mx-auto relative rounded-3xl p-12 md:p-16 overflow-hidden"
-            style={{
-              backgroundImage: 'url(/images/gallery/20.jpg)', // Using different gallery image
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              minHeight: '300px'
-            }}
-          >
-            {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-black/40"></div>
-            
-            {/* Quote text */}
-            <div className="relative z-10 text-center">
-              <blockquote className="text-2xl md:text-3xl lg:text-4xl font-light text-white italic leading-relaxed" style={{
-                textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
-              }}>
-                &ldquo;המסע הפנימי מתחיל ברגע שאנחנו מפסיקים לחכות לתנאים המושלמים&rdquo;
-              </blockquote>
+          {/* Footer מובנה בתוך הסקשן */}
+          <div className="mt-16 pt-8 border-t border-white/20">
+            <div className="max-w-4xl mx-auto">
+              
+              {/* ציטוט */}
+              <div className="text-center mb-8">
+                <blockquote className="text-lg md:text-xl font-light text-white italic leading-relaxed" style={{
+                  textShadow: '1px 1px 4px rgba(0,0,0,0.5)'
+                }}>
+                  &ldquo;המסע הפנימי מתחיל ברגע שאנחנו מפסיקים לחכות לתנאים המושלמים&rdquo;
+                </blockquote>
+              </div>
+
+              {/* פוטר עם לינקים */}
+              <div className="grid md:grid-cols-2 gap-8 text-center md:text-right text-white/90">
+                <div>
+                  <h4 className="font-semibold mb-3 text-white">Be Meditation</h4>
+                  <p className="text-sm leading-relaxed">
+                    ריטריטי מדיטציה וצמיחה אישית<br/>
+                    במקומות קסומים בטבע
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-3 text-white">יצירת קשר</h4>
+                  <div className="text-sm space-y-1">
+                    <div>איריס: 054-7882715</div>
+                    <div>
+                      <a href="https://wa.me/972547882715" className="hover:text-white transition-colors">
+                        WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* זכויות יוצרים */}
+              <div className="text-center mt-8 pt-6 border-t border-white/10 text-white/70 text-sm">
+                <p>&copy; 2024 Be Meditation. כל הזכויות שמורות.</p>
+              </div>
+
             </div>
           </div>
         </Container>

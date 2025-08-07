@@ -23,7 +23,7 @@ const Header: React.FC = () => {
   // Updated navigation items according to requirements
   const navigationItems = [
     { href: '#hero', label: 'ראשי' },
-    { href: '#about', label: 'על הרטריט' },
+    { href: '#about', label: 'על הריטריט' },
     { href: '#gallery', label: 'גלריה' },
     { href: '#program', label: 'תוכנית' },
     { href: '#location', label: 'על המקום' },

@@ -30,8 +30,8 @@
   --background: var(--cream);
   --foreground: var(--text-primary);
   
-  /* Design system spacing */
-  --section-spacing: 6rem;
+  /* Design system spacing - צמצום מרווחים כמו באתר אפרוז */
+  --section-spacing: 3rem; /* מצומצם מ-6rem ל-3rem */
   --container-padding: 1rem;
   --max-width: 1200px;
 }
@@ -92,29 +92,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography Styles - updated to use brown instead of blue */
+/* Typography Styles - updated to use teal/blue like Afroz */
 h1, h2, h3, h4 {
-  color: var(--desert-brown); /* Changed from blue to golden brown */
+  color: #4A9EB3; /* כותרות בצבע תכלת אחיד */
   text-align: center;
   margin-bottom: 1rem;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  font-weight: 600; /* משקל כבד יותר לכותרות */
 }
 
 h1 {
   font-size: 2.5rem;
+  font-weight: 700; /* כבד יותר לכותרת הראשית */
 }
 
 h2 {
   font-size: 2.2rem;
+  font-weight: 600; /* משקל בינוני לכותרות משניות */
 }
 
 h3 {
   font-size: 1.8rem;
+  font-weight: 600;
 }
 
 h4 {
   font-size: 1.5rem;
+  font-weight: 600;
 }
 
 p {
@@ -124,6 +129,7 @@ p {
   word-wrap: break-word;
   overflow-wrap: break-word;
   font-size: 1.4rem;
+  font-weight: 300; /* משקל קל לפסקאות */
 }
 
 a {

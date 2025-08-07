@@ -26,11 +26,11 @@ export default function Home() {
       {/* Program Section - תוכנית הסופ"ש */}
       <ProgramSection />
 
+      {/* Location Section - על המקום - מיקום מחדש אחרי התוכנית */}
+      <LocationSection />
+
       {/* Instructors Section - צוות המנחים */}
       <InstructorsSection />
-
-      {/* Location Section - על המקום */}
-      <LocationSection />
 
       {/* Pricing Section - מחירים ואפשרויות לינה */}
       <PricingSection />

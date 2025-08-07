@@ -22,12 +22,12 @@ const HeroSection: React.FC = () => {
     >
       {/* Background Image - תמונת רקע בהירה יותר */}
       <div className="absolute inset-0 w-full h-full">
-        {/* Background image - using brighter, less desert-like image */}
+        {/* Background image - מעגל מדיטציה במדבר עם ים המלח */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(/images/about1.jpg)', // Changed to a brighter image
-            filter: 'brightness(1.1) contrast(1.1)' // Slightly less bright for better text readability
+            backgroundImage: 'url(/images/gallery/25.jpg)', // מעגל מדיטציה במדבר - תמונה עם ים המלח
+            filter: 'brightness(1.0) contrast(1.1)' // מותאם לתמונה החדשה
           }}
         />
         
@@ -71,7 +71,7 @@ const HeroSection: React.FC = () => {
             טבע עוצר נשימה ואנשים טובים, במקום קסום במדבר יהודה.
           </p>
 
-          {/* Single CTA Button - כפתור יחיד בסגנון אפרוז */}
+          {/* Single CTA Button - כפתור שקוף בסגנון אפרוז */}
           <div className="flex justify-center items-center animate-fade-in-up animate-delay-600">
             <button
               onClick={() => {
@@ -86,26 +86,18 @@ const HeroSection: React.FC = () => {
                 transform hover:scale-105 hover:-translate-y-2
                 transition-all duration-300 ease-out
                 min-w-[320px]
-                backdrop-blur-sm
-                border-2 border-white/20 hover:border-white/30
+                backdrop-blur-md
+                border-2 border-white/30 hover:border-white/50
                 relative overflow-hidden
                 active:scale-100 active:translate-y-0
                 font-sans
                 group
+                bg-white/10 hover:bg-white/20
               "
-              style={{
-                backgroundColor: '#56ACBF',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#4A9AAB';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#56ACBF';
-              }}
               aria-label="הצטרפו לריטריט - פרטים נוספים"
             >
               {/* Button shimmer effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:animate-pulse" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:animate-pulse" />
               
               <span className="relative z-10 flex items-center justify-center gap-2">
                 אני רוצה להצטרף לריטריט
