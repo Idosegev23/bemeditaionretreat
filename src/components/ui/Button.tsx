@@ -19,32 +19,32 @@ const Button: React.FC<ButtonProps> = ({
   const hasCustomRounding = className.includes('rounded');
   const baseStyles = `
     inline-flex items-center justify-center
-    font-medium ${!hasCustomRounding ? 'rounded-md' : ''} border transition-all duration-200
-    focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2
+    font-medium ${!hasCustomRounding ? 'rounded-full' : ''} border transition-all duration-200 btn-text-outline
+    focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2
     disabled:opacity-50 disabled:cursor-not-allowed
     ${className}
   `;
 
-  // Updated variant styles with new color scheme
+  // Updated variant styles with Afroz color scheme (teal background, orange text)
   const variantStyles = {
     primary: `
-      bg-orange-500 text-warm-white border-orange-500
-      hover:bg-orange-600 hover:shadow-md
+      bg-teal-500 text-orange-500 border-teal-500
+      hover:bg-teal-600 hover:shadow-md
       active:transform active:scale-95
     `,
     secondary: `
-      bg-light-brown text-text-primary border-light-brown
-      hover:bg-orange-500 hover:text-warm-white hover:shadow-md
+      bg-teal-500/10 text-orange-500 border-teal-500
+      hover:bg-teal-500/20 hover:shadow-md
       active:transform active:scale-95
     `,
     outline: `
-      bg-transparent text-orange-500 border-orange-500
-      hover:bg-orange-500 hover:text-warm-white hover:shadow-md
+      bg-transparent text-orange-500 border-teal-500
+      hover:bg-teal-500 hover:text-orange-500 hover:shadow-md
       active:transform active:scale-95
     `,
-    // New variant for Afroz-style buttons with transparency
+    // Afroz-style button with slight transparency
     afroz: `
-      bg-orange-500 bg-opacity-90 text-warm-white border-orange-500
+      bg-teal-500 bg-opacity-90 text-orange-500 border-teal-500
       hover:bg-opacity-100 hover:shadow-lg hover:transform hover:scale-105
       active:transform active:scale-95
       backdrop-blur-sm

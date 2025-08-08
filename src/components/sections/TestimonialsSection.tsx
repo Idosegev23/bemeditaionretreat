@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Container } from '@/components/ui';
+import Button from '@/components/ui/Button';
 
 /**
  * Testimonials Section - המלצות מהמשתתפים
@@ -54,7 +55,7 @@ const TestimonialsSection: React.FC = () => {
 
   return (
     <section 
-      className="py-20 md:py-32 bg-cream"
+      className="py-12 md:py-20 bg-cream"
       id="testimonials"
     >
       <Container>
@@ -77,14 +78,12 @@ const TestimonialsSection: React.FC = () => {
                 minHeight: '300px'
               }}
             >
-              {/* Dark overlay for text readability */}
-              <div className="absolute inset-0 bg-black/40"></div>
+              {/* Light white overlay for readability (Afroz style) */}
+              <div className="absolute inset-0 bg-white/40"></div>
               
               {/* Quote text */}
               <div className="relative z-10 text-center">
-                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-light text-white italic leading-relaxed" style={{
-                  textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
-                }}>
+                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-semibold text-text-primary italic leading-relaxed">
                   &ldquo;התחברות עמוקה לעצמי ולאחרים שינתה את החיים שלי&rdquo;
                 </blockquote>
               </div>
@@ -118,32 +117,9 @@ const TestimonialsSection: React.FC = () => {
 
           {/* כפתור קריאה לפעולה */}
           <div className="text-center">
-            <button
-              onClick={() => {
-                const element = document.querySelector('#contact');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="
-                text-white font-bold 
-                px-12 py-4 text-lg
-                rounded-full
-                shadow-lg hover:shadow-xl
-                transform hover:scale-105 hover:-translate-y-1
-                transition-all duration-300 ease-out
-              "
-              style={{
-                backgroundColor: '#56ACBF',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#4A9AAB';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#56ACBF';
-              }}
-              aria-label="מעבר לפרטים והרשמה"
-            >
+            <Button variant="primary" size="lg" href="#contact" aria-label="מעבר לפרטים והרשמה">
               בואו להיות איתנו
-            </button>
+            </Button>
           </div>
 
         </div>

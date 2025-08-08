@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Container } from '@/components/ui';
+import Button from '@/components/ui/Button';
 
 /**
  * Pricing Section - מחירים והרשמה בסגנון אפרוז
@@ -72,7 +73,7 @@ const PricingSection: React.FC = () => {
 
   return (
     <section 
-      className="py-20 md:py-32 bg-cream"
+      className="py-12 md:py-20 bg-cream"
       id="pricing"
     >
       <Container>
@@ -100,14 +101,12 @@ const PricingSection: React.FC = () => {
                 minHeight: '300px'
               }}
             >
-              {/* Dark overlay for text readability */}
-              <div className="absolute inset-0 bg-black/40"></div>
+              {/* White overlay for readability (Afroz style) */}
+              <div className="absolute inset-0 bg-white/45"></div>
               
               {/* Quote text */}
               <div className="relative z-10 text-center">
-                <div className="text-2xl md:text-3xl lg:text-4xl font-light text-white italic leading-relaxed" style={{
-                  textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
-                }}>
+                <div className="text-2xl md:text-3xl lg:text-4xl font-semibold text-text-primary italic leading-relaxed">
                   &ldquo;מקום לנוח הוא מקום להתחדש&rdquo;
                 </div>
               </div>
@@ -206,32 +205,17 @@ const PricingSection: React.FC = () => {
                         </ul>
                     
                     <div className="text-center">
-                      <a
+                      <Button
                         href={option.bookingUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="
-                          w-full text-white font-semibold 
-                          px-4 py-2 text-sm
-                          rounded-lg
-                          shadow-sm hover:shadow-md
-                          transform hover:scale-105
-                          transition-all duration-300
-                          bg-orange-500 hover:bg-orange-600
-                        "
-                        style={{
-                          backgroundColor: '#56ACBF',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = '#4A9AAB';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = '#56ACBF';
-                        }}
+                        variant="primary"
+                        size="md"
+                        className="w-full"
                         aria-label={`הזמנת ${option.title}`}
                       >
                         הזמן עכשיו
-                      </a>
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -466,32 +450,9 @@ const PricingSection: React.FC = () => {
                 נשמח לעזור ולמצוא את האפשרות המושלמת עבורכם
               </p>
               
-              <button
-                onClick={() => {
-                  const element = document.querySelector('#contact');
-                  element?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="
-                  text-white font-bold 
-                  px-12 py-4 text-lg
-                  rounded-full
-                  shadow-lg hover:shadow-xl
-                  transform hover:scale-105 hover:-translate-y-1
-                  transition-all duration-300 ease-out
-                "
-                style={{
-                  backgroundColor: '#56ACBF',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#4A9AAB';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#56ACBF';
-                }}
-                aria-label="יצירת קשר לשאלות"
-              >
+              <Button variant="primary" size="lg" href="#contact" aria-label="יצירת קשר לשאלות">
                 בואו נדבר
-              </button>
+              </Button>
             </div>
           </div>
 

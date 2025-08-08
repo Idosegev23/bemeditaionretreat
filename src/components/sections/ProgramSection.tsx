@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Container } from '@/components/ui';
+import Button from '@/components/ui/Button';
 
 /**
  * Program Section - תוכנית הסופ"ש בסגנון אפרוז
@@ -96,161 +97,114 @@ const ProgramSection: React.FC = () => {
   ];
 
   const TimeSlot = ({ time, title, description }: { time: string; title: string; description: string }) => (
-    <div className="flex items-start space-x-4 rtl:space-x-reverse p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-      <div className="flex-shrink-0">
-        <div 
-          className="text-white px-3 py-2 rounded-lg font-semibold text-sm"
-          style={{ backgroundColor: '#4A9EB3' }}
+    <li className="flex items-start gap-3 p-3 rounded-lg bg-white/70 border border-sand/40">
+      <div className="mt-1 text-desert-brown text-sm font-semibold flex-shrink-0 min-w-[56px] text-right">{time}</div>
+      <div className="flex-1">
+        <div className="text-base md:text-lg font-semibold text-text-primary mb-1 text-right">{title}</div>
+        <p className="text-sm md:text-base text-text-secondary leading-relaxed text-right">{description}</p>
+      </div>
+    </li>
+  );
+
+  const AccordionItem: React.FC<{
+    id: string;
+    title: string;
+    subtitle?: string;
+    schedule: typeof fridaySchedule;
+    isOpen: boolean;
+    onToggle: () => void;
+  }> = ({ id, title, subtitle, schedule, isOpen, onToggle }) => {
+    const headerId = `${id}-header`;
+    const panelId = `${id}-panel`;
+    return (
+      <div className="border border-sand/50 rounded-xl overflow-hidden bg-white/80">
+        <button
+          id={headerId}
+          type="button"
+          className="w-full flex items-center justify-between px-4 py-3 md:px-6 md:py-4 text-right transition-colors duration-300 hover:bg-sand/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-desert-brown/60"
+          aria-expanded={isOpen}
+          aria-controls={panelId}
+          onClick={onToggle}
         >
-          {time}
+          <div className="flex-1">
+            <h3 className="text-lg md:text-xl font-semibold text-text-primary">{title}</h3>
+            {subtitle && <p className="text-sm text-text-secondary mt-1">{subtitle}</p>}
+          </div>
+          <span className={`text-2xl select-none transition-transform duration-300 ${isOpen ? 'rotate-0' : 'rotate-0'}`} aria-hidden>
+            {isOpen ? '–' : '+'}
+          </span>
+        </button>
+        <div
+          id={panelId}
+          role="region"
+          aria-labelledby={headerId}
+          className={`overflow-hidden transition-all duration-500 ease-out ${isOpen ? 'max-h-[1000px]' : 'max-h-0'}`}
+        >
+          <div className={`px-4 pb-4 md:px-6 md:pb-6 transform transition-all duration-500 ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'}`}>
+            <ul className="space-y-3">
+              {schedule.map((slot, idx) => (
+                <TimeSlot key={idx} {...slot} />
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
-      <div className="flex-1">
-        <h4 className="text-lg font-semibold text-text-primary mb-2">
-          {title}
-        </h4>
-        <p className="text-text-secondary leading-relaxed">
-          {description}
-        </p>
-      </div>
-    </div>
-  );
+    );
+  };
+
+  const [openId, setOpenId] = React.useState<'friday' | 'saturday' | null>('friday');
 
   return (
     <section 
-      className="py-20 md:py-32 bg-cream"
+      className="py-12 md:py-20 bg-cream"
       id="program"
     >
       <Container>
         {/* Main white container wrapping everything like in About */}
         <div className="max-w-6xl mx-auto bg-white/90 rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg">
           
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading text-desert-brown mb-6">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading text-desert-brown mb-3">
               תוכנית הסופ&quot;ש
             </h2>
-            <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
-              שני ימים, שני מרחבים, חוויה אחת שלמה במדבר - 
-              <br className="hidden sm:block" />
-              יומיים של נוכחות, תנועה ושקט פנימי
+            <p className="text-base md:text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
+              שני ימים של נוכחות, תנועה ושקט פנימי – מתוכננים בפשטות ובהירות.
             </p>
           </div>
 
-          {/* Quote banner with background image */}
-          <div className="mb-16">
-            <div 
-              className="relative rounded-3xl p-12 md:p-16 overflow-hidden"
-              style={{
-                backgroundImage: 'url(/images/gallery/10.jpg)', // Using a gallery image
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                minHeight: '300px'
-              }}
-            >
-              {/* Dark overlay for text readability */}
-              <div className="absolute inset-0 bg-black/40"></div>
-              
-              {/* Quote text */}
-              <div className="relative z-10 text-center">
-                <div className="text-2xl md:text-3xl lg:text-4xl font-light text-white italic leading-relaxed" style={{
-                  textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
-                }}>
-                  &ldquo;הזמן הוא המתנה היקרה ביותר שאנחנו יכולים לתת לעצמנו&rdquo;
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* הוסר באנר הציטוט לטובת פשטות */}
 
           {/* יום שישי */}
-          <div className="mb-16">
-            <div className="bg-gradient-to-r from-sand/30 via-light-brown/20 to-sand/30 rounded-xl p-8 mb-8">
-              <h3 className="text-2xl md:text-3xl font-heading text-desert-brown mb-4 text-center">
-                יום שישי, 26 בספטמבר
-              </h3>
-              <p className="text-lg text-text-secondary text-center">
-                יום פתיחה - התחברות למקום ולקבוצה
-              </p>
-            </div>
-            <div className="space-y-4">
-              {fridaySchedule.map((item, index) => (
-                <TimeSlot key={index} {...item} />
-              ))}
-            </div>
+          <div className="mb-6">
+            <AccordionItem
+              id="friday"
+              title="יום שישי, 26 בספטמבר"
+              subtitle="יום פתיחה – התחברות למקום ולקבוצה"
+              schedule={fridaySchedule}
+              isOpen={openId === 'friday'}
+              onToggle={() => setOpenId(openId === 'friday' ? null : 'friday')}
+            />
           </div>
 
           {/* יום שבת */}
-          <div className="mb-16">
-            <div className="bg-gradient-to-r from-sand/30 via-light-brown/20 to-sand/30 rounded-xl p-8 mb-8">
-              <h3 className="text-2xl md:text-3xl font-heading text-desert-brown mb-4 text-center">
-                יום שבת, 27 בספטמבר
-              </h3>
-              <p className="text-lg text-text-secondary text-center">
-                יום העמקה - מדיטציות, כתיבה ואינטגרציה
-              </p>
-            </div>
-            
-            <div className="space-y-4">
-              {saturdaySchedule.map((item, index) => (
-                <TimeSlot key={index} {...item} />
-              ))}
-            </div>
+          <div className="mb-8">
+            <AccordionItem
+              id="saturday"
+              title="יום שבת, 27 בספטמבר"
+              subtitle="יום העמקה – מדיטציות, כתיבה ואינטגרציה"
+              schedule={saturdaySchedule}
+              isOpen={openId === 'saturday'}
+              onToggle={() => setOpenId(openId === 'saturday' ? null : 'saturday')}
+            />
           </div>
 
-          {/* הערות חשובות */}
-          <div className="bg-white rounded-xl p-8 mb-12 shadow-sm">
-            <h4 className="text-xl font-semibold text-desert-brown mb-4 text-center">
-              הערות חשובות
-            </h4>
-            <div className="grid md:grid-cols-2 gap-6 text-text-secondary">
-              <div>
-                <h5 className="font-semibold text-text-primary mb-2">מה כלול</h5>
-                <ul className="space-y-1 text-sm">
-                  <li>• כל הפעילויות והמדיטציות</li>
-                  <li>• הנחיה מקצועית לאורך כל הסופ&quot;ש</li>
-                  <li>• חומרי תרגול</li>
-                  <li>• מרחב תמיכה קבוצתי</li>
-                </ul>
-              </div>
-              <div>
-                <h5 className="font-semibold text-text-primary mb-2">מה לא כלול</h5>
-                <ul className="space-y-1 text-sm">
-                  <li>• לינה (נרשם בנפרד)</li>
-                  <li>• ארוחות (מתארגנים יחד)</li>
-                  <li>• הגעה למקום</li>
-                  <li>• ביטוח אישי</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          {/* הוסר: "מה כלול/לא כלול" – יועבר לסקשן הכרטיסים/מחירים */}
 
           {/* קריאה לפעולה */}
           <div className="text-center">
-            <button
-              onClick={() => {
-                const element = document.querySelector('#contact');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="
-                text-white font-bold 
-                px-12 py-4 text-lg
-                rounded-full
-                shadow-lg hover:shadow-xl
-                transform hover:scale-105 hover:-translate-y-1
-                transition-all duration-300 ease-out
-              "
-              style={{
-                backgroundColor: '#4A9EB3',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#398EA0';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#4A9EB3';
-              }}
-              aria-label="הרשמה לריטריט"
-            >
-              הרשמה לריטריט 
-            </button>
+            <Button variant="primary" size="lg" href="#contact" aria-label="הרשמה לריטריט">
+              הרשמה לריטריט
+            </Button>
           </div>
 
         </div>

@@ -5,6 +5,8 @@ export interface ButtonProps {
   className?: string;
   onClick?: () => void;
   href?: string;
+  target?: string;
+  rel?: string;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   'aria-label'?: string;

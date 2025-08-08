@@ -109,14 +109,40 @@ const galleryImages = [
 ];
 
 const GallerySection: React.FC = () => {
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [isPaused, setIsPaused] = React.useState(false);
+  const resumeTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Autoplay every 3s. To change speed, edit intervalMs.
+  React.useEffect(() => {
+    if (isPaused) return;
+    const intervalMs = 3000; // 3 seconds per image
+    const id = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % galleryImages.length);
+    }, intervalMs);
+    return () => clearInterval(id);
+  }, [isPaused]);
+
+  const handleManualSelect = (index: number) => {
+    setActiveIndex(index);
+    setIsPaused(true);
+    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+    // Resume autoplay after 8s from manual interaction
+    resumeTimeoutRef.current = setTimeout(() => setIsPaused(false), 8000);
+  };
+
   return (
     <section 
-      className="py-20 md:py-32 bg-cream"
+      className="py-12 md:py-20 bg-cream"
       id="gallery"
     >
       <Container>
         {/* Main white container wrapping everything like in About */}
-        <div className="max-w-6xl mx-auto bg-white/90 rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg">
+        <div 
+          className="max-w-6xl mx-auto bg-white/90 rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           
           {/* כותרת ללא תיאור מורכב */}
           <div className="text-center mb-12">
@@ -125,35 +151,59 @@ const GallerySection: React.FC = () => {
             </h2>
           </div>
 
-          {/* Grid תמונות מרובעות בסגנון אפרוז - ללא כותרות */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {galleryImages.map((image) => (
-              <div
-                key={image.id}
-                className="relative aspect-square overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 group cursor-pointer"
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-110"
-                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                />
-                {/* Overlay עדין על hover */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-              </div>
+          {/* Main image */}
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg mb-6">
+            <Image
+              src={galleryImages[activeIndex].src}
+              alt={galleryImages[activeIndex].alt}
+              fill
+              priority
+              className="object-cover m-0 rounded-none"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+            />
+          </div>
+
+          {/* Hidden radio inputs like Afroz (selectors).
+              לשינוי/הרחבה של התמונות, עדכנו את המערך galleryImages למעלה.
+              בדפדופים באמצעות מקלדת: חיצים ימינה/שמאלה יבחרו קלטים בקבוצת radio */}
+          <div className="sr-only" aria-hidden="true">
+            {galleryImages.map((image, index) => (
+              <input
+                key={`input-${image.id}`}
+                type="radio"
+                id={`gallery-${index}`}
+                name="gallery"
+                className="gallery__selector"
+                checked={index === activeIndex}
+                onChange={() => handleManualSelect(index)}
+              />
             ))}
           </div>
 
-          {/* 📝 הוראות עריכה - להוספת תמונות חדשות */}
-          <div className="mt-8 text-center">
-            <div className="text-text-secondary text-sm bg-gray-50 rounded-lg p-4 border-l-4 border-blue-400">
-              <strong>📝 הוראות עריכה:</strong> להוספת תמונות חדשות:
-              <br />1. העלו קבצים לתיקייה <code className="bg-gray-200 px-2 py-1 rounded mx-1">/public/images/gallery/</code>
-              <br />2. עדכנו את רשימת <code className="bg-gray-200 px-2 py-1 rounded mx-1">galleryImages</code> 
-              בשורות 18-109 בקובץ <code className="bg-gray-200 px-2 py-1 rounded mx-1">GallerySection.tsx</code>
-              <br />3. הוסיפו אלמנט חדש עם id, src, alt ו-description
-            </div>
+          {/* Thumbnails - labels for the hidden radio inputs */}
+          <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-8 gap-3" role="radiogroup" aria-label="גלריית תמונות - בחרו תמונה">
+            {galleryImages.map((image, index) => {
+              const isActive = index === activeIndex;
+              return (
+                <label
+                  key={`label-${image.id}`}
+                  htmlFor={`gallery-${index}`}
+                  onClick={() => handleManualSelect(index)}
+                  role="radio"
+                  aria-checked={isActive}
+                  className="relative block w-full aspect-[4/3] rounded-lg overflow-hidden cursor-pointer"
+                  aria-label={`צפייה בתמונה ${index + 1}`}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover m-0 rounded-none"
+                    sizes="240px"
+                  />
+                </label>
+              );
+            })}
           </div>
 
         </div>

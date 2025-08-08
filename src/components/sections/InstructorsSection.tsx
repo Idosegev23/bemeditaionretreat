@@ -78,7 +78,7 @@ const InstructorsSection: React.FC = () => {
 
   return (
     <section 
-      className="py-24 md:py-32 bg-warm-white relative overflow-hidden"
+      className="py-16 md:py-24 bg-warm-white relative overflow-hidden"
       id="instructors"
     >
       

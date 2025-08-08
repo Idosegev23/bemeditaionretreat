@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Container } from '@/components/ui';
+import Button from '@/components/ui/Button';
 
 /**
  * About Section - על הרטריט (זהה לאפרוז)
@@ -53,9 +54,20 @@ const AboutSection: React.FC = () => {
     }
   ];
 
+  // Map each experience id to its background image in public/images/on-retreat
+  // To change a card's background image, update the path here. Files live under: public/images/on-retreat
+  const idToImage: Record<string, string> = {
+    meditation: '/images/on-retreat/meditaion.webp',
+    nature: '/images/on-retreat/nature.webp',
+    movement: '/images/on-retreat/music.webp',
+    writing: '/images/on-retreat/writing.webp',
+    community: '/images/on-retreat/comunity.webp',
+    silence: '/images/on-retreat/silent&space.webp',
+  };
+
   return (
     <section 
-      className="py-20 md:py-32 bg-cream text-center"
+      className="py-12 md:py-20 bg-cream text-center"
       id="about"
     >
       <Container>
@@ -91,14 +103,12 @@ const AboutSection: React.FC = () => {
                 minHeight: '300px'
               }}
             >
-              {/* Dark overlay for text readability */}
-              <div className="absolute inset-0 bg-black/40"></div>
+              {/* Overlay for text readability (Afroz style): slightly stronger white */}
+              <div className="absolute inset-0 bg-white/45"></div>
               
               {/* Quote text */}
               <div className="relative z-10 text-center">
-                <div className="text-2xl md:text-3xl lg:text-4xl font-light text-white italic leading-relaxed" style={{
-                  textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
-                }}>
+                <div className="text-2xl md:text-3xl lg:text-4xl font-light text-text-primary italic leading-relaxed">
                   &ldquo;החיים הם מסע, וכל רגע בו הוא הזדמנות להתעורר ולצמוח&rdquo;
                 </div>
               </div>
@@ -117,54 +127,45 @@ const AboutSection: React.FC = () => {
               {experienceItems.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-white/90 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="relative rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-cover bg-center overflow-hidden min-h-[240px]"
+                  style={{
+                    // Background image is controlled via the mapping above (idToImage)
+                    backgroundImage: `url(${idToImage[item.id]})`,
+                  }}
                 >
-                  {/* Icon at the top */}
-                  <div className="text-center mb-4">
-                    <div className="w-16 h-16 mx-auto bg-white rounded-full shadow-md flex items-center justify-center mb-4">
-                      <i className={`${item.icon} text-3xl`} style={{ color: '#4A9EB3' }}></i>
+                  {/* Overlay for text readability (Afroz style) */}
+                  <div className="absolute inset-0 bg-white/45" aria-hidden="true" />
+
+                  {/* Content */}
+                  <div className="relative z-10 text-white">
+                    {/* Icon at the top */}
+                    <div className="text-center mb-4">
+                      <div className="w-16 h-16 mx-auto bg-white/90 rounded-full shadow-md flex items-center justify-center mb-4">
+                        <i className={`${item.icon} text-3xl`} style={{ color: '#4A9EB3' }}></i>
+                      </div>
                     </div>
+
+                    {/* NOTE: Using ! to override global h1..h4 color in globals.css
+                        Subtle text border via textShadow. Tweak rgba alpha (0.15-0.35) for strength. */}
+                    <h4 className="text-xl font-bold !text-white mb-4 pb-2 border-b-2 border-white/50 text-center" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.25)' }}>
+                      {item.title}
+                    </h4>
+                    {/* NOTE: Using ! to override global p color/weight in globals.css
+                        Subtle text border via textShadow. Tweak alpha as needed. */}
+                    <p className="leading-relaxed text-center !text-white/90 !font-medium" style={{ textShadow: '0 1px 1px rgba(0,0,0,0.2)' }}>
+                      {item.description}
+                    </p>
                   </div>
-                  
-                  <h4 className="text-xl font-semibold mb-4 pb-2 border-b-2 border-gray-100 text-center" style={{ color: '#4A9EB3' }}>
-                    {item.title}
-                  </h4>
-                  <p className="text-text-secondary leading-relaxed text-center">
-                    {item.description}
-                  </p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Button unified */}
           <div className="text-center">
-            <button
-              onClick={() => {
-                const element = document.querySelector('#contact');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="
-                text-white font-bold 
-                px-12 py-4 text-lg
-                rounded-full
-                shadow-lg hover:shadow-xl
-                transform hover:scale-105 hover:-translate-y-1
-                transition-all duration-300 ease-out
-              "
-              style={{
-                backgroundColor: '#4A9EB3',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#398EA0';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#4A9EB3';
-              }}
-              aria-label="מעבר לפרטים והרשמה"
-            >
+            <Button variant="primary" size="lg" href="#contact" aria-label="בואו להיות איתנו">
               בואו להיות איתנו
-            </button>
+            </Button>
           </div>
 
         </div>

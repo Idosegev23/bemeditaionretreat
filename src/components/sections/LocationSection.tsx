@@ -16,7 +16,7 @@ import { Container } from '@/components/ui';
 const LocationSection: React.FC = () => {
   return (
     <section 
-      className="py-20 md:py-28 bg-cream"
+      className="py-12 md:py-18 bg-cream"
       id="location"
     >
       <Container>
@@ -44,14 +44,12 @@ const LocationSection: React.FC = () => {
                 minHeight: '300px'
               }}
             >
-              {/* Dark overlay for text readability */}
-              <div className="absolute inset-0 bg-black/40"></div>
+              {/* White overlay for readability (Afroz style) */}
+              <div className="absolute inset-0 bg-white/45"></div>
               
               {/* Quote text */}
               <div className="relative z-10 text-center">
-                <div className="text-2xl md:text-3xl lg:text-4xl font-light text-white italic leading-relaxed" style={{
-                  textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
-                }}>
+                <div className="text-2xl md:text-3xl lg:text-4xl font-semibold text-text-primary italic leading-relaxed">
                   &ldquo;המדבר מדבר אל הנשמה בשפה ששקט וחכמה&rdquo;
                 </div>
               </div>

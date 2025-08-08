@@ -1,36 +1,336 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## אתר ריטריט "סופ״ש של נוכחות ושקט" – מדריך תחזוקה ידידותי (עברית)
 
-## Getting Started
+המדריך הזה נכתב במיוחד למי שאינו/ה טכני/ת. הוא מסביר בפשטות איך לעדכן טקסטים, תמונות, כפתורים, לוחות זמנים ועוד – צעד־אחר־צעד, עם דוגמאות והפניות לקבצים הרלוונטיים.
 
-First, run the development server:
+אם נתקעתם – אל דאגה. חפשו את שם הסקשן כאן במדריך, העתיקו בעדינות, ושמרו. הכל יחזור לאתר מיד (בפיתוח) או לאחר פריסה (בפרודקשן).
 
+---
+
+### איך מריצים את האתר מקומית (לבדיקה לפני העלאה)
+1. פתחו טרמינל בתיקיית הפרויקט.
+2. הפעילו שרת פיתוח:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+   ```
+3. היכנסו בדפדפן ל־`http://localhost:3000`.
+
+אם מופיעה שגיאה – העתקו את ההודעה ושלחו למפתחים.
+
+---
+
+### מבנה חשוב של הפרויקט (רק לדעת איפה הדברים)
+- תמונות: `public/images/...`
+- דפי האתר (סקשנים): `src/components/sections/`
+- עיצוב גלובלי וצבעים: `src/app/globals.css`
+- כפתורים לשימוש חוזר: `src/components/ui/Button.tsx`
+- כותרת/תפריט/פוטר: `src/components/layout/`
+
+---
+
+## עדכונים נפוצים – שלב אחר שלב
+
+### 1) שינוי תמונת הירו (התמונה הראשית למעלה)
+קובץ: `src/components/sections/HeroSection.tsx`
+
+חפשו שורה עם `backgroundImage`. לדוגמה:
+```tsx
+backgroundImage: 'url(/images/gallery/22.jpg)'
+```
+כדי להחליף תמונה – העלו את התמונה ל־`public/images/gallery/` והחליפו את המספר/שם הקובץ במסלול.
+
+טיפ: מומלץ תמונת JPG אופקית ביחס 3:2 או 4:3.
+
+---
+
+### 2) טקסטים ותוכן בכל סקשן
+כל סקשן הוא קובץ ב־`src/components/sections/` (למשל `AboutSection.tsx`, `ProgramSection.tsx`, `FAQSection.tsx` וכו׳).
+בדרך כלל תמצאו שם `<h2>`, `<h3>`, `<p>`, או מערכי נתונים (כמו רשימות שאלות/תשובות). ערכו את הטקסטים בין הסוגריים `{ ... }`.
+
+דוגמה (שינוי טקסט בכותרת):
+```tsx
+<h2>על הריטריט</h2>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3) כפתורים – איך מוסיפים/משנים
+הכפתורים באתר אמורים להיות זהים בכל מקום. משתמשים בקומפוננטה אחת: `Button`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+דוגמה לשימוש:
+```tsx
+import Button from '@/components/ui/Button';
 
-## Learn More
+<Button variant="primary" size="lg" href="#contact">
+  אני רוצה להצטרף
+</Button>
+```
 
-To learn more about Next.js, take a look at the following resources:
+- `variant` (סגנון): `primary` (ברירת מחדל, רקע תכלת, טקסט כתום), `outline`, `secondary`, `afroz`.
+- `size` (גודל): `sm`, `md`, `lg`.
+- `href`: קישור חיצוני (`https://...`) או פנימי (`#contact`).
+- טקסט עם גבול עדין: מובנה אוטומטית לכל הכפתורים (אל תשנו).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+שינוי צבעים כלל־מערכתי לכפתורים:
+קובץ: `src/components/ui/Button.tsx`
+שם משנים את מחלקות ה־Tailwind תחת `variantStyles`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+צבעי מותג (למשל תכלת/כתום) מוגדרים ב־`src/app/globals.css` כמשתנים:
+```css
+:root {
+  --teal-500: #56ACBF; /* תכלת ראשי */
+  --teal-600: #4A9AAB; /* תכלת ל-hover */
+  --orange-500: #D9A443; /* כתום מדברי לטקסט בכפתור */
+}
+```
 
-## Deploy on Vercel
+טיפ עיצוב: הטקסט בכפתור כולל קונטור עדין לשיפור הקריאות (מחלקה `.btn-text-outline`), ניתן לחזק/להחליש ב־`globals.css`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 3.1) כל אפשרויות הכפתורים (בבירור)
+קובץ: `src/components/ui/Button.tsx`
+
+אפשרויות:
+- `variant`:
+  - `primary` – רקע תכלת (`--teal-500`), טקסט כתום מדברי (`--orange-500`), hover תכלת כהה (`--teal-600`).
+  - `secondary` – רקע תכלת שקוף קל, טקסט כתום, גבול תכלת.
+  - `outline` – רקע שקוף, טקסט כתום, גבול תכלת, hover מתכלת עם טקסט כתום.
+  - `afroz` – primary עם שקיפות עדינה ו־backdrop blur.
+- `size`: `sm` (קטן), `md` (רגיל), `lg` (גדול).
+- `href`: קישור פנימי (למשל `#contact`) או חיצוני (`https://...`).
+- `target`/`rel`: ללינקים חיצוניים מומלץ `target="_blank" rel="noopener noreferrer"`.
+- `onClick`: פעולה בלחיצה (למשל פתיחת מודל).
+- `disabled`: מבטל לחיצה ומופיע במצב כבוי.
+
+דוגמה מלאה:
+```tsx
+<Button
+  variant="outline"
+  size="md"
+  href="https://example.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="מעבר לאתר חיצוני"
+>
+  מעבר לאתר
+</Button>
+```
+
+---
+
+### 4) מרווחים בין סקשנים
+ברירת מחדל מצומצמת כברירת מחדל. לשינוי גלובלי: `src/app/globals.css` → משתנה:
+```css
+:root { --section-spacing: 3rem; }
+```
+הגדילו/הקטינו את המספר כדי לשנות מרחקים אנכיים כלליים.
+
+---
+
+### 5) "על הריטריט" – תמונות רקע לכרטיסים
+קובץ: `src/components/sections/AboutSection.tsx`
+
+בתחילת הקובץ יש מיפוי `idToImage` שמחבר כל כרטיס לתמונת רקע:
+```tsx
+const idToImage: Record<string, string> = {
+  meditation: '/images/on-retreat/meditaion.webp',
+  nature: '/images/on-retreat/nature.webp',
+  // ...
+};
+```
+כדי להחליף תמונה – שנו את הנתיב כאן. מומלץ לשמור את התמונות ב־`public/images/on-retreat/`.
+
+שקיפות/בהירות הטקסט מעל תמונה: יש שכבת Overlay לבנה עדינה (`bg-white/45`). רוצים חזק/חלש יותר? החליפו ל־`bg-white/30` או `bg-white/60`.
+
+---
+
+### 6) גלריה – הוספת תמונות, אוטופליי, הפסקה בהובר
+קובץ: `src/components/sections/GallerySection.tsx`
+
+הוספה/הסרה של תמונות: ערכו את המערך `galleryImages` בראש הקובץ:
+```tsx
+const galleryImages = [
+  { id: 1, src: '/images/gallery/1.jpg', alt: 'תיאור', description: '...' },
+  // הוסיפו/מחקו לפי הצורך
+];
+```
+טיימר אוטומטי: כברירת מחדל תמונה מתחלפת כל 3 שניות. לשינוי המהירות, עדכנו:
+```tsx
+const intervalMs = 3000; // 3000 מ"ש = 3 שניות
+```
+הפסקה בהובר/בחירה ידנית: מובנה. בלחיצה על תמונה ממוזערת – האוטופליי נעצר ל־8 שניות.
+
+יחס תמונה: מוצג כ־4:3 כדי למלא את המסגרת בלי רווחים לבנים.
+
+אפשרויות נוספות בגלריה:
+- עצירת אוטופליי זמנית בלחיצה על תמונה ממוזערת – קורה אוטומטית ל־8 שניות. כדי לשנות: בקובץ לשנות את `8000` למספר אחר.
+- שינוי יחס תמונה: החליפו את המחלקה `aspect-[4/3]` למשהו אחר (למשל `aspect-video`).
+- סדר התמונות: לפי סדר המערך `galleryImages`.
+
+---
+
+### 7) התוכנית (אקורדיון) – עריכת הזמנים והפעילויות
+קובץ: `src/components/sections/ProgramSection.tsx`
+
+יש שני מערכים לעריכה:
+```tsx
+const fridaySchedule = [{ time: '16:00', title: '...', description: '...' }, ...]
+const saturdaySchedule = [{ time: '07:00', title: '...', description: '...' }, ...]
+```
+פשוט הוסיפו/מחקו/ערכו פריטים. הכותרות של הימים נמצאות מעט למטה בסקשן.
+
+אפשרויות מתקדמות:
+- ברירת מחדל – איזה יום פתוח: למעלה בקומפוננטה, לשנות:
+  ```tsx
+  const [openId, setOpenId] = React.useState<'friday' | 'saturday' | null>('friday');
+  ```
+- אנימציית פתיחה/סגירה: מבוסס על `max-height` ו־`opacity`. ניתן להאיץ/להאט ע"י שינוי `duration-500` למחלקה אחרת (למשל `duration-300`).
+- הוספת יום שלישי: צרו מערך שלישי `const sundaySchedule = [...]` והוסיפו `<AccordionItem ... schedule={sundaySchedule} />`.
+
+---
+
+### 8) שאלות נפוצות (FAQ)
+קובץ: `src/components/sections/FAQSection.tsx`
+
+עריכת שאלות/תשובות:
+```tsx
+const faqData = [
+  { id: 1, question: 'מה כולל ...?', answer: '...' },
+  // הוספה/מחיקה בהתאם
+];
+```
+כפתור יצירת קשר בתחתית כבר אחיד (כמו שאר האתר). אין צורך לשנות.
+
+אפשרויות מתקדמות:
+- לשינוי צבע הפלוס/מינוס: בקובץ, חפשו `style={{ color: '#56ACBF' }}` והחליפו.
+- לפתוח פריט ברירת מחדל: הגדירו מצב `openItem` לערך מזהה קיים (למשל `1`).
+
+---
+
+### 9) לינה ומחירים – כרטיסים וכפתורי הזמנה
+קובץ: `src/components/sections/PricingSection.tsx`
+
+עריכת חבילות לינה (כותרות, מחירים, תיאור, תמונה, קישור הזמנה):
+```tsx
+const accommodationOptions = [
+  {
+    id: 1,
+    title: 'חדר זוגי',
+    price: '₪350',
+    image: '/images/accommodation/room.webp',
+    bookingUrl: 'https://...'
+  },
+  // ...
+];
+```
+
+---
+
+### 10) יצירת קשר – טופס, וואטסאפ ומס׳ טלפון
+קובץ: `src/components/sections/ContactSection.tsx`
+
+- שינוי מספר הטלפון/וואטסאפ (מופיע כמה פעמים בסקשן): חפשו `054-7882715` ו־`wa.me/972547882715` והחליפו.
+- שליחת טופס: הטופס שולח ל־Make.com דרך URL (Webhook). לשינוי היעד – החליפו את ה־URL בשורה עם `fetch('https://hook.eu2.make.com/....')`.
+- ולידציה: השמות/הטלפונים נבדקים בעדינות. אפשר לרכך/להחמיר לפי הצורך.
+
+כפתורים: כל הכפתורים כבר משתמשים ב־`Button` האחיד.
+
+אפשרויות מתקדמות בטופס:
+- שינוי כתובת ה־Webhook של Make: החליפו את ה־URL ב־`fetch('https://hook.eu2.make.com/....')`.
+- בדיקות (ולידציה): פונקציות `validateName`, `validatePhone`, `validateMessage` – אפשר לשנות חוקים/מסרים.
+- כפתור שליחה במצב כבוי: נשלט ע"י `disabled={isSubmitting || !isFormValid()}`. שינוי לוגיקה – בפונקציה `isFormValid`.
+- התאמה אישית של הודעות הצלחה/שגיאה: חפשו את הבלוקים עם `submitSuccess` ו־`submitError`.
+
+---
+
+### 11) פוטר – טקסטים, קישורים, צבעים וכפתורים
+קובץ: `src/components/layout/Footer.tsx`
+
+- שינוי טקסטים וכותרות – ישירות בקובץ.
+- קישורי רשתות – אינסטגרם/פייסבוק/וואטסאפ: עדכנו את ה־href.
+- שני כפתורים בתחתית: "לרכישה לחצו כאן" ו־"הצטרפו לקבוצת עדכונים" – מעודכנים עם `Button` האחיד.
+- קריאות טקסט: הפוטר משתמש במחלקה גלובלית `.footer-scope` כדי להבטיח צבע לבן וניגודיות. אם משהו לא קריא – ספרו לנו.
+
+אפשרויות מתקדמות:
+- כפתור "חזרה לראש הדף": נמצא בתחתית הקובץ. אפשר לשנות צבעי הרקע/טקסט ע"י `bg-teal-500`/`text-orange-500`.
+- שינוי קישורים מהירים: תחת "קישורים מהירים" יש כפתורי גלילה ל־#anchor. אפשר להסיר/להחליף.
+- אייקוני סושיאל: אפשר לשנות גדלים (`w-12 h-12`) וצבעי hover (`bg-white/25`).
+
+---
+
+### 12) "על המקום" – תמונת רקע וציטוט
+קובץ: `src/components/sections/LocationSection.tsx`
+
+- להחליף תמונת רקע לבאנר: חפשו `backgroundImage: 'url(/images/location/main-view.webp)'` והחליפו לקובץ אחר מתיקיית `public/images/location/`.
+- שכבת Overlay לבנה (`bg-white/45`) שומרת על טקסט קריא. אפשר להחליש/להעצים לפי הטעם.
+
+אפשרויות נוספות:
+- החלפת טקסט הציטוט: פשוט לשנות בין הסוגריים של הטקסט.
+- החלפת תמונת התוכן הימנית: מחליפים את `src="/images/location/main-view.webp"` לנתיב אחר בתיקיית `public/images/location/`.
+
+---
+
+## צבעים, פונטים ונגישות
+
+### צבעים (משתנים גלובליים)
+קובץ: `src/app/globals.css`
+
+```css
+:root {
+  --teal-500: #56ACBF; /* תכלת רקע לכפתורים וכותרות */
+  --teal-600: #4A9AAB; /* hover */
+  --orange-500: #D9A443; /* כתום מדברי לטקסט בכפתורים וקישורים */
+  --text-primary: #3E3E3E; /* טקסט רגיל */
+  --text-secondary: #6B6B6B; /* טקסט משני */
+}
+```
+החלפה כאן תשפיע על כל האתר.
+
+### פונטים
+משתמשים ב־Heebo לכל הטקסטים, ו־Sour Gummy לחלק מהכותרות הדקורטיביות. מוגדרים אוטומטית ב־`globals.css`.
+
+### נגישות ו־RTL
+- האתר בעברית וכולל תמיכה ב־RTL.
+- כל הכפתורים בעלי מצב פוקוס.
+- טקסט על תמונות מלווה בשכבת שקיפות לבנה לשמירת קריאות.
+
+בדיקות מומלצות:
+- ניגודיות: ודאו שטקסטים תמיד קריאים על גבי תמונות (Overlay לבן + טקסט כהה/לבן לפי הצורך).
+- ניווט מקלדת: עברו עם מקש Tab על הכפתורים והקישורים וראו שיש פוקוס ברור.
+- תיאורי תמונה (alt): לכל תמונה יש `alt` – כדאי לעדכן לתיאור משמעותי.
+
+---
+
+## טיפים לשמירה על עיצוב "אפרוז"
+- השתמשו בכפתור `Button` בכל מקום – זה מבטיח אחידות.
+- טקסט מעל תמונות? שמרו על Overlay לבן עדין (`bg-white/45`).
+- שמרו על מרווחים אווריריים אך קבועים (`--section-spacing`).
+- צבעי קישוט עדינים: אל תגזימו בצללים/מסגרות.
+
+דוגמאות מחלקות (Tailwind) מועילות:
+- Overlay לבן: `bg-white/45`
+- יחס תמונה: `aspect-[4/3]`, `object-cover`
+- ריווח אנכי: `py-12 md:py-20`
+- קונטיינר לבן מעוגל: `bg-white/90 rounded-3xl p-8 md:p-12 shadow-lg`
+
+---
+
+## שאלות נפוצות – תחזוקה
+- "למה תמונה לא נטענת?" – ודאו שהקובץ באמת קיים בתיקיית `public/images/...` ושהנתיב תואם בדיוק.
+- "שיניתי צבע אבל לא רואים?" – רעננו את הדפדפן. אם צריך, מחקו Cache.
+- "איך מבטלים אוטופליי בגלריה?" – ב־`GallerySection.tsx` אפשר להסיר/להעיר את ה־`setInterval`.
+
+---
+
+## פריסה (Deployment)
+האתר נבנה עם Next.js. אם אתם משתמשים ב־Vercel – פשוט דוחפים (Push) ל־GitHub, והאתר יתעדכן אוטומטית. אם לא – שאלו את המפתח/ת איך מעדכנים בשרת.
+
+פריסה ידנית (כללי מאוד):
+```bash
+npm run build
+npm run start
+```
+
+---
+
+בהצלחה! ואם משהו לא עובד או לא ברור – כתבו לנו הודעה, נשמח לעזור 🙏

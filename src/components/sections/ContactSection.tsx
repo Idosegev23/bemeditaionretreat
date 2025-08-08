@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Container } from '@/components/ui';
+import Button from '@/components/ui/Button';
 
 /**
  * Contact Section - יצירת קשר והרשמה בסגנון אפרוז
@@ -163,7 +164,7 @@ const ContactSection: React.FC = () => {
       {/* Contact Section with Footer - רקע מדורג חום לתכלת */}
       <section 
         id="contact"
-        className="py-20 md:py-32"
+        className="py-12 md:py-20"
         style={{
           background: 'linear-gradient(135deg, #E5D4B1 0%, #C7A882 30%, #4A9EB3 100%)'
         }}
@@ -320,33 +321,13 @@ const ContactSection: React.FC = () => {
 
                 {/* Two Action Buttons */}
                 <div className="grid md:grid-cols-2 gap-4 pt-4">
-                  <button
+                  <Button
                     type="submit"
                     disabled={isSubmitting || !isFormValid()}
-                    className="
-                      w-full font-bold
-                      py-3 px-6 text-lg
-                      rounded-full
-                      shadow-lg hover:shadow-xl
-                      transform hover:scale-105 hover:-translate-y-1
-                      transition-all duration-300 ease-out
-                      flex items-center justify-center gap-2
-                      disabled:bg-gray-300 disabled:transform-none disabled:shadow-none
-                    "
-                    style={{
-                      backgroundColor: isSubmitting || !isFormValid() ? '#D1D5DB' : '#4A9EB3',
-                      color: 'white'
-                    }}
-                    onMouseEnter={(e) => {
-                      if (!isSubmitting && isFormValid()) {
-                        e.currentTarget.style.backgroundColor = '#398EA0';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isSubmitting && isFormValid()) {
-                        e.currentTarget.style.backgroundColor = '#4A9EB3';
-                      }
-                    }}
+                    variant="primary"
+                    size="lg"
+                    className="w-full"
+                    aria-label="אשמח שתחזרו אליי לפרטים"
                   >
                     {isSubmitting ? (
                       <>
@@ -359,76 +340,36 @@ const ContactSection: React.FC = () => {
                         אשמח שתחזרו אליי לפרטים
                       </>
                     )}
-                  </button>
+                  </Button>
                   
                   {/* 📝 עריכה: לשינוי קישור הרכישה ערכו את הURL בשורה הבאה */}
-                  <a
+                  <Button
                     href="https://nataraj.co.il/mitzukei-retreat"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="
-                      w-full font-bold
-                      py-3 px-6 text-lg
-                      rounded-full
-                      shadow-lg hover:shadow-xl
-                      transform hover:scale-105 hover:-translate-y-1
-                      transition-all duration-300 ease-out
-                      flex items-center justify-center gap-2 text-center
-                    "
-                    style={{
-                      backgroundColor: '#4A9EB3',
-                      color: 'white'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#398EA0';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = '#4A9EB3';
-                    }}
+                    variant="primary"
+                    size="lg"
+                    className="w-full"
+                    aria-label="לרכישה לחצו כאן"
                   >
                     <i className="fas fa-calendar-check"></i>
                     לרכישה לחצו כאן
-                  </a>
+                  </Button>
                 </div>
               </form>
 
               {/* Direct Contact Options */}
               <div className="mt-8 pt-6 border-t border-sand/30">
                 <div className="flex flex-wrap justify-center gap-4">
-                  <a
-                    href="tel:+972547882715"
-                    className="
-                      flex items-center gap-2 font-bold
-                      px-6 py-3
-                      rounded-full
-                      shadow-lg hover:shadow-xl
-                      transform hover:scale-105 hover:-translate-y-1
-                      transition-all duration-300 ease-out
-                    "
-                    style={{
-                      backgroundColor: '#4A9EB3',
-                      color: 'white'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#398EA0';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = '#4A9EB3';
-                    }}
-                  >
+                  <Button href="tel:+972547882715" variant="primary" size="md" aria-label="התקשר עכשיו">
                     <i className="fas fa-phone"></i>
                     התקשר עכשיו
-                  </a>
+                  </Button>
                   
-                  <a
-                    href="https://wa.me/972547882715"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 bg-green-500/10 hover:bg-green-500/20 text-green-600 px-4 py-2 rounded-lg transition-colors"
-                  >
+                  <Button href="https://wa.me/972547882715" target="_blank" rel="noopener noreferrer" variant="outline" size="md" aria-label="WhatsApp">
                     <i className="fab fa-whatsapp"></i>
                     WhatsApp
-                  </a>
+                  </Button>
                 </div>
               </div>
 
@@ -441,7 +382,7 @@ const ContactSection: React.FC = () => {
               
               {/* ציטוט */}
               <div className="text-center mb-8">
-                <blockquote className="text-lg md:text-xl font-light text-white italic leading-relaxed" style={{
+                <blockquote className="text-lg md:text-xl font-medium text-white italic leading-relaxed" style={{
                   textShadow: '1px 1px 4px rgba(0,0,0,0.5)'
                 }}>
                   &ldquo;המסע הפנימי מתחיל ברגע שאנחנו מפסיקים לחכות לתנאים המושלמים&rdquo;
@@ -472,7 +413,7 @@ const ContactSection: React.FC = () => {
 
               {/* זכויות יוצרים */}
               <div className="text-center mt-8 pt-6 border-t border-white/10 text-white/70 text-sm">
-                <p>&copy; 2024 Be Meditation. כל הזכויות שמורות.</p>
+                <p>&copy; 2025 Be Meditation. כל הזכויות שמורות.</p>
               </div>
 
             </div>

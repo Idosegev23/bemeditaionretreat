@@ -3,12 +3,13 @@
 import React from 'react';
 import Image from 'next/image';
 import { Container } from '@/components/ui';
+import Button from '@/components/ui/Button';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-text-primary text-warm-white py-16" role="contentinfo">
+    <footer className="bg-text-primary py-16 footer-scope" role="contentinfo">
       <Container>
         <div className="max-w-4xl mx-auto">
           
@@ -29,7 +30,7 @@ const Footer: React.FC = () => {
                   Be Meditation
                 </div>
               </div>
-              <p className="text-warm-white/80 leading-relaxed">
+              <p className="leading-relaxed">
                 להכניס נשימה לתוך החיים.
                 <br />
                 להפוך נוכחות – לדרך חיים.
@@ -42,25 +43,25 @@ const Footer: React.FC = () => {
               <div className="space-y-2">
                 <button
                   onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="block mx-auto text-warm-white/80 hover:text-warm-white transition-colors"
+                  className="block mx-auto text-white/90 hover:text-white transition-colors"
                 >
                   על הריטריט
                 </button>
                 <button
                   onClick={() => document.querySelector('#program')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="block mx-auto text-warm-white/80 hover:text-warm-white transition-colors"
+                  className="block mx-auto text-white/90 hover:text-white transition-colors"
                 >
                   התוכנית
                 </button>
                 <button
                   onClick={() => document.querySelector('#pricing')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="block mx-auto text-warm-white/80 hover:text-warm-white transition-colors"
+                  className="block mx-auto text-white/90 hover:text-white transition-colors"
                 >
                   מחירים
                 </button>
                 <button
                   onClick={() => document.querySelector('#faq')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="block mx-auto text-warm-white/80 hover:text-warm-white transition-colors"
+                  className="block mx-auto text-white/90 hover:text-white transition-colors"
                 >
                   שאלות נפוצות
                 </button>
@@ -75,41 +76,55 @@ const Footer: React.FC = () => {
                   href="https://www.instagram.com/be_meditation/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-warm-white/10 hover:bg-warm-white/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                  className="w-12 h-12 bg-white/15 hover:bg-white/25 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
                   aria-label="אינסטגרם"
                 >
-                  <i className="fab fa-instagram text-xl"></i>
+                  <i className="fab fa-instagram text-xl text-white"></i>
                 </a>
                 <a
                   href="https://www.facebook.com/JivanyBeMeditation"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-warm-white/10 hover:bg-warm-white/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                  className="w-12 h-12 bg-white/15 hover:bg-white/25 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
                   aria-label="פייסבוק"
                 >
-                  <i className="fab fa-facebook-f text-xl"></i>
+                  <i className="fab fa-facebook-f text-xl text-white"></i>
                 </a>
                 <a
                   href="https://wa.me/972547882715"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-warm-white/10 hover:bg-warm-white/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                  className="w-12 h-12 bg-white/15 hover:bg-white/25 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
                   aria-label="WhatsApp"
                 >
-                  <i className="fab fa-whatsapp text-xl"></i>
+                  <i className="fab fa-whatsapp text-xl text-white"></i>
                 </a>
               </div>
               
               {/* Response Hours */}
-              <p className="text-warm-white/60 text-sm">
+              <p className="text-white/90 text-sm">
                 זמני מענה: ראשון-חמישי 9:00-18:00
               </p>
             </div>
           </div>
 
+          {/* Purchase & Updates CTA - Afroz-like colors */}
+          <div className="mt-8 p-6 rounded-2xl bg-brown-teal text-center">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              {/* לרכישה - קישור ייעודי למי שכבר היה בסדנה */}
+              <Button variant="primary" size="lg" href="/purchase" aria-label="לרכישה לחצו כאן" className="cta-button">
+                לרכישה לחצו כאן
+              </Button>
+              {/* קבוצת עדכונים שקטה */}
+              <Button variant="outline" size="lg" href="https://chat.whatsapp.com/" aria-label="הצטרפות לקבוצת עדכונים" className="cta-button-secondary">
+                הצטרפו לקבוצת עדכונים שקטה
+              </Button>
+            </div>
+          </div>
+
           {/* Footer Bottom */}
-          <div className="border-t border-warm-white/20 pt-8 text-center">
-            <p className="text-warm-white/60 leading-relaxed">
+          <div className="border-t border-white/20 pt-8 text-center">
+            <p className="text-white/80 leading-relaxed footer-note">
               © {currentYear} Be Meditation. כל הזכויות שמורות.
               <br />
               <span className="text-sm">
@@ -121,7 +136,7 @@ const Footer: React.FC = () => {
           {/* Back to Top Button */}
           <button
             onClick={() => document.querySelector('#hero')?.scrollIntoView({ behavior: 'smooth' })}
-            className="fixed bottom-8 right-8 w-12 h-12 bg-orange-500 hover:bg-orange-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 z-50"
+            className="fixed bottom-8 right-8 w-12 h-12 bg-teal-500 hover:bg-teal-600 text-orange-500 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 z-50"
             aria-label="חזרה לראש הדף"
           >
             <i className="fas fa-chevron-up"></i>

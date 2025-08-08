@@ -12,6 +12,9 @@
   --warm-white: #FEFBF7;
   --text-primary: #3E3E3E; /* Warmer dark gray */
   --text-secondary: #6B6B6B; /* Medium gray */
+  /* Teal brand (Afroz buttons) */
+  --teal-500: #56ACBF; /* primary teal */
+  --teal-600: #4A9AAB; /* hover teal */
   
   /* Header colors - more brownish */
   --header-bg: rgba(237, 224, 196, 0.85); /* Brown background for header */
@@ -44,6 +47,8 @@
   --color-desert-blue: var(--desert-blue);
   --color-desert-brown: var(--desert-brown);
   --color-desert-brown-dark: var(--desert-brown-dark);
+  --color-teal-500: var(--teal-500);
+  --color-teal-600: var(--teal-600);
   --color-warm-white: var(--warm-white);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
@@ -128,7 +133,7 @@ p {
   color: var(--text-secondary);
   word-wrap: break-word;
   overflow-wrap: break-word;
-  font-size: 1.4rem;
+  font-size: 1.1rem; /* עדכון לגודל בסיסי לפי המפרט */
   font-weight: 300; /* משקל קל לפסקאות */
 }
 
@@ -165,6 +170,92 @@ img {
 
 .text-subsection {
   font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+/* Content sections mobile-first fine-tuning */
+.content-section h2 { font-size: 2.2rem; }
+@media (max-width: 768px) {
+  .content-section h2 { font-size: 1.6rem; }
+  .content-section h3 { font-size: 1.4rem; }
+  .content-section p { font-size: 0.95rem; }
+}
+@media (max-width: 480px) {
+  .content-section h2 { font-size: 1.5rem; }
+  .content-section h3 { font-size: 1.3rem; }
+}
+
+/* Hero tweaks */
+.hero-subtitle { font-size: 1.5rem; }
+@media (max-width: 768px) {
+  h1 { font-size: 1.8rem; }
+  .hero-subtitle { font-size: 1.2rem; }
+}
+
+/* CTA Buttons (optional utility classes in case not using Button component) */
+.cta-button { font-size: 1.5rem; }
+@media (max-width: 768px) {
+  .cta-button { font-size: 1.1rem; }
+}
+@media (max-width: 480px) {
+  .cta-button { font-size: 1rem; }
+}
+
+.cta-button-secondary { font-size: 1.2rem; }
+@media (max-width: 768px) {
+  .cta-button-secondary { font-size: 1.1rem; }
+}
+
+/* Accordion / FAQ */
+.accordion-header h3 { font-size: 1.2rem; }
+@media (max-width: 768px) { .accordion-header h3 { font-size: 1.1rem; } }
+.accordion-icon { font-size: 1.5rem; }
+#faq .faq-answer { }
+@media (max-width: 768px) { #faq .faq-answer { font-size: 0.95rem; } }
+
+/* Program timeline text helpers (if used) */
+.timeline-date { font-size: 1.8rem; }
+@media (max-width: 768px) { .timeline-date { font-size: 1.4rem; } }
+.timeline-title { font-size: 1.4rem; }
+.timeline-details li { font-size: 1.1rem; }
+
+/* Pricing helpers (if used) */
+.pricing-header h4 { font-size: 1.5rem; }
+.price { font-size: 2.4rem; }
+.pricing-content p { font-size: 1.05rem; }
+.pricing-note { font-size: 0.95rem; }
+.pricing-features li { font-size: 1rem; }
+.highlight-text { font-size: 1.2rem; }
+.benefit-item h4 { font-size: 1.3rem; }
+.quote-text { font-size: 1.8rem; }
+@media (max-width: 768px) { .quote-text { font-size: 1.3rem; } }
+
+/* Accommodation helpers (if used) */
+.accommodation-option h4 { font-size: 1.1rem; }
+@media (max-width: 480px) { .accommodation-option h4 { font-size: 1rem; } }
+.accommodation-option p { font-size: 0.9rem; }
+@media (max-width: 480px) { .accommodation-option p { font-size: 0.75rem; } }
+#accommodation h3 { font-size: 1.3rem; }
+#accommodation .pricing-header h4 { font-size: 1.4rem; }
+#accommodation .price { font-size: 1.2rem; }
+#accommodation .pricing-features li { font-size: 0.95rem; }
+#accommodation .pricing-note { font-size: 0.9rem; }
+
+/* Footer helpers */
+.footer-logo-text { font-size: 1.5rem; }
+.contact-title { font-size: 1.3rem; }
+.contact-item { font-size: 1.1rem; }
+.contact-item .icon { font-size: 1.2rem; }
+.footer-note { font-size: 0.9rem; }
+.form-header h3 { font-size: 1.6rem; }
+@media (max-width: 768px) { .form-header h3 { font-size: 1.4rem; } }
+@media (max-width: 480px) { .form-header h3 { font-size: 1.2rem; } }
+.form-header p { font-size: 1rem; }
+.submit-button { font-size: 1rem; }
+@media (max-width: 768px) { .submit-button { font-size: 1.1rem; } }
+
+/* Smooth brown→teal gradient utility */
+.bg-brown-teal {
+  background: linear-gradient(135deg, var(--sand) 0%, var(--light-brown) 35%, var(--desert-brown) 55%, var(--desert-blue) 100%);
 }
 
 /* Layout Utilities */
@@ -281,4 +372,33 @@ video {
 
 .image-hover-scale:hover {
   transform: scale(1.05);
+}
+
+/* Footer scope: force high-contrast readable text */
+.footer-scope h1,
+.footer-scope h2,
+.footer-scope h3,
+.footer-scope h4 {
+  color: #ffffff !important;
+  text-align: right;
+}
+.footer-scope p {
+  color: #ffffff !important;
+  text-align: right;
+}
+.footer-scope a {
+  color: #ffffff !important;
+}
+.footer-scope a:hover {
+  color: #ffffff !important;
+  opacity: 0.9;
+}
+
+/* Subtle black outline for button text */
+.btn-text-outline {
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.15),
+    1px 0 0 rgba(0,0,0,0.15),
+    0 -1px 0 rgba(0,0,0,0.15),
+    -1px 0 0 rgba(0,0,0,0.15);
 }

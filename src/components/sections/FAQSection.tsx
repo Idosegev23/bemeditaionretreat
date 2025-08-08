@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Container } from '@/components/ui';
+import Button from '@/components/ui/Button';
 
 const FAQSection: React.FC = () => {
   const [openItem, setOpenItem] = useState<number | null>(null);
@@ -46,7 +47,7 @@ const FAQSection: React.FC = () => {
   return (
     <section 
       id="faq"
-      className="py-20 md:py-28 bg-cream"
+      className="py-12 md:py-18 bg-cream"
     >
       <Container>
         {/* Main white container wrapping everything like in About */}
@@ -67,14 +68,12 @@ const FAQSection: React.FC = () => {
               minHeight: '300px'
             }}
           >
-            {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-black/40"></div>
+            {/* White overlay for readability (Afroz style) */}
+            <div className="absolute inset-0 bg-white/45"></div>
             
             {/* Quote text */}
             <div className="relative z-10 text-center">
-              <blockquote className="text-2xl md:text-3xl lg:text-4xl font-light text-white italic leading-relaxed" style={{
-                textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
-              }}>
+              <blockquote className="text-2xl md:text-3xl lg:text-4xl font-semibold text-text-primary italic leading-relaxed">
                 &ldquo;הלא-ידוע הוא מרחב האפשרויות הגדול ביותר שלנו&rdquo;
               </blockquote>
             </div>
@@ -131,32 +130,9 @@ const FAQSection: React.FC = () => {
               אנחנו כאן בשבילך ונשמח לענות על כל שאלה נוספת
             </p>
             
-            <button
-              onClick={() => {
-                const element = document.querySelector('#contact');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="
-                text-white font-bold 
-                px-8 py-3 text-lg
-                rounded-full
-                shadow-lg hover:shadow-xl
-                transform hover:scale-105 hover:-translate-y-1
-                transition-all duration-300 ease-out
-              "
-              style={{
-                backgroundColor: '#56ACBF',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#4A9AAB';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#56ACBF';
-              }}
-              aria-label="מעבר לפרטים"
-            >
+            <Button variant="primary" size="lg" href="#contact" aria-label="מעבר לפרטים">
               אנחנו כאן בשבילך
-            </button>
+            </Button>
           </div>
 
         </div>
