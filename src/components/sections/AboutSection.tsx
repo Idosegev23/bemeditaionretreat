@@ -67,7 +67,7 @@ const AboutSection: React.FC = () => {
 
   return (
     <section 
-      className="py-12 md:py-20 bg-cream text-center"
+      className="py-10 md:py-16 bg-cream text-center"
       id="about"
     >
       <Container>

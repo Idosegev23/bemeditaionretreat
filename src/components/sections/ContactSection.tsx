@@ -164,7 +164,7 @@ const ContactSection: React.FC = () => {
       {/* Contact Section with Footer - רקע מדורג חום לתכלת */}
       <section 
         id="contact"
-        className="py-12 md:py-20"
+          className="py-10 md:py-16"
         style={{
           background: 'linear-gradient(135deg, #E5D4B1 0%, #C7A882 30%, #4A9EB3 100%)'
         }}
@@ -201,8 +201,8 @@ const ContactSection: React.FC = () => {
                   ניתן להתקשר ישירות לאיריס: 
                   <a href="tel:+972547882715" className="text-green-500 font-semibold mr-2">054-7882715</a>
                   או להשאיר פרטים כאן
-                </p>
-              </div>
+              </p>
+            </div>
 
               {/* Success Message */}
               {submitSuccess && (
@@ -224,22 +224,22 @@ const ContactSection: React.FC = () => {
                   </p>
                 </div>
               )}
-
+              
               {/* Contact Form */}
               <form onSubmit={handleSubmit} className="space-y-6">
                 
                 {/* Name and Phone Row */}
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div>
+                      <div>
                     <label htmlFor="fullName" className="block text-sm font-semibold text-text-primary mb-2">
                       שם מלא:
-                    </label>
-                    <input
-                      type="text"
-                      id="fullName"
-                      name="fullName"
-                      value={formData.fullName}
-                      onChange={handleInputChange}
+                        </label>
+                        <input
+                          type="text"
+                          id="fullName"
+                          name="fullName"
+                          value={formData.fullName}
+                          onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 border border-sand rounded-lg focus:ring-2 focus:border-transparent transition-colors"
                       style={{
@@ -253,22 +253,22 @@ const ContactSection: React.FC = () => {
                         e.target.style.borderColor = '';
                         e.target.style.boxShadow = '';
                       }}
-                    />
-                    {errors.fullName && (
+                        />
+                        {errors.fullName && (
                       <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>
-                    )}
-                  </div>
-                  
-                  <div>
+                        )}
+                      </div>
+
+                      <div>
                     <label htmlFor="phone" className="block text-sm font-semibold text-text-primary mb-2">
                       טלפון:
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
+                        </label>
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 border border-sand rounded-lg focus:ring-2 focus:border-transparent transition-colors"
                       style={{
@@ -282,23 +282,23 @@ const ContactSection: React.FC = () => {
                         e.target.style.borderColor = '';
                         e.target.style.boxShadow = '';
                       }}
-                    />
-                    {errors.phone && (
+                        />
+                        {errors.phone && (
                       <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
-                    )}
+                        )}
                   </div>
-                </div>
+                      </div>
 
                 {/* Message */}
-                <div>
+                      <div>
                   <label htmlFor="message" className="block text-sm font-semibold text-text-primary mb-2">
                     הודעה (אופציונלי):
-                  </label>
+                        </label>
                   <textarea
                     id="message"
                     name="message"
                     value={formData.message}
-                    onChange={handleInputChange}
+                          onChange={handleInputChange}
                     rows={3}
                     placeholder="שאלות או בקשות מיוחדות..."
                     className="w-full px-4 py-3 border border-sand rounded-lg focus:ring-2 focus:border-transparent transition-colors resize-none"
@@ -316,32 +316,32 @@ const ContactSection: React.FC = () => {
                   />
                   {errors.message && (
                     <p className="text-red-500 text-xs mt-1">{errors.message}</p>
-                  )}
-                </div>
+                        )}
+                      </div>
 
                 {/* Two Action Buttons */}
                 <div className="grid md:grid-cols-2 gap-4 pt-4">
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting || !isFormValid()}
+                      <Button
+                        type="submit"
+                        disabled={isSubmitting || !isFormValid()}
                     variant="primary"
-                    size="lg"
+                        size="lg"
                     className="w-full"
                     aria-label="אשמח שתחזרו אליי לפרטים"
-                  >
-                    {isSubmitting ? (
+                      >
+                        {isSubmitting ? (
                       <>
                         <i className="fas fa-spinner fa-spin"></i>
-                        שולח...
+                            שולח...
                       </>
-                    ) : (
+                        ) : (
                       <>
                         <i className="fas fa-paper-plane"></i>
                         אשמח שתחזרו אליי לפרטים
                       </>
-                    )}
-                  </Button>
-                  
+                        )}
+                      </Button>
+
                   {/* 📝 עריכה: לשינוי קישור הרכישה ערכו את הURL בשורה הבאה */}
                   <Button
                     href="https://nataraj.co.il/mitzukei-retreat"
@@ -356,7 +356,7 @@ const ContactSection: React.FC = () => {
                     לרכישה לחצו כאן
                   </Button>
                 </div>
-              </form>
+                    </form>
 
               {/* Direct Contact Options */}
               <div className="mt-8 pt-6 border-t border-sand/30">
@@ -378,7 +378,7 @@ const ContactSection: React.FC = () => {
 
           {/* Footer מובנה בתוך הסקשן */}
           <div className="mt-16 pt-8 border-t border-white/20">
-            <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto">
               
               {/* ציטוט */}
               <div className="text-center mb-8">
@@ -414,7 +414,7 @@ const ContactSection: React.FC = () => {
               {/* זכויות יוצרים */}
               <div className="text-center mt-8 pt-6 border-t border-white/10 text-white/70 text-sm">
                 <p>&copy; 2025 Be Meditation. כל הזכויות שמורות.</p>
-              </div>
+            </div>
 
             </div>
           </div>

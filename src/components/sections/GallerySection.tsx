@@ -133,26 +133,26 @@ const GallerySection: React.FC = () => {
 
   return (
     <section 
-      className="py-12 md:py-20 bg-cream"
+      className="py-10 md:py-16 bg-cream"
       id="gallery"
     >
       <Container>
-        {/* Main white container wrapping everything like in About */}
-        <div 
-          className="max-w-6xl mx-auto bg-white/90 rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg"
+        {/* Main white container wrapping everything like in Afroz */}
+          <div 
+            className="max-w-[1100px] mx-auto bg-white/90 rounded-3xl p-4 md:p-6 lg:p-8 shadow-lg"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
           
           {/* כותרת ללא תיאור מורכב */}
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading mb-6" style={{ color: '#4A9EB3' }}>
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-heading mb-4" style={{ color: '#4A9EB3' }}>
               גלריה
             </h2>
           </div>
 
           {/* Main image */}
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg mb-6">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl shadow-md mb-4">
             <Image
               src={galleryImages[activeIndex].src}
               alt={galleryImages[activeIndex].alt}
@@ -181,7 +181,7 @@ const GallerySection: React.FC = () => {
           </div>
 
           {/* Thumbnails - labels for the hidden radio inputs */}
-          <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-8 gap-3" role="radiogroup" aria-label="גלריית תמונות - בחרו תמונה">
+          <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-8 gap-2" role="radiogroup" aria-label="גלריית תמונות - בחרו תמונה">
             {galleryImages.map((image, index) => {
               const isActive = index === activeIndex;
               return (
@@ -191,7 +191,7 @@ const GallerySection: React.FC = () => {
                   onClick={() => handleManualSelect(index)}
                   role="radio"
                   aria-checked={isActive}
-                  className="relative block w-full aspect-[4/3] rounded-lg overflow-hidden cursor-pointer"
+                  className="relative block w-full aspect-[4/3] rounded-md overflow-hidden cursor-pointer"
                   aria-label={`צפייה בתמונה ${index + 1}`}
                 >
                   <Image

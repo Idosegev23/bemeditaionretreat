@@ -73,7 +73,7 @@ const PricingSection: React.FC = () => {
 
   return (
     <section 
-      className="py-12 md:py-20 bg-cream"
+      className="py-10 md:py-16 bg-cream"
       id="pricing"
     >
       <Container>
@@ -121,7 +121,7 @@ const PricingSection: React.FC = () => {
               </h3>
               <p className="text-lg text-text-secondary max-w-2xl mx-auto">
                 כל הפעילויות, המדיטציות וההנחיה המקצועית
-              </p>
+                </p>
               </div>
               
             <div className="max-w-md mx-auto">
@@ -275,7 +275,7 @@ const PricingSection: React.FC = () => {
                     <p className="text-text-secondary text-sm">
                       כל החומרים הנדרשים לתרגול
                     </p>
-                  </div>
+                </div>
               </div>
             </div>
           </div>

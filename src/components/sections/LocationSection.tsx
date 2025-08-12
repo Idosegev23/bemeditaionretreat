@@ -16,7 +16,7 @@ import { Container } from '@/components/ui';
 const LocationSection: React.FC = () => {
   return (
     <section 
-      className="py-12 md:py-18 bg-cream"
+      className="py-10 md:py-16 bg-cream"
       id="location"
     >
       <Container>

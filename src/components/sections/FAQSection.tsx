@@ -47,7 +47,7 @@ const FAQSection: React.FC = () => {
   return (
     <section 
       id="faq"
-      className="py-12 md:py-18 bg-cream"
+      className="py-10 md:py-16 bg-cream"
     >
       <Container>
         {/* Main white container wrapping everything like in About */}

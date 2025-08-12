@@ -156,7 +156,7 @@ const ProgramSection: React.FC = () => {
 
   return (
     <section 
-      className="py-12 md:py-20 bg-cream"
+      className="py-10 md:py-16 bg-cream"
       id="program"
     >
       <Container>
